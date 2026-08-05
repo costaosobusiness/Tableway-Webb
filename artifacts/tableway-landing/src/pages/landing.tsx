@@ -215,9 +215,6 @@ export default function LandingPage() {
             <Link href="/" className="hover:text-white transition-colors">Pricing</Link>
             <Link href="/" className="hover:text-white transition-colors">How it works</Link>
             <Link href="/" className="hover:text-white transition-colors">Integrations</Link>
-            <button className="flex items-center gap-1 hover:text-white transition-colors">
-              Resources <ChevronDown className="w-4 h-4" />
-            </button>
           </nav>
 
           <div className="hidden lg:flex items-center gap-6">
@@ -245,7 +242,6 @@ export default function LandingPage() {
             <Link href="/" className="text-gray-300 font-medium py-2">Pricing</Link>
             <Link href="/" className="text-gray-300 font-medium py-2">How it works</Link>
             <Link href="/" className="text-gray-300 font-medium py-2">Integrations</Link>
-            <Link href="/" className="text-gray-300 font-medium py-2">Resources</Link>
             <hr className="border-white/5 my-2" />
             <Link href="/" className="text-gray-300 font-medium py-2">Log in</Link>
             <button className="bg-primary text-white px-5 py-3 rounded-full text-sm font-semibold w-full mt-2">
@@ -470,15 +466,6 @@ export default function LandingPage() {
               </ul>
             </div>
 
-            {/* Resources Links */}
-            <div>
-              <h4 className="text-xs font-semibold text-white tracking-wider mb-6">RESOURCES</h4>
-              <ul className="space-y-4">
-                <li><Link href="/" className="text-sm text-gray-400 hover:text-white transition-colors">Help center</Link></li>
-                <li><Link href="/" className="text-sm text-gray-400 hover:text-white transition-colors">Guides</Link></li>
-                <li><Link href="/" className="text-sm text-gray-400 hover:text-white transition-colors">Blog</Link></li>
-              </ul>
-            </div>
 
             {/* Company Links */}
             <div>
