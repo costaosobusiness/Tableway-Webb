@@ -20,23 +20,7 @@ import {
   UtensilsCrossed,
   ArrowDown,
 } from 'lucide-react';
-
-const Logo = () => (
-  <div className="flex items-center gap-2">
-    <div className="w-8 h-8 rounded-full border-[2.5px] border-white flex flex-col items-center justify-center relative">
-      <div className="w-3.5 h-[2.5px] bg-white rounded-full"></div>
-      <div className="w-[2.5px] h-3 bg-white mt-[1px] rounded-full"></div>
-    </div>
-    <div className="flex flex-col justify-center">
-      <div className="text-white font-bold text-xl leading-none tracking-tight">
-        Table<span className="text-primary">Way</span>
-      </div>
-      <div className="text-primary text-[8px] font-semibold tracking-widest mt-0.5">
-        RESERVATIONS MADE Simple
-      </div>
-    </div>
-  </div>
-);
+import { Logo } from '@/components/logo';
 
 const LaptopMockup = () => (
   <div className="relative w-full aspect-[16/10] bg-[#1a1a1a] rounded-t-2xl border-x-[6px] border-t-[6px] border-[#2a2a2a] shadow-2xl overflow-hidden flex flex-col mx-auto">
@@ -576,8 +560,13 @@ export default function LandingPage() {
             <div>
               <h4 className="text-xs font-semibold text-white tracking-wider mb-6 uppercase">Company</h4>
               <ul className="space-y-4">
-                {['About us', 'Privacy policy', 'Terms of service', 'Contact us'].map((l, i) => (
-                  <li key={i}><Link href="/" className="text-sm text-gray-400 hover:text-white transition-colors">{l}</Link></li>
+                {[
+                  { label: 'About us', href: '/about' },
+                  { label: 'Privacy policy', href: '/privacy-policy' },
+                  { label: 'Terms of service', href: '/terms-of-service' },
+                  { label: 'Contact us', href: '/contact' },
+                ].map((l, i) => (
+                  <li key={i}><Link href={l.href} className="text-sm text-gray-400 hover:text-white transition-colors">{l.label}</Link></li>
                 ))}
               </ul>
             </div>

@@ -1,0 +1,67 @@
+Recordings
+IMPORTANT
+
+Design ONLY the Contact page.
+
+Use the same premium dark theme.
+
+Minimal.
+
+Mobile First.
+
+------------------------------------------------
+
+TITLE
+
+Contact Us
+
+Subtitle
+
+We're here to help.
+
+------------------------------------------------
+
+Create a modern contact form.
+
+Fields
+
+Name
+
+Restaurant Name
+
+Email
+
+Subject
+
+Message
+
+------------------------------------------------
+
+Button
+
+Send Message
+
+------------------------------------------------
+
+
+Bottom CTA
+
+Need help getting started?
+
+Start Your 30-Day Free Trial
+
+------------------------------------------------
+
+Keep everything simple.
+
+No map.
+
+No fake office addresses.
+
+No fake phone numbers.
+
+Professional.
+
+Fast.
+
+Minimal.

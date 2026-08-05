@@ -1,0 +1,80 @@
+Recordings
+IMPORTANT
+
+Design ONLY the About Us page.
+
+Keep the same premium dark theme as the rest of the TableWay website.
+
+Mobile First.
+
+Minimal.
+
+Lots of whitespace.
+
+------------------------------------------------
+
+TITLE
+
+About TableWay
+
+Subtitle
+
+Built by restaurant people, for restaurant people.
+
+------------------------------------------------
+
+SECTION
+
+Our Story
+
+For over 20 years we've worked inside restaurants.
+
+We've experienced busy services, missed reservations, phone calls during dinner service and complicated booking systems.
+
+TableWay was created to make restaurant reservations simple.
+
+Less stress.
+
+More bookings.
+
+------------------------------------------------
+
+SECTION
+
+Our Mission
+
+To build the easiest reservation platform for restaurants.
+
+No hidden fees.
+
+No unnecessary complexity.
+
+Just a modern reservation system that helps restaurants grow.
+
+------------------------------------------------
+
+SECTION
+
+About Oso System
+
+TableWay is proudly developed by Oso System.
+
+Our mission is to create simple, modern software that helps businesses work smarter.
+
+------------------------------------------------
+
+Large CTA
+
+Start Your 30-Day Free Trial
+
+------------------------------------------------
+
+Keep the page clean.
+
+No timeline.
+
+No fake numbers.
+
+No stock photos.
+
+Use real TableWay screenshots if needed.
