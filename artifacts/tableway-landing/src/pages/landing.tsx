@@ -593,7 +593,7 @@ export default function LandingPage() {
           </div>
 
           <div className="pt-8 border-t border-white/5 text-center">
-            <p className="text-xs text-gray-500">© 2026 TableWay. All rights reserved.</p>
+            <p className="text-xs text-gray-500">© 2026 TableWay A product by Oso System. All rights reserved.</p>
           </div>
         </div>
       </footer>
