@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "TableWay Landing Page"
+description = "A dark-themed SaaS landing page for TableWay, a restaurant reservation management platform. Matches the reference design: nav bar, hero with laptop+phone mockup, pricing section, three feature cards, and footer."
+version = "1.0.0"
+id = "artifacts/tableway-landing"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22934
+
+[services.development]
+run = "pnpm --filter @workspace/tableway-landing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/tableway-landing", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/tableway-landing/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22934"
+BASE_PATH = "/"

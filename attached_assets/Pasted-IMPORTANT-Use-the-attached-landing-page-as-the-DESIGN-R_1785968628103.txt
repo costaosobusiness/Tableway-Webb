@@ -1,0 +1,242 @@
+IMPORTANT
+
+Use the attached landing page as the DESIGN REFERENCE.
+
+Do NOT redesign it.
+
+Do NOT change the layout.
+
+Do NOT add new sections.
+
+Do NOT remove existing spacing.
+
+Do NOT make it look "better" in your own way.
+
+The goal is to recreate THIS landing page almost 1:1 with clean production code.
+
+This website is MOBILE FIRST.
+
+Desktop should adapt from the mobile layout.
+
+------------------------------------------------
+
+GENERAL STYLE
+
+Premium SaaS
+
+Dark background
+
+TableWay green accent color
+
+Minimal
+
+Lots of whitespace
+
+Smooth scrolling
+
+Modern animations
+
+Fast loading
+
+Rounded buttons
+
+Professional typography
+
+------------------------------------------------
+
+HEADER
+
+Keep exactly as reference.
+
+Logo left
+
+Features
+
+Pricing
+
+How it works
+
+Integrations
+
+Resources
+
+Log In
+
+Start Free Trial button
+
+Do NOT change navigation.
+
+------------------------------------------------
+
+HERO
+
+Keep exactly the same layout.
+
+LEFT
+
+Headline
+
+MORE BOOKINGS.
+
+LESS STRESS.
+
+Subheadline
+
+Accept reservations 24/7.
+Reduce no-shows.
+Grow your restaurant – all for €29/month.
+
+Buttons
+
+Start 30-day free trial
+
+See how it works
+
+Small benefits underneath
+
+✓ 30-day free trial
+
+✓ No commission fees
+
+✓ Cancel anytime
+
+RIGHT
+
+Real TableWay Dashboard image.
+
+Phone overlapping laptop exactly like the reference.
+
+Do not redesign.
+
+------------------------------------------------
+
+PRICING SECTION
+
+Keep the same layout.
+
+Large
+
+29€
+
+/MONTH
+
+Right side checklist
+
+✓ Everything Included
+
+✓ No Add-ons
+
+✓ No Commission Fees
+
+✓ Unlimited Reservations
+
+Large green CTA button
+
+Start your 30-day free trial
+
+Small text underneath
+
+Cancel anytime.
+No contracts.
+
+------------------------------------------------
+
+FEATURES
+
+Only three cards.
+
+Online Bookings
+
+Guest Database
+
+Reports & Insights
+
+Do not add more cards.
+
+------------------------------------------------
+
+REMOVE
+
+Remove:
+
+Trusted by restaurants...
+
+Country flags
+
+500+ restaurants
+
+Any fake statistics
+
+Any fake reviews
+
+Anything that is not true.
+
+------------------------------------------------
+
+FOOTER
+
+Keep same layout.
+
+Logo
+
+Product
+
+Resources
+
+Company
+
+CTA on right
+
+No fake customer numbers.
+
+------------------------------------------------
+
+RESPONSIVE
+
+This website is designed MOBILE FIRST.
+
+Everything must look perfect on phones.
+
+Large buttons.
+
+Easy reading.
+
+Lots of spacing.
+
+Nothing should feel crowded.
+
+------------------------------------------------
+
+VERY IMPORTANT
+
+Do NOT redesign.
+
+Do NOT invent new sections.
+
+Do NOT add your own ideas.
+
+Follow the reference image as closely as possible.
+
+The only changes from the reference are:
+
+- New hero text:
+Accept reservations 24/7.
+Reduce no-shows.
+Grow your restaurant – all for €29/month.
+
+- Pricing checklist:
+Everything Included
+No Add-ons
+No Commission Fees
+Unlimited Reservations
+
+- Only three feature cards.
+
+- Remove:
+Trusted by restaurants
+Country flags
+500+ restaurants
+Fake statistics
+Fake reviews
+
+Everything else should remain as close as possible to the original design.
