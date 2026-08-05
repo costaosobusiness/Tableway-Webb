@@ -1,0 +1,167 @@
+Recordings
+IMPORTANT
+
+Redesign ONLY the Pricing section.
+
+Keep the same premium dark design as the rest of the TableWay website.
+
+Do NOT redesign the page.
+
+Mobile First.
+
+------------------------------------------------
+
+TITLE
+
+Simple Pricing
+
+One system.
+Everything included.
+
+No hidden fees.
+No add-ons.
+No commission.
+
+------------------------------------------------
+
+DISPLAY 3 CLEAN PRICING CARDS
+
+--------------------------------
+
+CARD 1
+
+3 Months
+
+79€
+
+Save 12%
+
+30-Day Free Trial
+
+✔ Everything Included
+
+✔ Unlimited Reservations
+
+✔ Unlimited Staff Accounts
+
+✔ Guest Database
+
+✔ Reports & Insights
+
+✔ Mobile Staff Access
+
+✔ No Commission Fees
+
+✔ Cancel Anytime
+
+Green button
+
+Start Free Trial
+
+--------------------------------
+
+CARD 2 (Highlight this card)
+
+6 Months
+
+149€
+
+Best Value
+
+30-Day Free Trial
+
+✔ Everything Included
+
+✔ Unlimited Reservations
+
+✔ Unlimited Staff Accounts
+
+✔ Guest Database
+
+✔ Reports & Insights
+
+✔ Mobile Staff Access
+
+✔ No Commission Fees
+
+✔ Cancel Anytime
+
+Large green button
+
+Start Free Trial
+
+--------------------------------
+
+CARD 3
+
+12 Months
+
+279€
+
+Best Savings
+
+30-Day Free Trial
+
+✔ Everything Included
+
+✔ Unlimited Reservations
+
+✔ Unlimited Staff Accounts
+
+✔ Guest Database
+
+✔ Reports & Insights
+
+✔ Mobile Staff Access
+
+✔ No Commission Fees
+
+✔ Cancel Anytime
+
+Green button
+
+Start Free Trial
+
+------------------------------------------------
+
+Below the cards
+
+Every plan includes:
+
+✓ Everything Included
+
+✓ No Hidden Costs
+
+✓ Free Updates
+
+✓ Unlimited Support
+
+✓ Cancel Anytime
+
+------------------------------------------------
+
+STYLE
+
+Premium SaaS.
+
+Very clean.
+
+Lots of whitespace.
+
+Rounded cards.
+
+Soft shadows.
+
+TableWay green accent.
+
+Large typography.
+
+No clutter.
+
+Perfect on mobile.
+
+Cards should stack vertically on mobile and display in three columns on desktop.
+
+Use subtle hover animations only.
+
+Keep the design consistent with the rest of the website.

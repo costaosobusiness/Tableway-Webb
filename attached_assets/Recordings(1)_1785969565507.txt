@@ -1,0 +1,67 @@
+Recordings
+IMPORTANT
+Design ONLY the Features section.
+Do NOT redesign the rest of the website.
+Keep exactly the same premium style as the landing page.
+Dark background.
+TableWay green accent.
+Mobile First.
+Minimal.
+Lots of whitespace.
+TITLE
+Everything you need.
+Nothing you don't.
+Subtitle:
+TableWay gives your restaurant everything needed to manage reservations efficiently — with no hidden costs or extra add-ons.
+Create SIX premium feature cards.
+Each card should have:
+• Modern outline icon
+• Short title
+• One short description
+Keep every card exactly the same size.
+Do NOT add long paragraphs.
+CARD 1
+Online Reservations
+Accept reservations 24/7 from your website.
+CARD 2
+Table Management
+Manage tables and reservations in one simple dashboard.
+CARD 3
+Guest Database
+Store guest information and build stronger customer relationships.
+CARD 4
+Reports & Insights
+Track reservations and understand your restaurant's performance.
+CARD 5
+Automatic Confirmations
+Reduce no-shows with automatic booking confirmations.
+CARD 6
+Staff Access
+Invite your team and manage reservations together.
+Below the feature cards add one centered statement.
+Everything Included.
+No Add-ons.
+No Commission Fees.
+Add one large green CTA button.
+Start Your 30-Day Free Trial
+STYLE
+Premium SaaS.
+Very clean.
+Minimal.
+No gradients inside cards.
+Rounded corners.
+Soft hover effect.
+Consistent spacing.
+Large typography.
+Easy to read on mobile.
+Cards should stack into:
+1 column on mobile
+2 columns on tablet
+3 columns on desktop
+IMPORTANT
+Do NOT overload the section.
+The goal is simplicity.
+Every feature should be understandable in under 3 seconds.
+Less text.
+More whitespace.
+The section should feel premium, modern and effortless.

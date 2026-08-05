@@ -1,0 +1,168 @@
+Recordings
+IMPORTANT
+
+Design ONLY the "How It Works" section.
+
+Do NOT redesign the rest of the website.
+
+Keep the same premium dark design as the rest of TableWay.
+
+This section must be extremely simple.
+
+Mobile First.
+
+------------------------------------------------
+
+TITLE
+
+How it works
+
+Subtitle
+
+Get started in minutes.
+
+------------------------------------------------
+
+Display ONLY three large steps.
+
+Center aligned.
+
+Lots of whitespace.
+
+------------------------------------------------
+
+STEP 1
+
+Large number
+
+01
+
+Icon
+
+Restaurant
+
+Title
+
+Create Your Restaurant
+
+Description
+
+Create your restaurant account and complete the basic setup in just a few minutes.
+
+------------------------------------------------
+
+↓
+
+(Simple animated arrow)
+
+------------------------------------------------
+
+STEP 2
+
+Large number
+
+02
+
+Icon
+
+Users
+
+Title
+
+Invite Your Staff
+
+Description
+
+Invite your team with a few clicks and manage permissions directly from your dashboard.
+
+------------------------------------------------
+
+↓
+
+(Simple animated arrow)
+
+------------------------------------------------
+
+STEP 3
+
+Large number
+
+03
+
+Icon
+
+Calendar
+
+Title
+
+Start Accepting Reservations
+
+Description
+
+Receive bookings online, manage your tables and grow your restaurant with TableWay.
+
+------------------------------------------------
+
+Below the steps
+
+Large statement
+
+Ready to get started?
+
+------------------------------------------------
+
+Large green button
+
+Start Your 30-Day Free Trial
+
+------------------------------------------------
+
+STYLE
+
+Dark premium background.
+
+TableWay green accent.
+
+Rounded icons.
+
+Large numbers.
+
+Minimal animations.
+
+Lots of whitespace.
+
+Large typography.
+
+No unnecessary graphics.
+
+No illustrations.
+
+No long paragraphs.
+
+Everything should be easy to understand in under 5 seconds.
+
+------------------------------------------------
+
+RESPONSIVE
+
+Desktop:
+Display the three steps in one horizontal row connected with simple arrows.
+
+Mobile:
+Stack the three steps vertically with arrows between them.
+
+Spacing must feel open and premium.
+
+------------------------------------------------
+
+IMPORTANT
+
+Do NOT overcomplicate this section.
+
+The purpose is to reassure visitors that TableWay is quick and easy to start using.
+
+Simple.
+
+Modern.
+
+Premium.
