@@ -212,9 +212,9 @@ export default function LandingPage() {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300">
-            <Link href="/" className="hover:text-white transition-colors">Features</Link>
-            <Link href="/" className="hover:text-white transition-colors">Pricing</Link>
-            <Link href="/" className="hover:text-white transition-colors">How it works</Link>
+            <a href="#features" className="hover:text-white transition-colors">Features</a>
+            <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
+            <a href="#how-it-works" className="hover:text-white transition-colors">How it works</a>
           </nav>
 
           <div className="hidden lg:flex items-center gap-6">
@@ -238,9 +238,9 @@ export default function LandingPage() {
         {/* Mobile Nav */}
         {mobileMenuOpen && (
           <div className="lg:hidden absolute top-20 left-0 right-0 bg-[#111] border-b border-white/5 p-6 flex flex-col gap-4">
-            <Link href="/" className="text-gray-300 font-medium py-2">Features</Link>
-            <Link href="/" className="text-gray-300 font-medium py-2">Pricing</Link>
-            <Link href="/" className="text-gray-300 font-medium py-2">How it works</Link>
+            <a href="#features" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">Features</a>
+            <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">Pricing</a>
+            <a href="#how-it-works" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">How it works</a>
             <hr className="border-white/5 my-2" />
             <Link href="/" className="text-gray-300 font-medium py-2">Log in</Link>
             <button className="bg-primary text-white px-5 py-3 rounded-full text-sm font-semibold w-full mt-2">
@@ -322,7 +322,7 @@ export default function LandingPage() {
       </section>
 
       {/* FEATURES SECTION */}
-      <section className="py-28 px-6 border-t border-white/5">
+      <section id="features" className="py-28 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <motion.div
@@ -378,7 +378,7 @@ export default function LandingPage() {
       </section>
 
       {/* HOW IT WORKS SECTION */}
-      <section className="py-28 px-6 border-t border-white/5 bg-[#0a0a0a]">
+      <section id="how-it-works" className="py-28 px-6 border-t border-white/5 bg-[#0a0a0a]">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <motion.div
@@ -446,7 +446,7 @@ export default function LandingPage() {
       </section>
 
       {/* PRICING SECTION */}
-      <section className="py-28 px-6 border-t border-white/5">
+      <section id="pricing" className="py-28 px-6 border-t border-white/5">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <motion.div
