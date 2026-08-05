@@ -155,9 +155,7 @@ const PhoneMockup = () => (
 
 const featureCards = [
   { icon: <Globe2 className="w-7 h-7" strokeWidth={1.5} />, title: 'Online Reservations', desc: 'Accept reservations 24/7 from your website.' },
-  { icon: <LayoutDashboard className="w-7 h-7" strokeWidth={1.5} />, title: 'Table Management', desc: 'Manage tables and reservations in one simple dashboard.' },
   { icon: <Users className="w-7 h-7" strokeWidth={1.5} />, title: 'Guest Database', desc: 'Store guest information and build stronger customer relationships.' },
-  { icon: <BarChart2 className="w-7 h-7" strokeWidth={1.5} />, title: 'Reports & Insights', desc: 'Track reservations and understand your restaurant\'s performance.' },
   { icon: <Bell className="w-7 h-7" strokeWidth={1.5} />, title: 'Automatic Confirmations', desc: 'Reduce no-shows with automatic booking confirmations.' },
   { icon: <UserPlus className="w-7 h-7" strokeWidth={1.5} />, title: 'Staff Access', desc: 'Invite your team and manage reservations together.' },
 ];
