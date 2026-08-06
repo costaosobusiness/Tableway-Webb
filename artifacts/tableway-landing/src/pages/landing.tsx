@@ -308,11 +308,19 @@ export default function LandingPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            className="relative lg:ml-8 w-full mt-8 lg:mt-0 flex justify-center lg:block"
+            className="relative w-full mt-10 lg:mt-0 flex justify-center lg:block"
           >
-            <div className="relative w-full max-w-[700px] flex-shrink-0 scale-90 sm:scale-100 origin-top">
+            {/* Mobile: phone only, centered */}
+            <div className="lg:hidden flex justify-center pb-6">
+              <div className="transform scale-90 origin-top">
+                <PhoneMockup />
+              </div>
+            </div>
+
+            {/* Desktop: laptop + phone overlay */}
+            <div className="hidden lg:block relative w-full max-w-[700px] lg:ml-8">
               <LaptopMockup />
-              <div className="absolute -bottom-10 right-4 sm:-right-4 lg:-right-12 z-20 transform -rotate-2 origin-bottom-right">
+              <div className="absolute -bottom-10 -right-12 z-20 transform -rotate-2 origin-bottom-right">
                 <PhoneMockup />
               </div>
             </div>
