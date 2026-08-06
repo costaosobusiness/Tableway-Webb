@@ -44,7 +44,7 @@ const DashboardMockup = () => (
       {/* Sidebar */}
       <div className="w-[200px] shrink-0 border-r border-white/5 flex flex-col py-5 px-3">
         <div className="flex items-center px-2 mb-8">
-          <img src="/logo.png" alt="TableWay" className="h-7 w-auto object-contain" />
+          <img src="/logo.png" alt="TableWay" className="h-[63px] w-auto object-contain" />
         </div>
 
         <div className="text-[9px] font-semibold text-gray-600 uppercase tracking-widest px-2 mb-2">Main</div>
