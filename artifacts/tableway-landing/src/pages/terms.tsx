@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'wouter';
 import { ArrowLeft } from 'lucide-react';
 import { Logo } from '@/components/logo';
@@ -10,6 +11,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 );
 
 export default function TermsPage() {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div className="min-h-screen bg-[#111111] text-white font-sans">
       {/* Header */}

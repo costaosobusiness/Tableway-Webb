@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
 import { Logo } from '@/components/logo';
 
 export default function ContactPage() {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: '', restaurant: '', email: '', subject: '', message: '' });
 

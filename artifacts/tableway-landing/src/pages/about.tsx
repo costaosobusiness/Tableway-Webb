@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -17,6 +18,7 @@ const Section = ({ title, children, delay = 0 }: { title: string; children: Reac
 );
 
 export default function AboutPage() {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div className="min-h-screen bg-[#111111] text-white font-sans">
       {/* Header */}
