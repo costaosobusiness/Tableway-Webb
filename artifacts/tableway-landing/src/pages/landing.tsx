@@ -21,115 +21,206 @@ import {
 } from 'lucide-react';
 import { Logo } from '@/components/logo';
 
-const LaptopMockup = () => (
-  <div className="relative w-full aspect-[16/10] bg-[#1a1a1a] rounded-t-2xl border-x-[6px] border-t-[6px] border-[#2a2a2a] shadow-2xl overflow-hidden flex flex-col mx-auto">
-    <div className="flex-1 bg-white overflow-hidden flex">
-      {/* Sidebar */}
-      <div className="w-[28%] bg-[#0a0a0a] border-r border-[#1a1a1a] p-4 flex flex-col gap-1">
-        <div className="flex items-center gap-2 mb-6 px-2">
-          <div className="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
-            <div className="w-2 h-[2px] bg-primary rounded-full"></div>
-          </div>
-          <span className="text-primary text-sm font-bold">TableWay</span>
-        </div>
-        <div className="bg-primary/10 text-primary text-xs p-2 rounded-md flex items-center gap-2 mb-1">
-          <BarChart2 className="w-3.5 h-3.5" />
-          Overview
-        </div>
-        {['Reservations', 'Calendar', 'Customers', 'Reports', 'Settings'].map((item, i) => (
-          <div key={i} className="text-gray-400 hover:text-gray-300 text-xs p-2 flex items-center gap-2 transition-colors">
-            <div className="w-3.5 h-3.5 opacity-60">
-              {i === 0 && <Calendar className="w-3.5 h-3.5" />}
-              {i === 1 && <Calendar className="w-3.5 h-3.5" />}
-              {i === 2 && <Users className="w-3.5 h-3.5" />}
-              {i === 3 && <BarChart2 className="w-3.5 h-3.5" />}
-              {i === 4 && <div className="w-3.5 h-3.5 border-2 border-current rounded-full" />}
-            </div>
-            {item}
-          </div>
-        ))}
+const chartBars = [40, 65, 50, 80, 60, 90, 75, 100, 85, 70, 95, 88];
+
+const DashboardMockup = () => (
+  <div className="relative w-full rounded-2xl overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8">
+    {/* Window chrome */}
+    <div className="bg-[#161616] border-b border-white/8 px-4 py-3 flex items-center gap-3">
+      <div className="flex gap-1.5">
+        <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+        <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
+        <div className="w-3 h-3 rounded-full bg-[#28c840]" />
       </div>
-      {/* Main Content */}
-      <div className="flex-1 bg-gray-50/50 p-6 flex flex-col">
-        <h3 className="text-gray-900 font-semibold mb-6 text-base">Overview</h3>
-        <div className="grid grid-cols-3 gap-4 mb-6">
-          {[{ v: '26', l: 'Reservations today' }, { v: '72', l: 'Covers today' }, { v: '12:00', l: 'Next booking' }].map((s, i) => (
-            <div key={i} className="bg-white p-4 border border-gray-100 rounded-lg shadow-sm flex flex-col items-center justify-center">
-              <div className="text-2xl font-bold text-gray-900 mb-1">{s.v}</div>
-              <div className="text-[9px] text-gray-500 font-medium">{s.l}</div>
-            </div>
-          ))}
-        </div>
-        <div className="bg-white rounded-lg border border-gray-100 shadow-sm flex-1 flex flex-col">
-          <div className="px-4 py-3 border-b border-gray-50 text-[11px] font-semibold text-gray-900">Today's reservations</div>
-          <div className="px-4 flex-1">
-            {[
-              { time: '12:00', name: 'John Smith', pax: '4 people' },
-              { time: '12:15', name: 'Maria Garcia', pax: '2 people' },
-              { time: '12:30', name: 'The Johnsons', pax: '5 people' },
-              { time: '13:00', name: 'David Brown', pax: '3 people' },
-              { time: '13:30', name: 'Olivia Davis', pax: '2 people' },
-            ].map((row, i) => (
-              <div key={i} className="flex justify-between items-center py-2.5 text-[10px] border-b border-gray-50 last:border-0">
-                <span className="text-gray-500 font-medium w-10 sm:w-12 shrink-0">{row.time}</span>
-                <span className="text-gray-900 font-medium flex-1 truncate px-1">{row.name}</span>
-                <span className="text-gray-500 font-medium shrink-0">{row.pax}</span>
-              </div>
-            ))}
-          </div>
-          <div className="py-2.5 text-center text-[10px] text-primary bg-blue-50/30 font-medium border-t border-gray-50">
-            View all reservations
-          </div>
+      <div className="flex-1 mx-4">
+        <div className="bg-[#0d0d0d] rounded-md px-3 py-1 flex items-center gap-2 max-w-[220px] mx-auto">
+          <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+          <span className="text-[10px] text-gray-500 font-mono">app.tableway.io/dashboard</span>
         </div>
       </div>
     </div>
-    <div className="h-4 bg-[#2a2a2a] w-full rounded-b-2xl border-t border-[#1a1a1a] flex justify-center items-start">
-      <div className="w-20 h-1 bg-[#1a1a1a] rounded-b-md"></div>
+
+    <div className="flex bg-[#0f0f0f]" style={{ minHeight: '360px' }}>
+      {/* Sidebar */}
+      <div className="w-[200px] shrink-0 border-r border-white/5 flex flex-col py-5 px-3">
+        <div className="flex items-center gap-2 px-2 mb-8">
+          <div className="w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center shrink-0">
+            <div className="w-2.5 h-[2px] bg-primary rounded-full" />
+          </div>
+          <span className="text-primary text-sm font-bold tracking-tight">TableWay</span>
+        </div>
+
+        <div className="text-[9px] font-semibold text-gray-600 uppercase tracking-widest px-2 mb-2">Main</div>
+        {[
+          { label: 'Overview', icon: <BarChart2 className="w-3.5 h-3.5" />, active: true },
+          { label: 'Reservations', icon: <Calendar className="w-3.5 h-3.5" />, active: false },
+          { label: 'Customers', icon: <Users className="w-3.5 h-3.5" />, active: false },
+        ].map((item, i) => (
+          <div key={i} className={`flex items-center gap-2.5 px-2 py-2 rounded-lg mb-0.5 text-[11px] font-medium ${item.active ? 'bg-primary/10 text-primary' : 'text-gray-500'}`}>
+            {item.icon}
+            {item.label}
+            {item.active && <div className="ml-auto w-1.5 h-1.5 rounded-full bg-primary" />}
+          </div>
+        ))}
+
+        <div className="text-[9px] font-semibold text-gray-600 uppercase tracking-widest px-2 mb-2 mt-5">Reports</div>
+        {[
+          { label: 'Analytics', icon: <BarChart2 className="w-3.5 h-3.5" /> },
+          { label: 'Staff Access', icon: <UserPlus className="w-3.5 h-3.5" /> },
+          { label: 'Settings', icon: <Bell className="w-3.5 h-3.5" /> },
+        ].map((item, i) => (
+          <div key={i} className="flex items-center gap-2.5 px-2 py-2 rounded-lg mb-0.5 text-[11px] font-medium text-gray-500">
+            {item.icon}
+            {item.label}
+          </div>
+        ))}
+
+        <div className="mt-auto px-2 pt-4 border-t border-white/5">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[9px] text-primary font-bold">JD</div>
+            <div>
+              <div className="text-[10px] text-white font-medium">João Dias</div>
+              <div className="text-[9px] text-gray-500">Admin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 p-6 flex flex-col gap-5 overflow-hidden">
+        {/* Header row */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-white font-semibold text-sm">Good morning, João 👋</h3>
+            <p className="text-gray-500 text-[10px] mt-0.5">Wednesday, 6 August 2026</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="bg-primary/10 border border-primary/20 text-primary text-[10px] px-2.5 py-1 rounded-full font-medium flex items-center gap-1">
+              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              Live
+            </div>
+            <div className="w-7 h-7 rounded-full bg-white/5 border border-white/8 flex items-center justify-center">
+              <Bell className="w-3.5 h-3.5 text-gray-400" />
+            </div>
+          </div>
+        </div>
+
+        {/* Stats row */}
+        <div className="grid grid-cols-4 gap-3">
+          {[
+            { v: '26', l: 'Reservations today', trend: '+8%' },
+            { v: '72', l: 'Covers today', trend: '+12%' },
+            { v: '€1,840', l: 'Est. revenue', trend: '+5%' },
+            { v: '12:00', l: 'Next booking', trend: null },
+          ].map((s, i) => (
+            <div key={i} className="bg-[#161616] border border-white/5 rounded-xl p-3">
+              <div className="text-xl font-bold text-white mb-0.5">{s.v}</div>
+              <div className="text-[9px] text-gray-500 leading-tight">{s.l}</div>
+              {s.trend && (
+                <div className="text-[9px] text-primary font-semibold mt-1.5 flex items-center gap-0.5">
+                  ↑ {s.trend}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Chart + Table row */}
+        <div className="grid grid-cols-[1.4fr_1fr] gap-4 flex-1">
+          {/* Bar chart */}
+          <div className="bg-[#161616] border border-white/5 rounded-xl p-4 flex flex-col">
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-[11px] font-semibold text-white">Reservations this week</span>
+              <span className="text-[9px] text-gray-500 bg-white/5 px-2 py-0.5 rounded-full">Last 7 days</span>
+            </div>
+            <div className="flex items-end gap-1.5 flex-1 mt-auto">
+              {chartBars.map((h, i) => (
+                <div key={i} className="flex-1 flex flex-col items-center gap-1">
+                  <div
+                    className={`w-full rounded-t-sm transition-all ${i === 9 ? 'bg-primary' : 'bg-white/10'}`}
+                    style={{ height: `${h}%` }}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-between mt-2">
+              {['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map((d) => (
+                <span key={d} className="text-[8px] text-gray-600 flex-1 text-center">{d}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Today's reservations */}
+          <div className="bg-[#161616] border border-white/5 rounded-xl flex flex-col overflow-hidden">
+            <div className="px-4 py-3 border-b border-white/5 flex items-center justify-between">
+              <span className="text-[11px] font-semibold text-white">Today's reservations</span>
+              <span className="text-[9px] text-primary">View all</span>
+            </div>
+            <div className="flex-1 divide-y divide-white/5">
+              {[
+                { time: '12:00', name: 'John Smith', pax: '4', status: 'Confirmed' },
+                { time: '12:30', name: 'Maria Garcia', pax: '2', status: 'Seated' },
+                { time: '13:00', name: 'The Johnsons', pax: '5', status: 'Confirmed' },
+                { time: '13:30', name: 'David Brown', pax: '3', status: 'Pending' },
+              ].map((row, i) => (
+                <div key={i} className="flex items-center px-4 py-2.5 gap-2">
+                  <span className="text-[9px] text-gray-500 w-9 shrink-0 font-mono">{row.time}</span>
+                  <span className="text-[10px] text-white font-medium flex-1 truncate">{row.name}</span>
+                  <span className="text-[9px] text-gray-500 w-4 text-center shrink-0">{row.pax}</span>
+                  <span className={`text-[8px] font-semibold px-1.5 py-0.5 rounded-full shrink-0 ${
+                    row.status === 'Confirmed' ? 'bg-primary/10 text-primary' :
+                    row.status === 'Seated' ? 'bg-blue-500/10 text-blue-400' :
+                    'bg-yellow-500/10 text-yellow-400'
+                  }`}>{row.status}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 );
 
 const PhoneMockup = () => (
-  <div className="w-[240px] aspect-[1/2.15] bg-white rounded-[2rem] border-[10px] border-[#1a1a1a] shadow-2xl overflow-hidden relative flex flex-col">
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-[#1a1a1a] rounded-b-2xl z-10"></div>
-    <div className="flex-1 px-5 pt-10 pb-5 bg-gray-50 flex flex-col">
-      <h3 className="text-gray-900 font-bold text-sm mb-5">New reservation</h3>
-      <div className="space-y-4 flex-1">
+  <div className="w-[175px] aspect-[1/2.15] bg-[#0f0f0f] rounded-[1.75rem] border-[8px] border-[#222] shadow-2xl overflow-hidden relative flex flex-col">
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-4 bg-[#222] rounded-b-2xl z-10" />
+    <div className="flex-1 px-3.5 pt-8 pb-4 flex flex-col">
+      <h3 className="text-white font-bold text-[10px] mb-4">New reservation</h3>
+      <div className="space-y-2.5 flex-1">
         {[
-          { label: 'Date', value: '24 May 2026', icon: <Calendar className="w-3.5 h-3.5 text-gray-400" /> },
-          { label: 'Time', value: '19:30', icon: <ChevronDown className="w-3.5 h-3.5 text-gray-400" /> },
+          { label: 'Date', value: '24 May 2026', icon: <Calendar className="w-2.5 h-2.5 text-gray-500" /> },
+          { label: 'Time', value: '19:30', icon: <ChevronDown className="w-2.5 h-2.5 text-gray-500" /> },
         ].map((f, i) => (
-          <div key={i} className="space-y-1.5">
-            <label className="text-[10px] text-gray-500 font-semibold">{f.label}</label>
-            <div className="text-[11px] font-medium text-gray-900 bg-white border border-gray-200 p-2.5 rounded-lg flex justify-between items-center">
+          <div key={i} className="space-y-1">
+            <label className="text-[8px] text-gray-500 font-semibold">{f.label}</label>
+            <div className="text-[9px] font-medium text-white bg-white/5 border border-white/8 p-2 rounded-lg flex justify-between items-center">
               <span>{f.value}</span>{f.icon}
             </div>
           </div>
         ))}
-        <div className="space-y-1.5">
-          <label className="text-[10px] text-gray-500 font-semibold">Guests</label>
-          <div className="text-[11px] text-gray-900 bg-white border border-gray-200 p-2.5 rounded-lg flex justify-between items-center">
-            <span className="text-gray-400 font-bold cursor-pointer px-2">-</span>
+        <div className="space-y-1">
+          <label className="text-[8px] text-gray-500 font-semibold">Guests</label>
+          <div className="text-[9px] text-white bg-white/5 border border-white/8 p-2 rounded-lg flex justify-between items-center">
+            <span className="text-gray-500 font-bold px-1">−</span>
             <span className="font-bold">4</span>
-            <span className="text-gray-400 font-bold cursor-pointer px-2">+</span>
+            <span className="text-gray-500 font-bold px-1">+</span>
           </div>
         </div>
         {[{ label: 'Name', value: 'Maria Garcia' }, { label: 'Phone', value: '+34 600 123 456' }].map((f, i) => (
-          <div key={i} className="space-y-1.5">
-            <label className="text-[10px] text-gray-500 font-semibold">{f.label}</label>
-            <div className="text-[11px] font-medium text-gray-900 bg-white border border-gray-200 p-2.5 rounded-lg">{f.value}</div>
+          <div key={i} className="space-y-1">
+            <label className="text-[8px] text-gray-500 font-semibold">{f.label}</label>
+            <div className="text-[9px] font-medium text-white bg-white/5 border border-white/8 p-2 rounded-lg">{f.value}</div>
           </div>
         ))}
       </div>
-      <div className="mt-4">
-        <button className="w-full bg-primary hover:bg-primary/90 transition-colors text-white text-[11px] py-3 rounded-lg font-semibold shadow-sm">
+      <div className="mt-3">
+        <button className="w-full bg-primary text-white text-[9px] py-2.5 rounded-lg font-semibold">
           Confirm reservation
         </button>
-        <div className="mt-4 text-center flex items-center justify-center gap-1.5">
-          <Check className="w-3.5 h-3.5 text-primary" />
-          <span className="text-[9px] text-gray-500 font-medium leading-tight text-left">
-            Instant confirmation<br />24/7 online booking
-          </span>
+        <div className="mt-2 flex items-center justify-center gap-1">
+          <Check className="w-2.5 h-2.5 text-primary" />
+          <span className="text-[7px] text-gray-500 font-medium">Instant confirmation · 24/7 booking</span>
         </div>
       </div>
     </div>
@@ -250,81 +341,88 @@ export default function LandingPage() {
       </header>
 
       {/* HERO SECTION */}
-      <section className="relative pt-40 pb-20 lg:pt-48 lg:pb-32 px-6">
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] -z-10 pointer-events-none mix-blend-screen opacity-50"></div>
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#22c55e]/5 rounded-full blur-[100px] -z-10 pointer-events-none mix-blend-screen opacity-30"></div>
+      <section className="relative pt-36 pb-0 lg:pt-44 px-6 overflow-visible">
+        {/* Ambient glows */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/8 rounded-full blur-[140px] -z-10 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-8 items-center">
-          {/* Left Column */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="flex flex-col z-10"
-          >
-            <h1 className="text-5xl lg:text-[4.5rem] font-bold leading-[1.05] tracking-tight mb-6">
-              <span className="text-white block">MORE BOOKINGS.</span>
-              <span className="text-primary block">LESS STRESS.</span>
-            </h1>
+        {/* ── Copy block — centered ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="max-w-4xl mx-auto text-center mb-16"
+        >
+          {/* Eyebrow */}
+          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-gray-400 text-xs font-medium px-4 py-2 rounded-full mb-8 tracking-wide">
+            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+            Restaurant Reservation Software
+          </div>
 
-            <div className="text-xl lg:text-2xl text-gray-300 mb-10 space-y-1 font-light tracking-wide">
-              <p>Accept reservations 24/7.</p>
-              <p>Reduce no-shows.</p>
-              <p>Grow your restaurant – all for €29/month.</p>
-            </div>
+          {/* Headline */}
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.02] tracking-tight mb-7">
+            <span className="text-white block">More Bookings.</span>
+            <span className="text-primary block">Less Stress.</span>
+          </h1>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 mb-12">
-              <button className="w-full sm:w-auto bg-primary hover:bg-primary/90 transition-colors text-white px-8 py-3.5 rounded-full text-base font-semibold flex items-center justify-center gap-2 group">
-                Start 30-day free trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="w-full sm:w-auto border border-white/20 hover:bg-white/5 transition-colors text-white px-8 py-3.5 rounded-full text-base font-semibold flex items-center justify-center gap-3">
-                <span className="w-6 h-6 rounded-full border border-white flex items-center justify-center">
-                  <Play className="w-2.5 h-2.5 ml-0.5" fill="currentColor" />
+          {/* Subheadline */}
+          <p className="text-lg lg:text-xl text-gray-400 font-light max-w-xl mx-auto leading-relaxed mb-10">
+            The reservation platform built for restaurants — accept bookings 24/7, reduce no-shows, and grow your guests database. Starting at €29/month.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <button className="w-full sm:w-auto bg-primary hover:bg-primary/90 active:scale-95 transition-all text-white px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-2 group shadow-[0_0_40px_rgba(34,197,94,0.25)]">
+              Start 30-day free trial
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <a href="#how-it-works" className="w-full sm:w-auto border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all text-white px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-3">
+              <span className="w-6 h-6 rounded-full border border-white/40 flex items-center justify-center shrink-0">
+                <Play className="w-2.5 h-2.5 ml-0.5" fill="currentColor" />
+              </span>
+              See how it works
+            </a>
+          </div>
+
+          {/* Trust strip */}
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+            {[
+              { title: '30-day free trial', sub: 'No credit card required' },
+              { title: 'No commission fees', sub: 'Keep 100% of your revenue' },
+              { title: 'Cancel anytime', sub: 'No contracts' },
+            ].map((b, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-primary shrink-0" />
+                <span className="text-sm text-gray-400">
+                  <span className="text-white font-medium">{b.title}</span>
+                  {' · '}{b.sub}
                 </span>
-                See how it works
-              </button>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
-              {[
-                { title: '30-day free trial', sub: 'No credit card required' },
-                { title: 'No commission fees', sub: 'Keep 100% of your revenue' },
-                { title: 'Cancel anytime', sub: 'No contracts' },
-              ].map((b, i) => (
-                <div key={i} className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-sm font-semibold text-white">{b.title}</div>
-                    <div className="text-xs text-gray-400 mt-0.5">{b.sub}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Right Column (Mockups) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            className="relative w-full mt-10 lg:mt-0 flex justify-center lg:block"
-          >
-            {/* Mobile: phone only, centered */}
-            <div className="lg:hidden flex justify-center pb-6">
-              <div className="transform scale-90 origin-top">
-                <PhoneMockup />
               </div>
-            </div>
+            ))}
+          </div>
+        </motion.div>
 
-            {/* Desktop: laptop + phone overlay */}
-            <div className="hidden lg:block relative w-full max-w-[700px] lg:ml-8">
-              <LaptopMockup />
-              <div className="absolute -bottom-10 -right-12 z-20 transform -rotate-2 origin-bottom-right">
-                <PhoneMockup />
-              </div>
-            </div>
-          </motion.div>
+        {/* ── Dashboard — full width focal point ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.25, ease: 'easeOut' }}
+          className="max-w-6xl mx-auto relative"
+        >
+          {/* Glow under dashboard */}
+          <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-primary/10 blur-[60px] -z-10 pointer-events-none rounded-full" />
+
+          <DashboardMockup />
+
+          {/* Phone — overlaps bottom-right of dashboard */}
+          <div className="hidden lg:block absolute -bottom-12 -right-8 z-20 drop-shadow-2xl" style={{ filter: 'drop-shadow(0 32px 48px rgba(0,0,0,0.6))' }}>
+            <PhoneMockup />
+          </div>
+        </motion.div>
+
+        {/* Mobile: phone below dashboard */}
+        <div className="lg:hidden flex justify-center mt-10 pb-6">
+          <PhoneMockup />
         </div>
       </section>
 
