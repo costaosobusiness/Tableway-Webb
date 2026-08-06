@@ -35,7 +35,7 @@ const DashboardMockup = () => (
       <div className="flex-1 mx-4">
         <div className="bg-[#0d0d0d] rounded-md px-3 py-1 flex items-center gap-2 max-w-[220px] mx-auto">
           <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
-          <span className="text-[10px] text-gray-500 font-mono">app.tableway.io/dashboard</span>
+          <span className="text-[10px] text-gray-500 font-mono">tableway.app/dashboard</span>
         </div>
       </div>
     </div>
@@ -43,11 +43,8 @@ const DashboardMockup = () => (
     <div className="flex bg-[#0f0f0f]" style={{ minHeight: '360px' }}>
       {/* Sidebar */}
       <div className="w-[200px] shrink-0 border-r border-white/5 flex flex-col py-5 px-3">
-        <div className="flex items-center gap-2 px-2 mb-8">
-          <div className="w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center shrink-0">
-            <div className="w-2.5 h-[2px] bg-primary rounded-full" />
-          </div>
-          <span className="text-primary text-sm font-bold tracking-tight">TableWay</span>
+        <div className="flex items-center px-2 mb-8">
+          <img src="/logo.png" alt="TableWay" className="h-7 w-auto object-contain" />
         </div>
 
         <div className="text-[9px] font-semibold text-gray-600 uppercase tracking-widest px-2 mb-2">Main</div>
