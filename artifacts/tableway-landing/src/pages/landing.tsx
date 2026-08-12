@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import {
   Calendar,
   Users,
-  BarChart2,
   Check,
   Menu,
   Play,
@@ -50,7 +49,6 @@ const featureCards = [
   { icon: <Globe2 className="w-7 h-7" strokeWidth={1.5} />, title: 'Online Reservations', desc: 'Share a public booking page and accept guest reservations online.' },
   { icon: <Calendar className="w-7 h-7" strokeWidth={1.5} />, title: 'Today & Calendar', desc: 'View and manage reservations on a daily timeline or calendar.' },
   { icon: <Users className="w-7 h-7" strokeWidth={1.5} />, title: 'Customers', desc: 'Keep guest profiles and reservation history in one place.' },
-  { icon: <BarChart2 className="w-7 h-7" strokeWidth={1.5} />, title: 'Reports', desc: 'Track reservation trends and export CSV reports.' },
   { icon: <Bell className="w-7 h-7" strokeWidth={1.5} />, title: 'Automatic confirmation', desc: 'Confirm new reservations automatically or approve them manually.' },
   { icon: <UserPlus className="w-7 h-7" strokeWidth={1.5} />, title: 'Staff', desc: 'Add team members with role-based access and Service Mode sign-in.' },
 ];
@@ -90,7 +88,6 @@ const pricingFeatures = [
   'Unlimited Reservations',
   'Unlimited Staff Accounts',
   'Customers',
-  'Reports',
   'Mobile Staff Access',
   'No Commission Fees',
   'Cancel Anytime',
@@ -138,15 +135,15 @@ export default function LandingPage() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-6">
-            <Link href="https://tableway.app/auth/login" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+            <a href="https://tableway.app/auth/login" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
               Log in
-            </Link>
-            <Link
+            </a>
+            <a
               href="https://tableway.app/auth/register?plan=12m"
               className="bg-primary hover:bg-primary/90 transition-colors text-white px-5 py-2.5 rounded-full text-sm font-semibold"
             >
               Start free trial
-            </Link>
+            </a>
           </div>
 
           {/* Mobile toggle */}
@@ -165,14 +162,14 @@ export default function LandingPage() {
             <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">Pricing</a>
             <a href="#how-it-works" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">How it works</a>
             <hr className="border-white/5 my-2" />
-            <Link href="https://tableway.app/auth/login" className="text-gray-300 font-medium py-2">Log in</Link>
-            <Link
+            <a href="https://tableway.app/auth/login" className="text-gray-300 font-medium py-2">Log in</a>
+            <a
               href="https://tableway.app/auth/register?plan=12m"
               onClick={() => setMobileMenuOpen(false)}
               className="bg-primary text-white px-5 py-3 rounded-full text-sm font-semibold w-full mt-2 text-center"
             >
               Start free trial
-            </Link>
+            </a>
           </div>
         )}
       </header>
@@ -212,13 +209,13 @@ export default function LandingPage() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-12">
-              <Link
+              <a
                 href="https://tableway.app/auth/register?plan=12m"
                 className="w-full sm:w-auto bg-primary hover:bg-primary/90 active:scale-95 transition-all text-white px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-2 group shadow-[0_0_40px_rgba(34,197,94,0.25)]"
               >
                 Start 30-day free trial
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
               <a
                 href="#how-it-works"
                 className="w-full sm:w-auto border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all text-white px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-3"
@@ -313,7 +310,7 @@ export default function LandingPage() {
                   ))}
                 </ul>
 
-                <Link
+                <a
                   href={`https://tableway.app/auth/register?plan=${plan.slug}`}
                   className={`w-full py-3.5 rounded-full text-sm font-bold transition-all duration-200 text-center ${
                     plan.highlighted
@@ -322,7 +319,7 @@ export default function LandingPage() {
                   }`}
                 >
                   Start Free Trial
-                </Link>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -408,12 +405,12 @@ export default function LandingPage() {
             className="text-center mt-20"
           >
             <p className="text-3xl lg:text-4xl font-bold text-white mb-10">Ready to get started?</p>
-            <Link
+            <a
               href="https://tableway.app/auth/register?plan=12m"
               className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
             >
               Start Your 30-Day Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>
@@ -437,7 +434,7 @@ export default function LandingPage() {
             </p>
           </motion.div>
 
-          {/* 6 Cards */}
+          {/* 5 Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featureCards.map((card, i) => (
               <motion.div
@@ -466,12 +463,12 @@ export default function LandingPage() {
               Everything Included. No Add-ons. No Commission Fees.
             </p>
             <div className="mt-10">
-              <Link
+              <a
                 href="https://tableway.app/auth/register?plan=12m"
                 className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
               >
                 Start Your 30-Day Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -522,12 +519,12 @@ export default function LandingPage() {
             <div className="flex flex-col lg:items-end text-left lg:text-right">
               <p className="text-white font-medium mb-2">Ready to get more bookings?</p>
               <p className="text-gray-400 text-sm mb-6">Start your 30-day free trial today.</p>
-              <Link
+              <a
                 href="https://tableway.app/auth/register?plan=12m"
                 className="bg-primary hover:bg-primary/90 transition-colors text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 max-w-max"
               >
                 Start your free trial <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
           </div>
 

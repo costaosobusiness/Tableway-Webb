@@ -119,11 +119,12 @@ export default function ContactPage() {
         {/* Bottom CTA */}
         <div className="mt-24 pt-14 border-t border-white/5 text-center">
           <p className="text-2xl font-bold text-white mb-8">Need help getting started?</p>
-          <Link href="https://tableway.app/auth/register?plan=12m">
-            <button className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group">
-              Start Your 30-Day Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </Link>
+          <a
+            href="https://tableway.app/auth/register?plan=12m"
+            className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
+          >
+            Start Your 30-Day Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </a>
         </div>
       </main>
 
