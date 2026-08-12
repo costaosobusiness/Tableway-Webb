@@ -6,12 +6,10 @@ import {
   Users,
   BarChart2,
   Check,
-  ChevronDown,
   Menu,
   Play,
   ArrowRight,
   Globe2,
-  LayoutDashboard,
   Bell,
   UserPlus,
   UtensilsCrossed,
@@ -19,222 +17,42 @@ import {
 } from 'lucide-react';
 import { Logo } from '@/components/logo';
 
-const DisabledNavItem = ({ children }: { children: React.ReactNode }) => (
-  <span className="text-gray-500 cursor-not-allowed select-none" aria-disabled="true">
-    {children}
-  </span>
-);
+const HeroVisual = () => (
+  <>
+    <img
+      src="/dashboard.png"
+      alt="TableWay Today view showing reservations and covers"
+      className="w-full rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
+    />
 
-const chartBars = [40, 65, 50, 80, 60, 90, 75, 100, 85, 70, 95, 88];
-
-const DashboardMockup = () => (
-  <div className="relative w-full rounded-2xl overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8">
-    {/* Window chrome */}
-    <div className="bg-[#161616] border-b border-white/8 px-4 py-3 flex items-center gap-3">
-      <div className="flex gap-1.5">
-        <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-        <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
-        <div className="w-3 h-3 rounded-full bg-[#28c840]" />
-      </div>
-      <div className="flex-1 mx-4">
-        <div className="bg-[#0d0d0d] rounded-md px-3 py-1 flex items-center gap-2 max-w-[220px] mx-auto">
-          <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
-          <span className="text-[10px] text-gray-500 font-mono">tableway.app/dashboard</span>
-        </div>
-      </div>
+    <div
+      className="hidden lg:block absolute -bottom-12 -right-8 z-20"
+      style={{ filter: 'drop-shadow(0 32px 48px rgba(0,0,0,0.6))' }}
+    >
+      <img
+        src="/dashboard-mobile.png"
+        alt="TableWay mobile login and staff access"
+        className="w-[175px] rounded-[1.75rem] border-[8px] border-[#222] shadow-2xl"
+      />
     </div>
 
-    <div className="flex bg-[#0f0f0f]">
-      {/* Sidebar — desktop only */}
-      <div className="hidden lg:flex w-[200px] shrink-0 border-r border-white/5 flex-col py-5 px-3">
-        <div className="flex items-center px-2 mb-8">
-          <img src="/logo.png" alt="TableWay" className="h-[142px] w-auto object-contain" />
-        </div>
-
-        <div className="text-[9px] font-semibold text-gray-600 uppercase tracking-widest px-2 mb-2">Main</div>
-        {[
-          { label: 'Overview', icon: <BarChart2 className="w-3.5 h-3.5" />, active: true },
-          { label: 'Reservations', icon: <Calendar className="w-3.5 h-3.5" />, active: false },
-          { label: 'Customers', icon: <Users className="w-3.5 h-3.5" />, active: false },
-        ].map((item, i) => (
-          <div key={i} className={`flex items-center gap-2.5 px-2 py-2 rounded-lg mb-0.5 text-[11px] font-medium ${item.active ? 'bg-primary/10 text-primary' : 'text-gray-500'}`}>
-            {item.icon}
-            {item.label}
-            {item.active && <div className="ml-auto w-1.5 h-1.5 rounded-full bg-primary" />}
-          </div>
-        ))}
-
-        <div className="text-[9px] font-semibold text-gray-600 uppercase tracking-widest px-2 mb-2 mt-5">Reports</div>
-        {[
-          { label: 'Analytics', icon: <BarChart2 className="w-3.5 h-3.5" /> },
-          { label: 'Staff Access', icon: <UserPlus className="w-3.5 h-3.5" /> },
-          { label: 'Settings', icon: <Bell className="w-3.5 h-3.5" /> },
-        ].map((item, i) => (
-          <div key={i} className="flex items-center gap-2.5 px-2 py-2 rounded-lg mb-0.5 text-[11px] font-medium text-gray-500">
-            {item.icon}
-            {item.label}
-          </div>
-        ))}
-
-        <div className="mt-auto px-2 pt-4 border-t border-white/5">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[9px] text-primary font-bold">JD</div>
-            <div>
-              <div className="text-[10px] text-white font-medium">João Dias</div>
-              <div className="text-[9px] text-gray-500">Admin</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 p-3 lg:p-6 flex flex-col gap-3 lg:gap-5 overflow-hidden min-w-0">
-        {/* Header row */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-white font-semibold text-xs lg:text-sm">Good morning, João 👋</h3>
-            <p className="text-gray-500 text-[9px] lg:text-[10px] mt-0.5">Wednesday, 6 August 2026</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="bg-primary/10 border border-primary/20 text-primary text-[9px] lg:text-[10px] px-2 lg:px-2.5 py-1 rounded-full font-medium flex items-center gap-1">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Live
-            </div>
-            <div className="hidden lg:flex w-7 h-7 rounded-full bg-white/5 border border-white/8 items-center justify-center">
-              <Bell className="w-3.5 h-3.5 text-gray-400" />
-            </div>
-          </div>
-        </div>
-
-        {/* Stats — 2 col on mobile, 4 col on desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-3">
-          {[
-            { v: '26', l: 'Reservations today', trend: '+8%' },
-            { v: '72', l: 'Covers today', trend: '+12%' },
-            { v: '€1,840', l: 'Est. revenue', trend: '+5%' },
-            { v: '12:00', l: 'Next booking', trend: null },
-          ].map((s, i) => (
-            <div key={i} className="bg-[#161616] border border-white/5 rounded-xl p-2.5 lg:p-3">
-              <div className="text-base lg:text-xl font-bold text-white mb-0.5">{s.v}</div>
-              <div className="text-[8px] lg:text-[9px] text-gray-500 leading-tight">{s.l}</div>
-              {s.trend && (
-                <div className="text-[8px] lg:text-[9px] text-primary font-semibold mt-1 flex items-center gap-0.5">
-                  ↑ {s.trend}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Chart + Table — stacked on mobile, side by side on desktop */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-3 lg:gap-4 flex-1">
-          {/* Bar chart — desktop only */}
-          <div className="hidden lg:flex bg-[#161616] border border-white/5 rounded-xl p-4 flex-col">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-[11px] font-semibold text-white">Reservations this week</span>
-              <span className="text-[9px] text-gray-500 bg-white/5 px-2 py-0.5 rounded-full">Last 7 days</span>
-            </div>
-            <div className="flex items-end gap-1.5 flex-1 mt-auto">
-              {chartBars.map((h, i) => (
-                <div key={i} className="flex-1 flex flex-col items-center gap-1">
-                  <div
-                    className={`w-full rounded-t-sm transition-all ${i === 9 ? 'bg-primary' : 'bg-white/10'}`}
-                    style={{ height: `${h}%` }}
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-between mt-2">
-              {['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map((d) => (
-                <span key={d} className="text-[8px] text-gray-600 flex-1 text-center">{d}</span>
-              ))}
-            </div>
-          </div>
-
-          {/* Today's reservations — full width on mobile */}
-          <div className="bg-[#161616] border border-white/5 rounded-xl flex flex-col overflow-hidden">
-            <div className="px-3 lg:px-4 py-2.5 lg:py-3 border-b border-white/5 flex items-center justify-between">
-              <span className="text-[10px] lg:text-[11px] font-semibold text-white">Today's reservations</span>
-              <span className="text-[9px] text-primary">View all</span>
-            </div>
-            <div className="flex-1 divide-y divide-white/5">
-              {[
-                { time: '12:00', name: 'John Smith', pax: '4', status: 'Confirmed' },
-                { time: '12:30', name: 'Maria Garcia', pax: '2', status: 'Seated' },
-                { time: '13:00', name: 'The Johnsons', pax: '5', status: 'Confirmed' },
-                { time: '13:30', name: 'David Brown', pax: '3', status: 'Pending' },
-              ].map((row, i) => (
-                <div key={i} className="flex items-center px-3 lg:px-4 py-2 lg:py-2.5 gap-2">
-                  <span className="text-[8px] lg:text-[9px] text-gray-500 w-8 lg:w-9 shrink-0 font-mono">{row.time}</span>
-                  <span className="text-[9px] lg:text-[10px] text-white font-medium flex-1 truncate">{row.name}</span>
-                  <span className="text-[8px] lg:text-[9px] text-gray-500 w-4 text-center shrink-0">{row.pax}</span>
-                  <span className={`text-[7px] lg:text-[8px] font-semibold px-1.5 py-0.5 rounded-full shrink-0 ${
-                    row.status === 'Confirmed' ? 'bg-primary/10 text-primary' :
-                    row.status === 'Seated' ? 'bg-blue-500/10 text-blue-400' :
-                    'bg-yellow-500/10 text-yellow-400'
-                  }`}>{row.status}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="lg:hidden flex justify-center mt-10">
+      <img
+        src="/dashboard-mobile.png"
+        alt="TableWay mobile login and staff access"
+        className="w-[200px] max-w-[70vw] rounded-[1.75rem] border-[8px] border-[#222] shadow-2xl"
+      />
     </div>
-  </div>
-);
-
-const PhoneMockup = () => (
-  <div className="w-[175px] aspect-[1/2.15] bg-[#0f0f0f] rounded-[1.75rem] border-[8px] border-[#222] shadow-2xl overflow-hidden relative flex flex-col">
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-4 bg-[#222] rounded-b-2xl z-10" />
-    <div className="flex-1 px-3.5 pt-8 pb-4 flex flex-col">
-      <h3 className="text-white font-bold text-[10px] mb-4">New reservation</h3>
-      <div className="space-y-2.5 flex-1">
-        {[
-          { label: 'Date', value: '24 May 2026', icon: <Calendar className="w-2.5 h-2.5 text-gray-500" /> },
-          { label: 'Time', value: '19:30', icon: <ChevronDown className="w-2.5 h-2.5 text-gray-500" /> },
-        ].map((f, i) => (
-          <div key={i} className="space-y-1">
-            <label className="text-[8px] text-gray-500 font-semibold">{f.label}</label>
-            <div className="text-[9px] font-medium text-white bg-white/5 border border-white/8 p-2 rounded-lg flex justify-between items-center">
-              <span>{f.value}</span>{f.icon}
-            </div>
-          </div>
-        ))}
-        <div className="space-y-1">
-          <label className="text-[8px] text-gray-500 font-semibold">Guests</label>
-          <div className="text-[9px] text-white bg-white/5 border border-white/8 p-2 rounded-lg flex justify-between items-center">
-            <span className="text-gray-500 font-bold px-1">−</span>
-            <span className="font-bold">4</span>
-            <span className="text-gray-500 font-bold px-1">+</span>
-          </div>
-        </div>
-        {[{ label: 'Name', value: 'Maria Garcia' }, { label: 'Phone', value: '+34 600 123 456' }].map((f, i) => (
-          <div key={i} className="space-y-1">
-            <label className="text-[8px] text-gray-500 font-semibold">{f.label}</label>
-            <div className="text-[9px] font-medium text-white bg-white/5 border border-white/8 p-2 rounded-lg">{f.value}</div>
-          </div>
-        ))}
-      </div>
-      <div className="mt-3">
-        <button className="w-full bg-primary text-white text-[9px] py-2.5 rounded-lg font-semibold">
-          Confirm reservation
-        </button>
-        <div className="mt-2 flex items-center justify-center gap-1">
-          <Check className="w-2.5 h-2.5 text-primary" />
-          <span className="text-[7px] text-gray-500 font-medium">Instant confirmation · 24/7 booking</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  </>
 );
 
 const featureCards = [
-  { icon: <Globe2 className="w-7 h-7" strokeWidth={1.5} />, title: 'Online Reservations', desc: 'Accept reservations 24/7 from your website.' },
-  { icon: <LayoutDashboard className="w-7 h-7" strokeWidth={1.5} />, title: 'Table Management', desc: 'Manage tables and reservations in one simple dashboard.' },
-  { icon: <Users className="w-7 h-7" strokeWidth={1.5} />, title: 'Guest Database', desc: 'Store guest information and build stronger customer relationships.' },
-  { icon: <BarChart2 className="w-7 h-7" strokeWidth={1.5} />, title: 'Reports & Insights', desc: "Track reservations and understand your restaurant's performance." },
-  { icon: <Bell className="w-7 h-7" strokeWidth={1.5} />, title: 'Automatic Confirmations', desc: 'Reduce no-shows with automatic booking confirmations.' },
-  { icon: <UserPlus className="w-7 h-7" strokeWidth={1.5} />, title: 'Staff Access', desc: 'Invite your team and manage reservations together.' },
+  { icon: <Globe2 className="w-7 h-7" strokeWidth={1.5} />, title: 'Online Reservations', desc: 'Share a public booking page and accept guest reservations online.' },
+  { icon: <Calendar className="w-7 h-7" strokeWidth={1.5} />, title: 'Today & Calendar', desc: 'View and manage reservations on a daily timeline or calendar.' },
+  { icon: <Users className="w-7 h-7" strokeWidth={1.5} />, title: 'Customers', desc: 'Keep guest profiles and reservation history in one place.' },
+  { icon: <BarChart2 className="w-7 h-7" strokeWidth={1.5} />, title: 'Reports', desc: 'Track reservation trends and export CSV reports.' },
+  { icon: <Bell className="w-7 h-7" strokeWidth={1.5} />, title: 'Automatic confirmation', desc: 'Confirm new reservations automatically or approve them manually.' },
+  { icon: <UserPlus className="w-7 h-7" strokeWidth={1.5} />, title: 'Staff', desc: 'Add team members with role-based access and Service Mode sign-in.' },
 ];
 
 const pricingPlans = [
@@ -271,8 +89,8 @@ const pricingFeatures = [
   'Everything Included',
   'Unlimited Reservations',
   'Unlimited Staff Accounts',
-  'Guest Database',
-  'Reports & Insights',
+  'Customers',
+  'Reports',
   'Mobile Staff Access',
   'No Commission Fees',
   'Cancel Anytime',
@@ -317,8 +135,6 @@ export default function LandingPage() {
             <a href="#features" className="hover:text-white transition-colors">Features</a>
             <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
             <a href="#how-it-works" className="hover:text-white transition-colors">How it works</a>
-            <DisabledNavItem>Integrations</DisabledNavItem>
-            <DisabledNavItem>Resources</DisabledNavItem>
           </nav>
 
           <div className="hidden lg:flex items-center gap-6">
@@ -348,8 +164,6 @@ export default function LandingPage() {
             <a href="#features" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">Features</a>
             <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">Pricing</a>
             <a href="#how-it-works" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">How it works</a>
-            <DisabledNavItem>Integrations</DisabledNavItem>
-            <DisabledNavItem>Resources</DisabledNavItem>
             <hr className="border-white/5 my-2" />
             <Link href="https://tableway.app/auth/login" className="text-gray-300 font-medium py-2">Log in</Link>
             <Link
@@ -436,18 +250,7 @@ export default function LandingPage() {
           >
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-primary/10 blur-[60px] -z-10 pointer-events-none rounded-full" />
 
-            <DashboardMockup />
-
-            <div
-              className="hidden lg:block absolute -bottom-12 -right-8 z-20 drop-shadow-2xl"
-              style={{ filter: 'drop-shadow(0 32px 48px rgba(0,0,0,0.6))' }}
-            >
-              <PhoneMockup />
-            </div>
-
-            <div className="lg:hidden flex justify-center mt-10">
-              <PhoneMockup />
-            </div>
+            <HeroVisual />
           </motion.div>
         </div>
       </section>

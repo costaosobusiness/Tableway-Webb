@@ -4,19 +4,6 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Logo } from '@/components/logo';
 
-const Section = ({ title, children, delay = 0 }: { title: string; children: React.ReactNode; delay?: number }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ delay }}
-    className="mb-16"
-  >
-    <h2 className="text-2xl font-bold text-white mb-6">{title}</h2>
-    <div className="text-gray-400 leading-relaxed space-y-4 text-lg">{children}</div>
-  </motion.div>
-);
-
 export default function AboutPage() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
@@ -38,47 +25,50 @@ export default function AboutPage() {
           className="mb-20"
         >
           <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-            About <span className="text-primary">TableWay</span>
+            About Us
           </h1>
           <p className="text-xl text-gray-400 leading-relaxed">
-            Built by restaurant people, for restaurant people.
+            Built by someone who understands restaurants.
           </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-20"
+        >
+          <img
+            src="/about-us.png"
+            alt="TableWay — Reservations Made Simple"
+            className="w-full rounded-2xl border border-white/8"
+          />
         </motion.div>
 
         {/* Divider */}
         <div className="h-px bg-white/5 mb-20" />
 
-        <Section title="Our Story" delay={0.1}>
-          <p>For over 20 years we've worked inside restaurants.</p>
-          <p>We've experienced busy services, missed reservations, phone calls during dinner service and complicated booking systems that created more problems than they solved.</p>
-          <p>TableWay was created to make restaurant reservations simple.</p>
-          <p className="text-white font-semibold">Less stress. More bookings.</p>
-        </Section>
-
-        <div className="h-px bg-white/5 mb-16" />
-
-        <Section title="Our Mission" delay={0.15}>
-          <p>To build the easiest reservation platform for restaurants.</p>
-          <ul className="space-y-3 mt-2">
-            {[
-              'No hidden fees.',
-              'No unnecessary complexity.',
-              'Just a modern reservation system that helps restaurants grow.',
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <span className="text-primary font-bold mt-1">—</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        <div className="h-px bg-white/5 mb-16" />
-
-        <Section title="About Oso System" delay={0.2}>
-          <p>TableWay is proudly developed by <span className="text-white font-semibold">Oso System</span>.</p>
-          <p>Our mission is to create simple, modern software that helps businesses work smarter — removing complexity and putting the focus back where it belongs: on the people you serve.</p>
-        </Section>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-gray-400 leading-relaxed space-y-4 text-lg mb-16"
+        >
+          <p>TableWay started with a simple idea: restaurant technology should make life easier, not more complicated.</p>
+          <p>My name is Björn Lingman, and I founded Oso System after years of working with restaurants and seeing the same problems again and again. Too much time spent managing bookings, answering calls, dealing with complicated systems, and paying for features that many restaurants simply don&apos;t need.</p>
+          <p>I wanted to build something different.</p>
+          <p>TableWay was created as a straightforward reservation system designed around the reality of running a restaurant. It should be easy to understand, quick to use, and affordable — without commission fees, unnecessary add-ons, or complicated setups.</p>
+          <p>But TableWay is about more than reservations. It is the first step in a bigger vision: building practical digital tools that help independent restaurants compete, grow, and spend more time doing what they do best — creating great experiences for their guests.</p>
+          <p>Oso System is being built around that idea. TableWay is the beginning, with more products and tools planned for restaurants in the future.</p>
+          <p>We are starting small, but thinking globally.</p>
+          <p>The goal is simple: give restaurants better technology without making them feel like they need to become technology experts to use it.</p>
+          <p>If TableWay can save a restaurant time, reduce stress, and help it grow, then we are doing what we set out to do.</p>
+          <p className="pt-4 text-white">
+            — Björn Lingman<br />
+            Founder, Oso System
+          </p>
+        </motion.div>
 
         {/* CTA */}
         <motion.div
