@@ -322,11 +322,11 @@ export default function LandingPage() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-6">
-            <Link href="/login" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+            <Link href="https://tableway.app/auth/login" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
               Log in
             </Link>
             <Link
-              href="/signup?plan=12m"
+              href="https://tableway.app/auth/register?plan=12m"
               className="bg-primary hover:bg-primary/90 transition-colors text-white px-5 py-2.5 rounded-full text-sm font-semibold"
             >
               Start free trial
@@ -351,9 +351,9 @@ export default function LandingPage() {
             <DisabledNavItem>Integrations</DisabledNavItem>
             <DisabledNavItem>Resources</DisabledNavItem>
             <hr className="border-white/5 my-2" />
-            <Link href="/login" className="text-gray-300 font-medium py-2">Log in</Link>
+            <Link href="https://tableway.app/auth/login" className="text-gray-300 font-medium py-2">Log in</Link>
             <Link
-              href="/signup?plan=12m"
+              href="https://tableway.app/auth/register?plan=12m"
               onClick={() => setMobileMenuOpen(false)}
               className="bg-primary text-white px-5 py-3 rounded-full text-sm font-semibold w-full mt-2 text-center"
             >
@@ -399,7 +399,7 @@ export default function LandingPage() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-12">
               <Link
-                href="/signup?plan=12m"
+                href="https://tableway.app/auth/register?plan=12m"
                 className="w-full sm:w-auto bg-primary hover:bg-primary/90 active:scale-95 transition-all text-white px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-2 group shadow-[0_0_40px_rgba(34,197,94,0.25)]"
               >
                 Start 30-day free trial
@@ -511,7 +511,7 @@ export default function LandingPage() {
                 </ul>
 
                 <Link
-                  href={`/signup?plan=${plan.slug}`}
+                  href={`https://tableway.app/auth/register?plan=${plan.slug}`}
                   className={`w-full py-3.5 rounded-full text-sm font-bold transition-all duration-200 text-center ${
                     plan.highlighted
                       ? 'bg-primary hover:bg-primary/90 text-white'
@@ -606,7 +606,7 @@ export default function LandingPage() {
           >
             <p className="text-3xl lg:text-4xl font-bold text-white mb-10">Ready to get started?</p>
             <Link
-              href="/signup?plan=12m"
+              href="https://tableway.app/auth/register?plan=12m"
               className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
             >
               Start Your 30-Day Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -664,7 +664,7 @@ export default function LandingPage() {
             </p>
             <div className="mt-10">
               <Link
-                href="/signup?plan=12m"
+                href="https://tableway.app/auth/register?plan=12m"
                 className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
               >
                 Start Your 30-Day Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -720,7 +720,7 @@ export default function LandingPage() {
               <p className="text-white font-medium mb-2">Ready to get more bookings?</p>
               <p className="text-gray-400 text-sm mb-6">Start your 30-day free trial today.</p>
               <Link
-                href="/signup?plan=12m"
+                href="https://tableway.app/auth/register?plan=12m"
                 className="bg-primary hover:bg-primary/90 transition-colors text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 max-w-max"
               >
                 Start your free trial <ArrowRight className="w-4 h-4" />
