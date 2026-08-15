@@ -66,7 +66,7 @@ const HeroVisual = ({
     <img
       src="/dashboard.png"
       alt={altDashboard}
-      className="w-full rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
+      className="hidden lg:block w-full rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
     />
 
     <div
@@ -80,11 +80,16 @@ const HeroVisual = ({
       />
     </div>
 
-    <div className="lg:hidden flex justify-center mt-10">
+    <div className="lg:hidden flex flex-nowrap items-start justify-center gap-3 mt-10 w-full max-w-full">
+      <img
+        src="/dashboard.png"
+        alt={altDashboard}
+        className="w-[48%] max-w-[48%] min-w-0 h-auto shrink rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
+      />
       <img
         src="/dashboard-mobile.png"
         alt={altMobile}
-        className="w-[200px] max-w-[70vw] rounded-[1.75rem] border-[8px] border-[#222] shadow-2xl"
+        className="w-[48%] max-w-[48%] min-w-0 h-auto shrink rounded-[1.75rem] border-[8px] border-[#222] shadow-2xl"
       />
     </div>
   </>
