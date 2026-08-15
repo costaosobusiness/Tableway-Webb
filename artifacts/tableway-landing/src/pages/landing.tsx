@@ -15,6 +15,11 @@ import {
   ArrowDown,
 } from 'lucide-react';
 import { Logo } from '@/components/logo';
+import {
+  TABLEWAY_DOWNLOAD_APP_URL,
+  TABLEWAY_SAAS_LOGIN_URL,
+  tablewaySaasRegisterUrl,
+} from '@/lib/tablewayUrls';
 
 const HeroVisual = () => (
   <>
@@ -132,14 +137,20 @@ export default function LandingPage() {
             <a href="#features" className="hover:text-white transition-colors">Features</a>
             <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
             <a href="#how-it-works" className="hover:text-white transition-colors">How it works</a>
+            <a
+              href={TABLEWAY_DOWNLOAD_APP_URL}
+              className="hover:text-white transition-colors"
+            >
+              Download App
+            </a>
           </nav>
 
           <div className="hidden lg:flex items-center gap-6">
-            <a href="https://tableway.app/auth/login" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+            <a href={TABLEWAY_SAAS_LOGIN_URL} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
               Log in
             </a>
             <a
-              href="https://tableway.app/auth/register?plan=12m"
+              href={tablewaySaasRegisterUrl('12m')}
               className="bg-primary hover:bg-primary/90 transition-colors text-white px-5 py-2.5 rounded-full text-sm font-semibold"
             >
               Start free trial
@@ -161,10 +172,17 @@ export default function LandingPage() {
             <a href="#features" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">Features</a>
             <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">Pricing</a>
             <a href="#how-it-works" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">How it works</a>
-            <hr className="border-white/5 my-2" />
-            <a href="https://tableway.app/auth/login" className="text-gray-300 font-medium py-2">Log in</a>
             <a
-              href="https://tableway.app/auth/register?plan=12m"
+              href={TABLEWAY_DOWNLOAD_APP_URL}
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-gray-300 font-medium py-2"
+            >
+              Download App
+            </a>
+            <hr className="border-white/5 my-2" />
+            <a href={TABLEWAY_SAAS_LOGIN_URL} className="text-gray-300 font-medium py-2">Log in</a>
+            <a
+              href={tablewaySaasRegisterUrl('12m')}
               onClick={() => setMobileMenuOpen(false)}
               className="bg-primary text-white px-5 py-3 rounded-full text-sm font-semibold w-full mt-2 text-center"
             >
@@ -210,7 +228,7 @@ export default function LandingPage() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-12">
               <a
-                href="https://tableway.app/auth/register?plan=12m"
+                href={tablewaySaasRegisterUrl('12m')}
                 className="w-full sm:w-auto bg-primary hover:bg-primary/90 active:scale-95 transition-all text-white px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-2 group shadow-[0_0_40px_rgba(34,197,94,0.25)]"
               >
                 Start 30-day free trial
@@ -311,7 +329,7 @@ export default function LandingPage() {
                 </ul>
 
                 <a
-                  href={`https://tableway.app/auth/register?plan=${plan.slug}`}
+                  href={tablewaySaasRegisterUrl(plan.slug)}
                   className={`w-full py-3.5 rounded-full text-sm font-bold transition-all duration-200 text-center ${
                     plan.highlighted
                       ? 'bg-primary hover:bg-primary/90 text-white'
@@ -406,7 +424,7 @@ export default function LandingPage() {
           >
             <p className="text-3xl lg:text-4xl font-bold text-white mb-10">Ready to get started?</p>
             <a
-              href="https://tableway.app/auth/register?plan=12m"
+              href={tablewaySaasRegisterUrl('12m')}
               className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
             >
               Start Your 30-Day Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -464,7 +482,7 @@ export default function LandingPage() {
             </p>
             <div className="mt-10">
               <a
-                href="https://tableway.app/auth/register?plan=12m"
+                href={tablewaySaasRegisterUrl('12m')}
                 className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
               >
                 Start Your 30-Day Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -520,7 +538,7 @@ export default function LandingPage() {
               <p className="text-white font-medium mb-2">Ready to get more bookings?</p>
               <p className="text-gray-400 text-sm mb-6">Start your 30-day free trial today.</p>
               <a
-                href="https://tableway.app/auth/register?plan=12m"
+                href={tablewaySaasRegisterUrl('12m')}
                 className="bg-primary hover:bg-primary/90 transition-colors text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 max-w-max"
               >
                 Start your free trial <ArrowRight className="w-4 h-4" />

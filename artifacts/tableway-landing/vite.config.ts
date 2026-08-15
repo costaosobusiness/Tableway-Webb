@@ -63,6 +63,8 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, 'dist/public'),
     emptyOutDir: true,
+    // Avoid /assets collision with App booking rewrites on tableway.app.
+    assetsDir: 'web-assets',
   },
   server: {
     port,

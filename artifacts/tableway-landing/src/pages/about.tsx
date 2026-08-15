@@ -3,6 +3,7 @@ import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Logo } from '@/components/logo';
+import { tablewaySaasRegisterUrl } from '@/lib/tablewayUrls';
 
 export default function AboutPage() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -80,7 +81,7 @@ export default function AboutPage() {
         >
           <p className="text-3xl font-bold text-white mb-10">Ready to simplify your reservations?</p>
           <a
-            href="https://tableway.app/auth/register?plan=12m"
+            href={tablewaySaasRegisterUrl('12m')}
             className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
           >
             Start Your 30-Day Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

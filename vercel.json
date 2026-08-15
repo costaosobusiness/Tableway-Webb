@@ -1,5 +1,26 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
+    {
+      "source": "/api/detected-country",
+      "destination": "https://www.tableway.app/api/detected-country"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://tableflow-production-4662.up.railway.app/api/:path*"
+    },
+    {
+      "source": "/book/:path*",
+      "destination": "https://www.tableway.app/book/:path*"
+    },
+    {
+      "source": "/assets/:path*",
+      "destination": "https://www.tableway.app/assets/:path*"
+    },
+    {
+      "source": "/brand/:path*",
+      "destination": "https://www.tableway.app/brand/:path*"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
