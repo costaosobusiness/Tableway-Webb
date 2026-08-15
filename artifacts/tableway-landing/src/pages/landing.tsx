@@ -15,6 +15,7 @@ import {
   ArrowDown,
 } from 'lucide-react';
 import { Logo } from '@/components/logo';
+import { useVisitorMarket } from '@/hooks/useVisitorMarket';
 import {
   TABLEWAY_DOWNLOAD_APP_URL,
   TABLEWAY_SAAS_LOGIN_URL,
@@ -58,36 +59,6 @@ const featureCards = [
   { icon: <UserPlus className="w-7 h-7" strokeWidth={1.5} />, title: 'Staff', desc: 'Add team members with role-based access and Service Mode sign-in.' },
 ];
 
-const pricingPlans = [
-  {
-    period: 'Month',
-    price: '29€',
-    slug: 'monthly',
-    highlighted: false,
-  },
-  {
-    period: '3 Months',
-    price: '79€',
-    slug: '3m',
-    badge: 'Save 12%',
-    highlighted: false,
-  },
-  {
-    period: '6 Months',
-    price: '149€',
-    slug: '6m',
-    badge: 'Best Value',
-    highlighted: true,
-  },
-  {
-    period: '12 Months',
-    price: '279€',
-    slug: '12m',
-    badge: 'Best Savings',
-    highlighted: false,
-  },
-];
-
 const pricingFeatures = [
   'Everything Included',
   'Unlimited Reservations',
@@ -121,6 +92,7 @@ const howItWorksSteps = [
 
 export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { pricingCards, isPricingLoading } = useVisitorMarket();
 
   return (
     <div className="min-h-[100dvh] bg-[#111111] text-white selection:bg-primary/30 font-sans overflow-hidden">
@@ -289,7 +261,7 @@ export default function LandingPage() {
 
           {/* 3 Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {pricingPlans.map((plan, i) => (
+            {pricingCards.map((plan, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 24 }}
@@ -314,7 +286,9 @@ export default function LandingPage() {
                 )}
 
                 <div className="text-gray-400 text-sm font-medium mb-3">{plan.period}</div>
-                <div className="text-5xl font-bold text-white mb-2">{plan.price}</div>
+                <div className={`text-5xl font-bold text-white mb-2 ${isPricingLoading ? 'opacity-60' : ''}`}>
+                  {plan.price}
+                </div>
                 <div className="text-gray-500 text-xs mb-1 font-medium">30-Day Free Trial included</div>
 
                 <div className="my-7 h-px bg-white/8"></div>
