@@ -8,6 +8,7 @@ import TermsPage from '@/pages/terms';
 import ContactPage from '@/pages/contact';
 import AboutPage from '@/pages/about';
 import { Route, Switch, Router as WouterRouter } from 'wouter';
+import { LocaleProvider } from '@/i18n/LocaleProvider';
 
 const queryClient = new QueryClient();
 
@@ -27,12 +28,14 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-          <Router />
-        </WouterRouter>
-        <Toaster />
-      </TooltipProvider>
+      <LocaleProvider>
+        <TooltipProvider>
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+            <Router />
+          </WouterRouter>
+          <Toaster />
+        </TooltipProvider>
+      </LocaleProvider>
     </QueryClientProvider>
   );
 }

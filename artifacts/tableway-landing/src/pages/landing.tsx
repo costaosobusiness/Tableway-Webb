@@ -15,18 +15,57 @@ import {
   ArrowDown,
 } from 'lucide-react';
 import { Logo } from '@/components/logo';
+import { useTranslation } from '@/i18n/LocaleProvider';
+import type { LandingTranslationKey } from '@/i18n/types';
 import { useVisitorMarket } from '@/hooks/useVisitorMarket';
+import type { PricingBadgeKey } from '@/lib/visitorMarket.types';
 import {
   TABLEWAY_DOWNLOAD_APP_URL,
   TABLEWAY_SAAS_LOGIN_URL,
   tablewaySaasRegisterUrl,
 } from '@/lib/tablewayUrls';
 
-const HeroVisual = () => (
+const BADGE_TRANSLATION_KEYS: Record<PricingBadgeKey, LandingTranslationKey> = {
+  save12: 'pricing.badge.save12',
+  bestValue: 'pricing.badge.bestValue',
+  bestSavings: 'pricing.badge.bestSavings',
+};
+
+const PRICING_FEATURE_KEYS: LandingTranslationKey[] = [
+  'pricing.feature.everythingIncluded',
+  'pricing.feature.unlimitedReservations',
+  'pricing.feature.unlimitedStaff',
+  'pricing.feature.customers',
+  'pricing.feature.mobileStaff',
+  'pricing.feature.noCommission',
+  'pricing.feature.cancelAnytime',
+];
+
+const PRICING_BOTTOM_KEYS: LandingTranslationKey[] = [
+  'pricing.bottom.everythingIncluded',
+  'pricing.bottom.noHiddenCosts',
+  'pricing.bottom.freeUpdates',
+  'pricing.bottom.unlimitedSupport',
+  'pricing.bottom.cancelAnytime',
+];
+
+const TRUST_STRIP_KEYS: LandingTranslationKey[] = [
+  'hero.trustTrial',
+  'hero.trustNoCommission',
+  'hero.trustCancelAnytime',
+];
+
+const HeroVisual = ({
+  altDashboard,
+  altMobile,
+}: {
+  altDashboard: string;
+  altMobile: string;
+}) => (
   <>
     <img
       src="/dashboard.png"
-      alt="TableWay Today view showing reservations and covers"
+      alt={altDashboard}
       className="w-full rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
     />
 
@@ -36,7 +75,7 @@ const HeroVisual = () => (
     >
       <img
         src="/dashboard-mobile.png"
-        alt="TableWay mobile login and staff access"
+        alt={altMobile}
         className="w-[175px] rounded-[1.75rem] border-[8px] border-[#222] shadow-2xl"
       />
     </div>
@@ -44,55 +83,59 @@ const HeroVisual = () => (
     <div className="lg:hidden flex justify-center mt-10">
       <img
         src="/dashboard-mobile.png"
-        alt="TableWay mobile login and staff access"
+        alt={altMobile}
         className="w-[200px] max-w-[70vw] rounded-[1.75rem] border-[8px] border-[#222] shadow-2xl"
       />
     </div>
   </>
 );
 
-const featureCards = [
-  { icon: <Globe2 className="w-7 h-7" strokeWidth={1.5} />, title: 'Online Reservations', desc: 'Share a public booking page and accept guest reservations online.' },
-  { icon: <Calendar className="w-7 h-7" strokeWidth={1.5} />, title: 'Today & Calendar', desc: 'View and manage reservations on a daily timeline or calendar.' },
-  { icon: <Users className="w-7 h-7" strokeWidth={1.5} />, title: 'Customers', desc: 'Keep guest profiles and reservation history in one place.' },
-  { icon: <Bell className="w-7 h-7" strokeWidth={1.5} />, title: 'Automatic confirmation', desc: 'Confirm new reservations automatically or approve them manually.' },
-  { icon: <UserPlus className="w-7 h-7" strokeWidth={1.5} />, title: 'Staff', desc: 'Add team members with role-based access and Service Mode sign-in.' },
-];
-
-const pricingFeatures = [
-  'Everything Included',
-  'Unlimited Reservations',
-  'Unlimited Staff Accounts',
-  'Customers',
-  'Mobile Staff Access',
-  'No Commission Fees',
-  'Cancel Anytime',
-];
-
-const howItWorksSteps = [
-  {
-    num: '01',
-    icon: <UtensilsCrossed className="w-7 h-7" strokeWidth={1.5} />,
-    title: 'Create Your Restaurant',
-    desc: 'Create your restaurant account and complete the basic setup in just a few minutes.',
-  },
-  {
-    num: '02',
-    icon: <Users className="w-7 h-7" strokeWidth={1.5} />,
-    title: 'Invite Your Staff',
-    desc: 'Invite your team with a few clicks and manage permissions directly from your dashboard.',
-  },
-  {
-    num: '03',
-    icon: <Calendar className="w-7 h-7" strokeWidth={1.5} />,
-    title: 'Start Accepting Reservations',
-    desc: 'Receive bookings online, manage your tables and grow your restaurant with TableWay.',
-  },
-];
-
 export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useTranslation();
   const { pricingCards, isPricingLoading } = useVisitorMarket();
+
+  const featureCards = [
+    { icon: <Globe2 className="w-7 h-7" strokeWidth={1.5} />, titleKey: 'features.card1.title' as const, descKey: 'features.card1.desc' as const },
+    { icon: <Calendar className="w-7 h-7" strokeWidth={1.5} />, titleKey: 'features.card2.title' as const, descKey: 'features.card2.desc' as const },
+    { icon: <Users className="w-7 h-7" strokeWidth={1.5} />, titleKey: 'features.card3.title' as const, descKey: 'features.card3.desc' as const },
+    { icon: <Bell className="w-7 h-7" strokeWidth={1.5} />, titleKey: 'features.card4.title' as const, descKey: 'features.card4.desc' as const },
+    { icon: <UserPlus className="w-7 h-7" strokeWidth={1.5} />, titleKey: 'features.card5.title' as const, descKey: 'features.card5.desc' as const },
+  ];
+
+  const howItWorksSteps = [
+    {
+      num: '01',
+      icon: <UtensilsCrossed className="w-7 h-7" strokeWidth={1.5} />,
+      titleKey: 'howItWorks.step1.title' as const,
+      descKey: 'howItWorks.step1.desc' as const,
+    },
+    {
+      num: '02',
+      icon: <Users className="w-7 h-7" strokeWidth={1.5} />,
+      titleKey: 'howItWorks.step2.title' as const,
+      descKey: 'howItWorks.step2.desc' as const,
+    },
+    {
+      num: '03',
+      icon: <Calendar className="w-7 h-7" strokeWidth={1.5} />,
+      titleKey: 'howItWorks.step3.title' as const,
+      descKey: 'howItWorks.step3.desc' as const,
+    },
+  ];
+
+  const footerProductLinks = [
+    { labelKey: 'nav.features' as const, href: '#features' },
+    { labelKey: 'nav.pricing' as const, href: '#pricing' },
+    { labelKey: 'nav.howItWorks' as const, href: '#how-it-works' },
+  ];
+
+  const footerCompanyLinks = [
+    { labelKey: 'footer.aboutUs' as const, href: '/about' },
+    { labelKey: 'footer.privacyPolicy' as const, href: '/privacy-policy' },
+    { labelKey: 'footer.termsOfService' as const, href: '/terms-of-service' },
+    { labelKey: 'footer.contactUs' as const, href: '/contact' },
+  ];
 
   return (
     <div className="min-h-[100dvh] bg-[#111111] text-white selection:bg-primary/30 font-sans overflow-hidden">
@@ -106,26 +149,26 @@ export default function LandingPage() {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300">
-            <a href="#features" className="hover:text-white transition-colors">Features</a>
-            <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
-            <a href="#how-it-works" className="hover:text-white transition-colors">How it works</a>
+            <a href="#features" className="hover:text-white transition-colors">{t('nav.features')}</a>
+            <a href="#pricing" className="hover:text-white transition-colors">{t('nav.pricing')}</a>
+            <a href="#how-it-works" className="hover:text-white transition-colors">{t('nav.howItWorks')}</a>
             <a
               href={TABLEWAY_DOWNLOAD_APP_URL}
               className="hover:text-white transition-colors"
             >
-              Download App
+              {t('nav.downloadApp')}
             </a>
           </nav>
 
           <div className="hidden lg:flex items-center gap-6">
             <a href={TABLEWAY_SAAS_LOGIN_URL} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
-              Log in
+              {t('nav.logIn')}
             </a>
             <a
               href={tablewaySaasRegisterUrl('12m')}
               className="bg-primary hover:bg-primary/90 transition-colors text-white px-5 py-2.5 rounded-full text-sm font-semibold"
             >
-              Start free trial
+              {t('nav.startFreeTrial')}
             </a>
           </div>
 
@@ -141,24 +184,24 @@ export default function LandingPage() {
         {/* Mobile Nav */}
         {mobileMenuOpen && (
           <div className="lg:hidden absolute top-20 left-0 right-0 bg-[#111] border-b border-white/5 p-6 flex flex-col gap-4">
-            <a href="#features" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">Features</a>
-            <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">Pricing</a>
-            <a href="#how-it-works" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">How it works</a>
+            <a href="#features" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">{t('nav.features')}</a>
+            <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">{t('nav.pricing')}</a>
+            <a href="#how-it-works" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">{t('nav.howItWorks')}</a>
             <a
               href={TABLEWAY_DOWNLOAD_APP_URL}
               onClick={() => setMobileMenuOpen(false)}
               className="text-gray-300 font-medium py-2"
             >
-              Download App
+              {t('nav.downloadApp')}
             </a>
             <hr className="border-white/5 my-2" />
-            <a href={TABLEWAY_SAAS_LOGIN_URL} className="text-gray-300 font-medium py-2">Log in</a>
+            <a href={TABLEWAY_SAAS_LOGIN_URL} className="text-gray-300 font-medium py-2">{t('nav.logIn')}</a>
             <a
               href={tablewaySaasRegisterUrl('12m')}
               onClick={() => setMobileMenuOpen(false)}
               className="bg-primary text-white px-5 py-3 rounded-full text-sm font-semibold w-full mt-2 text-center"
             >
-              Start free trial
+              {t('nav.startFreeTrial')}
             </a>
           </div>
         )}
@@ -166,44 +209,38 @@ export default function LandingPage() {
 
       {/* HERO SECTION */}
       <section className="relative pt-36 pb-16 lg:pt-44 lg:pb-24 px-6 overflow-visible">
-        {/* Ambient glows */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/8 rounded-full blur-[140px] -z-10 pointer-events-none" />
         <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left — copy */}
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="text-center lg:text-left"
           >
-            {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-gray-400 text-xs font-medium px-4 py-2 rounded-full mb-8 tracking-wide">
               <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-              Restaurant Reservation Software
+              {t('hero.eyebrow')}
             </div>
 
-            {/* Headline */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.02] tracking-tight mb-7">
-              <span className="text-white block">More Bookings.</span>
-              <span className="text-primary block">Less Stress.</span>
+              <span className="text-white block">{t('hero.headlineLine1')}</span>
+              <span className="text-primary block">{t('hero.headlineLine2')}</span>
             </h1>
 
-            {/* Subheadline */}
             <div className="text-lg lg:text-xl text-gray-400 font-light max-w-xl mx-auto lg:mx-0 leading-relaxed mb-10 space-y-1">
-              <p>Accept reservations 24/7.</p>
-              <p>Reduce no-shows.</p>
-              <p>Grow your restaurant with TableWay.</p>
+              <p>{t('hero.subline1')}</p>
+              <p>{t('hero.subline2')}</p>
+              <p>{t('hero.subline3')}</p>
             </div>
 
-            {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-12">
               <a
                 href={tablewaySaasRegisterUrl('12m')}
                 className="w-full sm:w-auto bg-primary hover:bg-primary/90 active:scale-95 transition-all text-white px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-2 group shadow-[0_0_40px_rgba(34,197,94,0.25)]"
               >
-                Start 30-day free trial
+                {t('hero.ctaStartTrial')}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
@@ -213,22 +250,20 @@ export default function LandingPage() {
                 <span className="w-6 h-6 rounded-full border border-white/40 flex items-center justify-center shrink-0">
                   <Play className="w-2.5 h-2.5 ml-0.5" fill="currentColor" />
                 </span>
-                See how it works
+                {t('hero.ctaSeeHowItWorks')}
               </a>
             </div>
 
-            {/* Trust strip */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-3">
-              {['30-day free trial', 'No commission fees', 'Cancel anytime'].map((item, i) => (
-                <div key={i} className="flex items-center gap-2">
+              {TRUST_STRIP_KEYS.map((key) => (
+                <div key={key} className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-sm text-gray-400">{item}</span>
+                  <span className="text-sm text-gray-400">{t(key)}</span>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Right — dashboard mockup */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -237,7 +272,10 @@ export default function LandingPage() {
           >
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-primary/10 blur-[60px] -z-10 pointer-events-none rounded-full" />
 
-            <HeroVisual />
+            <HeroVisual
+              altDashboard={t('hero.altDashboard')}
+              altMobile={t('hero.altMobile')}
+            />
           </motion.div>
         </div>
       </section>
@@ -245,25 +283,23 @@ export default function LandingPage() {
       {/* PRICING SECTION */}
       <section id="pricing" className="py-28 px-6 border-t border-white/5">
         <div className="max-w-6xl mx-auto">
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">Simple Pricing</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">{t('pricing.title')}</h2>
             <p className="text-gray-400 text-lg leading-relaxed">
-              One system. Everything included.<br />
-              No hidden fees. No add-ons. No commission.
+              {t('pricing.subtitleLine1')}<br />
+              {t('pricing.subtitleLine2')}
             </p>
           </motion.div>
 
-          {/* 3 Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {pricingCards.map((plan, i) => (
               <motion.div
-                key={i}
+                key={plan.slug}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -274,30 +310,31 @@ export default function LandingPage() {
                     : 'bg-[#0f0f0f] border border-white/10 hover:border-white/20'
                 }`}
               >
-                {/* Badge */}
-                {plan.badge ? (
+                {plan.badgeKey ? (
                   <div className={`inline-flex self-start mb-6 px-3 py-1 rounded-full text-xs font-bold ${
                     plan.highlighted ? 'bg-primary text-white' : 'bg-white/8 text-gray-300'
                   }`}>
-                    {plan.badge}
+                    {t(BADGE_TRANSLATION_KEYS[plan.badgeKey])}
                   </div>
                 ) : (
                   <div className="mb-6" />
                 )}
 
-                <div className="text-gray-400 text-sm font-medium mb-3">{plan.period}</div>
+                <div className="text-gray-400 text-sm font-medium mb-3">
+                  {t(`pricing.period.${plan.slug}` as LandingTranslationKey)}
+                </div>
                 <div className={`text-5xl font-bold text-white mb-2 ${isPricingLoading ? 'opacity-60' : ''}`}>
                   {plan.price}
                 </div>
-                <div className="text-gray-500 text-xs mb-1 font-medium">30-Day Free Trial included</div>
+                <div className="text-gray-500 text-xs mb-1 font-medium">{t('pricing.trialIncluded')}</div>
 
                 <div className="my-7 h-px bg-white/8"></div>
 
                 <ul className="space-y-3.5 flex-1 mb-8">
-                  {pricingFeatures.map((f, j) => (
-                    <li key={j} className="flex items-center gap-3 text-sm text-gray-300">
+                  {PRICING_FEATURE_KEYS.map((key) => (
+                    <li key={key} className="flex items-center gap-3 text-sm text-gray-300">
                       <Check className="w-4 h-4 text-primary shrink-0" />
-                      {f}
+                      {t(key)}
                     </li>
                   ))}
                 </ul>
@@ -310,25 +347,24 @@ export default function LandingPage() {
                       : 'border border-white/20 hover:bg-white/8 text-white'
                   }`}
                 >
-                  Start Free Trial
+                  {t('pricing.ctaStartTrial')}
                 </a>
               </motion.div>
             ))}
           </div>
 
-          {/* Bottom features list */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mt-14 text-center"
           >
-            <p className="text-sm font-medium text-gray-400 mb-6">Every plan includes:</p>
+            <p className="text-sm font-medium text-gray-400 mb-6">{t('pricing.everyPlanIncludes')}</p>
             <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
-              {['Everything Included', 'No Hidden Costs', 'Free Updates', 'Unlimited Support', 'Cancel Anytime'].map((f, i) => (
-                <div key={i} className="flex items-center gap-2 text-sm text-gray-400">
+              {PRICING_BOTTOM_KEYS.map((key) => (
+                <div key={key} className="flex items-center gap-2 text-sm text-gray-400">
                   <Check className="w-4 h-4 text-primary" />
-                  {f}
+                  {t(key)}
                 </div>
               ))}
             </div>
@@ -339,22 +375,19 @@ export default function LandingPage() {
       {/* HOW IT WORKS SECTION */}
       <section id="how-it-works" className="py-28 px-6 border-t border-white/5 bg-[#0a0a0a]">
         <div className="max-w-5xl mx-auto">
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">How it works</h2>
-            <p className="text-gray-400 text-lg">Get started in minutes.</p>
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">{t('howItWorks.title')}</h2>
+            <p className="text-gray-400 text-lg">{t('howItWorks.subtitle')}</p>
           </motion.div>
 
-          {/* Steps */}
           <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between gap-0 lg:gap-4">
             {howItWorksSteps.map((step, i) => (
-              <React.Fragment key={i}>
-                {/* Step card */}
+              <React.Fragment key={step.num}>
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -362,19 +395,16 @@ export default function LandingPage() {
                   transition={{ delay: i * 0.15 }}
                   className="flex flex-col items-center text-center flex-1 px-4 lg:px-6"
                 >
-                  {/* Number */}
                   <div className="text-6xl lg:text-7xl font-bold text-primary/20 leading-none mb-6 tracking-tighter">
                     {step.num}
                   </div>
-                  {/* Icon circle */}
                   <div className="w-16 h-16 rounded-2xl border border-white/10 bg-[#131313] flex items-center justify-center text-primary mb-6">
                     {step.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed max-w-xs">{step.desc}</p>
+                  <h3 className="text-xl font-bold text-white mb-3">{t(step.titleKey)}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed max-w-xs">{t(step.descKey)}</p>
                 </motion.div>
 
-                {/* Connector arrow (between steps) */}
                 {i < howItWorksSteps.length - 1 && (
                   <div className="flex lg:hidden items-center justify-center py-4 text-primary/40">
                     <ArrowDown className="w-6 h-6" />
@@ -389,19 +419,18 @@ export default function LandingPage() {
             ))}
           </div>
 
-          {/* Bottom CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mt-20"
           >
-            <p className="text-3xl lg:text-4xl font-bold text-white mb-10">Ready to get started?</p>
+            <p className="text-3xl lg:text-4xl font-bold text-white mb-10">{t('howItWorks.readyToStart')}</p>
             <a
               href={tablewaySaasRegisterUrl('12m')}
               className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
             >
-              Start Your 30-Day Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              {t('howItWorks.ctaStartTrial')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </motion.div>
         </div>
@@ -410,7 +439,6 @@ export default function LandingPage() {
       {/* FEATURES SECTION */}
       <section id="features" className="py-28 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -418,19 +446,18 @@ export default function LandingPage() {
             className="text-center mb-20"
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
-              Everything you need.<br />
-              <span className="text-primary">Nothing you don't.</span>
+              {t('features.titleLine1')}<br />
+              <span className="text-primary">{t('features.titleLine2')}</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-              TableWay gives your restaurant everything needed to manage reservations efficiently — with no hidden costs or extra add-ons.
+              {t('features.subtitle')}
             </p>
           </motion.div>
 
-          {/* 5 Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featureCards.map((card, i) => (
               <motion.div
-                key={i}
+                key={card.titleKey}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -438,13 +465,12 @@ export default function LandingPage() {
                 className="group bg-[#0f0f0f] border border-white/8 rounded-2xl p-8 hover:border-primary/30 hover:bg-[#131313] transition-all duration-300 cursor-default"
               >
                 <div className="text-primary mb-5">{card.icon}</div>
-                <h3 className="text-lg font-bold text-white mb-3">{card.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{card.desc}</p>
+                <h3 className="text-lg font-bold text-white mb-3">{t(card.titleKey)}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{t(card.descKey)}</p>
               </motion.div>
             ))}
           </div>
 
-          {/* Bottom CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -452,14 +478,14 @@ export default function LandingPage() {
             className="text-center mt-20"
           >
             <p className="text-2xl lg:text-3xl font-bold text-white mb-2">
-              Everything Included. No Add-ons. No Commission Fees.
+              {t('features.bottomLine')}
             </p>
             <div className="mt-10">
               <a
                 href={tablewaySaasRegisterUrl('12m')}
                 className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
               >
-                Start Your 30-Day Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                {t('features.ctaStartTrial')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </motion.div>
@@ -471,57 +497,48 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.5fr] gap-12 lg:gap-8 mb-16">
 
-            {/* Logo Col */}
             <div className="flex flex-col">
               <div className="mb-8">
                 <Logo />
               </div>
             </div>
 
-            {/* Product Links */}
             <div>
-              <h4 className="text-xs font-semibold text-white tracking-wider mb-6">PRODUCT</h4>
+              <h4 className="text-xs font-semibold text-white tracking-wider mb-6">{t('footer.product')}</h4>
               <ul className="space-y-4">
-                {[
-                  { label: 'Features', href: '#features' },
-                  { label: 'Pricing', href: '#pricing' },
-                  { label: 'How it works', href: '#how-it-works' },
-                ].map((l, i) => (
-                  <li key={i}><a href={l.href} className="text-sm text-gray-400 hover:text-white transition-colors">{l.label}</a></li>
+                {footerProductLinks.map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">{t(link.labelKey)}</a>
+                  </li>
                 ))}
               </ul>
             </div>
 
-            {/* Company Links */}
             <div>
-              <h4 className="text-xs font-semibold text-white tracking-wider mb-6 uppercase">Company</h4>
+              <h4 className="text-xs font-semibold text-white tracking-wider mb-6 uppercase">{t('footer.company')}</h4>
               <ul className="space-y-4">
-                {[
-                  { label: 'About us', href: '/about' },
-                  { label: 'Privacy policy', href: '/privacy-policy' },
-                  { label: 'Terms of service', href: '/terms-of-service' },
-                  { label: 'Contact us', href: '/contact' },
-                ].map((l, i) => (
-                  <li key={i}><Link href={l.href} className="text-sm text-gray-400 hover:text-white transition-colors">{l.label}</Link></li>
+                {footerCompanyLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">{t(link.labelKey)}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
 
-            {/* CTA Col */}
             <div className="flex flex-col lg:items-end text-left lg:text-right">
-              <p className="text-white font-medium mb-2">Ready to get more bookings?</p>
-              <p className="text-gray-400 text-sm mb-6">Start your 30-day free trial today.</p>
+              <p className="text-white font-medium mb-2">{t('footer.readyForBookings')}</p>
+              <p className="text-gray-400 text-sm mb-6">{t('footer.startTrialToday')}</p>
               <a
                 href={tablewaySaasRegisterUrl('12m')}
                 className="bg-primary hover:bg-primary/90 transition-colors text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 max-w-max"
               >
-                Start your free trial <ArrowRight className="w-4 h-4" />
+                {t('footer.startFreeTrial')} <ArrowRight className="w-4 h-4" />
               </a>
             </div>
           </div>
 
           <div className="pt-8 border-t border-white/5 text-center">
-            <p className="text-xs text-gray-500">© 2026 TableWay A product by Oso System. All rights reserved.</p>
+            <p className="text-xs text-gray-500">{t('footer.copyright')}</p>
           </div>
         </div>
       </footer>

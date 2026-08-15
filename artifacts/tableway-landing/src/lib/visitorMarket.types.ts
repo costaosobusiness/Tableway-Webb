@@ -19,10 +19,11 @@ export type DetectedCountryResponse = {
   country: string | null;
 };
 
+export type PricingBadgeKey = 'save12' | 'bestValue' | 'bestSavings';
+
 export type PricingPlanLayout = {
-  period: string;
   slug: BillingPlanSlug;
-  badge?: string;
+  badgeKey?: PricingBadgeKey;
   highlighted: boolean;
 };
 
@@ -31,7 +32,7 @@ export type PricingCardView = PricingPlanLayout & {
 };
 
 export type VisitorMarketResult = {
-  /** Country detected from geo endpoint; cleared when pricing falls back to default EUR. */
+  /** Country detected from geo endpoint; preserved even when pricing falls back to default EUR. */
   detectedCountry: string | null;
   pricing: PublicMarketPricing;
   usedFallback: boolean;

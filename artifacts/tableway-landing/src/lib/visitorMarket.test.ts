@@ -155,7 +155,7 @@ describe('visitor market pricing', () => {
     });
 
     const result = await loadVisitorMarket(fetchMock);
-    expect(result.detectedCountry).toBeNull();
+    expect(result.detectedCountry).toBe('US');
     expect(result.usedFallback).toBe(true);
     expect(result.pricing.currency).toBe('EUR');
   });

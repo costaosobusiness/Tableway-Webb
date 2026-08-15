@@ -15,26 +15,22 @@ export const BILLING_PLAN_SLUGS: BillingPlanSlug[] = ['monthly', '3m', '6m', '12
 
 export const PRICING_PLAN_LAYOUT: PricingPlanLayout[] = [
   {
-    period: 'Month',
     slug: 'monthly',
     highlighted: false,
   },
   {
-    period: '3 Months',
     slug: '3m',
-    badge: 'Save 12%',
+    badgeKey: 'save12',
     highlighted: false,
   },
   {
-    period: '6 Months',
     slug: '6m',
-    badge: 'Best Value',
+    badgeKey: 'bestValue',
     highlighted: true,
   },
   {
-    period: '12 Months',
     slug: '12m',
-    badge: 'Best Savings',
+    badgeKey: 'bestSavings',
     highlighted: false,
   },
 ];
@@ -146,7 +142,7 @@ export async function loadVisitorMarket(fetchImpl: FetchLike = fetch): Promise<V
   }
 
   return {
-    detectedCountry: null,
+    detectedCountry,
     pricing: fallbackPricing,
     usedFallback: true,
   };
