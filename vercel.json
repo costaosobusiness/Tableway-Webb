@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/api/detected-country",
-      "destination": "https://www.tableway.app/api/detected-country"
+      "destination": "https://app.tableway.app/api/detected-country"
     },
     {
       "source": "/api/:path*",
@@ -11,15 +11,15 @@
     },
     {
       "source": "/book/:path*",
-      "destination": "https://www.tableway.app/book/:path*"
+      "destination": "https://app.tableway.app/book/:path*"
     },
     {
       "source": "/assets/:path*",
-      "destination": "https://www.tableway.app/assets/:path*"
+      "destination": "https://app.tableway.app/assets/:path*"
     },
     {
       "source": "/brand/:path*",
-      "destination": "https://www.tableway.app/brand/:path*"
+      "destination": "https://app.tableway.app/brand/:path*"
     },
     {
       "source": "/(.*)",
