@@ -6,6 +6,15 @@ export const TABLEWAY_SAAS_APP_ORIGIN = "https://app.tableway.app";
 
 export const TABLEWAY_SAAS_LOGIN_URL = `${TABLEWAY_SAAS_APP_ORIGIN}/auth/login`;
 
+export function tablewaySaasLoginUrl(locale?: string): string {
+  const params = new URLSearchParams();
+  if (locale) {
+    params.set("lang", locale);
+  }
+  const query = params.toString();
+  return `${TABLEWAY_SAAS_APP_ORIGIN}/auth/login${query ? `?${query}` : ""}`;
+}
+
 export function tablewaySaasRegisterUrl(plan = "12m", locale?: string): string {
   const params = new URLSearchParams({ plan });
   if (locale) {

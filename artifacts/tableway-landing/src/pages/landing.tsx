@@ -21,7 +21,7 @@ import { useVisitorMarket } from '@/hooks/useVisitorMarket';
 import type { PricingBadgeKey } from '@/lib/visitorMarket.types';
 import {
   TABLEWAY_DOWNLOAD_APP_URL,
-  TABLEWAY_SAAS_LOGIN_URL,
+  tablewaySaasLoginUrl,
   tablewaySaasRegisterUrl,
 } from '@/lib/tablewayUrls';
 
@@ -80,7 +80,20 @@ const HeroVisual = ({
       />
     </div>
 
-    <div className="lg:hidden flex justify-center mt-10 w-full max-w-full">
+    <div className="hidden md:flex lg:hidden flex-nowrap items-start justify-center gap-3 mt-10 w-full max-w-full">
+      <img
+        src="/dashboard.png"
+        alt={altDashboard}
+        className="w-[48%] max-w-[48%] min-w-0 h-auto shrink rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
+      />
+      <img
+        src="/dashboard-mobile.png"
+        alt={altMobile}
+        className="w-[48%] max-w-[48%] min-w-0 h-auto shrink rounded-[1.75rem] border-[8px] border-[#222] shadow-2xl"
+      />
+    </div>
+
+    <div className="md:hidden flex justify-center mt-10 w-full max-w-full">
       <img
         src="/dashboard-mobile.png"
         alt={altMobile}
@@ -161,7 +174,7 @@ export default function LandingPage() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-6">
-            <a href={TABLEWAY_SAAS_LOGIN_URL} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+            <a href={tablewaySaasLoginUrl(locale)} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
               {t('nav.logIn')}
             </a>
             <a
@@ -195,7 +208,7 @@ export default function LandingPage() {
               {t('nav.downloadApp')}
             </a>
             <hr className="border-white/5 my-2" />
-            <a href={TABLEWAY_SAAS_LOGIN_URL} className="text-gray-300 font-medium py-2">{t('nav.logIn')}</a>
+            <a href={tablewaySaasLoginUrl(locale)} className="text-gray-300 font-medium py-2">{t('nav.logIn')}</a>
             <a
               href={tablewaySaasRegisterUrl('12m', locale)}
               onClick={() => setMobileMenuOpen(false)}

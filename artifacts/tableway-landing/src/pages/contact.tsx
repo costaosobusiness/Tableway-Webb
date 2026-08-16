@@ -1,18 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
-import { Logo } from '@/components/logo';
+
+import { MarketingSubpageShell } from '@/components/MarketingSubpageShell';
 import { useTranslation } from '@/i18n/LocaleProvider';
 import { tablewaySaasRegisterUrl } from '@/lib/tablewayUrls';
 
 export default function ContactPage() {
-  const { locale } = useTranslation();
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  const { t, locale } = useTranslation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: '', restaurant: '', email: '', subject: '', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
     setSubmitted(true);
   };
 
@@ -20,20 +25,11 @@ export default function ContactPage() {
     'w-full bg-[#0f0f0f] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm placeholder:text-gray-600 focus:outline-none focus:border-primary/60 transition-colors';
 
   return (
-    <div className="min-h-screen bg-[#111111] text-white font-sans">
-      {/* Header */}
-      <header className="border-b border-white/5 bg-[#111111]/80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/"><Logo /></Link>
-          <Link href="/" className="text-sm text-gray-400 hover:text-white transition-colors">← Back to home</Link>
-        </div>
-      </header>
-
+    <MarketingSubpageShell>
       <main className="max-w-2xl mx-auto px-6 py-20">
-        {/* Title */}
         <div className="mb-14 text-center">
-          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">Contact Us</h1>
-          <p className="text-gray-400 text-lg">We're here to help.</p>
+          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">{t('contact.title')}</h1>
+          <p className="text-gray-400 text-lg">{t('contact.subtitle')}</p>
         </div>
 
         {submitted ? (
@@ -43,69 +39,81 @@ export default function ContactPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-white mb-3">Message sent</h2>
-            <p className="text-gray-400 mb-8">Thank you for reaching out. We'll get back to you as soon as possible.</p>
-            <Link href="/" className="text-sm text-primary hover:underline">← Back to home</Link>
+            <h2 className="text-2xl font-bold text-white mb-3">{t('contact.success.title')}</h2>
+            <p className="text-gray-400 mb-8">{t('contact.success.message')}</p>
+            <Link href="/" className="text-sm text-primary hover:underline">
+              {t('common.backToHome')}
+            </Link>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">Name</label>
+                <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">
+                  {t('contact.form.name')}
+                </label>
                 <input
                   type="text"
                   required
-                  placeholder="Your name"
+                  placeholder={t('contact.form.namePlaceholder')}
                   value={form.name}
-                  onChange={e => setForm({ ...form, name: e.target.value })}
+                  onChange={(event) => setForm({ ...form, name: event.target.value })}
                   className={inputClass}
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">Restaurant Name</label>
+                <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">
+                  {t('contact.form.restaurant')}
+                </label>
                 <input
                   type="text"
                   required
-                  placeholder="Your restaurant"
+                  placeholder={t('contact.form.restaurantPlaceholder')}
                   value={form.restaurant}
-                  onChange={e => setForm({ ...form, restaurant: e.target.value })}
+                  onChange={(event) => setForm({ ...form, restaurant: event.target.value })}
                   className={inputClass}
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">Email</label>
+              <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">
+                {t('contact.form.email')}
+              </label>
               <input
                 type="email"
                 required
-                placeholder="you@example.com"
+                placeholder={t('contact.form.emailPlaceholder')}
                 value={form.email}
-                onChange={e => setForm({ ...form, email: e.target.value })}
+                onChange={(event) => setForm({ ...form, email: event.target.value })}
                 className={inputClass}
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">Subject</label>
+              <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">
+                {t('contact.form.subject')}
+              </label>
               <input
                 type="text"
                 required
-                placeholder="How can we help?"
+                placeholder={t('contact.form.subjectPlaceholder')}
                 value={form.subject}
-                onChange={e => setForm({ ...form, subject: e.target.value })}
+                onChange={(event) => setForm({ ...form, subject: event.target.value })}
                 className={inputClass}
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">Message</label>
+              <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">
+                {t('contact.form.message')}
+              </label>
               <textarea
                 required
                 rows={6}
-                placeholder="Tell us more..."
+                placeholder={t('contact.form.messagePlaceholder')}
                 value={form.message}
-                onChange={e => setForm({ ...form, message: e.target.value })}
+                onChange={(event) => setForm({ ...form, message: event.target.value })}
                 className={`${inputClass} resize-none`}
               />
             </div>
@@ -114,26 +122,23 @@ export default function ContactPage() {
               type="submit"
               className="w-full bg-primary hover:bg-primary/90 transition-colors text-white py-4 rounded-full text-sm font-bold flex items-center justify-center gap-2 group mt-2"
             >
-              Send Message <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              {t('contact.form.submit')}{' '}
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
         )}
 
-        {/* Bottom CTA */}
         <div className="mt-24 pt-14 border-t border-white/5 text-center">
-          <p className="text-2xl font-bold text-white mb-8">Need help getting started?</p>
+          <p className="text-2xl font-bold text-white mb-8">{t('contact.ctaTitle')}</p>
           <a
             href={tablewaySaasRegisterUrl('12m', locale)}
             className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
           >
-            Start Your 30-Day Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            {t('common.startFreeTrial30')}{' '}
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
       </main>
-
-      <footer className="border-t border-white/5 py-8 px-6 text-center">
-        <p className="text-xs text-gray-500">© 2026 TableWay A product by Oso System. All rights reserved.</p>
-      </footer>
-    </div>
+    </MarketingSubpageShell>
   );
 }
