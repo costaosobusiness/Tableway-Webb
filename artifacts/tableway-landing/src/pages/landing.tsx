@@ -62,21 +62,23 @@ const HeroVisual = ({
   altMobile: string;
 }) => (
   <>
-    <img
-      src="/dashboard.png"
-      alt={altDashboard}
-      className="hidden lg:block w-full rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
-    />
-
-    <div
-      className="hidden lg:block absolute -bottom-12 -right-8 z-20"
-      style={{ filter: 'drop-shadow(0 32px 48px rgba(0,0,0,0.6))' }}
-    >
+    <div className="hidden lg:block relative">
       <img
-        src="/dashboard-mobile.png"
-        alt={altMobile}
-        className="w-[175px] rounded-[1.75rem] border-[8px] border-[#222] shadow-2xl"
+        src="/dashboard.png"
+        alt={altDashboard}
+        className="w-full rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
       />
+
+      <div
+        className="absolute -bottom-12 -right-8 z-20"
+        style={{ filter: 'drop-shadow(0 32px 48px rgba(0,0,0,0.6))' }}
+      >
+        <img
+          src="/dashboard-mobile.png"
+          alt={altMobile}
+          className="w-[175px] rounded-[1.75rem] border-[8px] border-[#222] shadow-2xl"
+        />
+      </div>
     </div>
 
     <div className="hidden md:flex lg:hidden flex-nowrap items-start justify-center gap-3 mt-10 w-full max-w-full">
