@@ -3,9 +3,11 @@ import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Logo } from '@/components/logo';
+import { useTranslation } from '@/i18n/LocaleProvider';
 import { tablewaySaasRegisterUrl } from '@/lib/tablewayUrls';
 
 export default function AboutPage() {
+  const { locale } = useTranslation();
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div className="min-h-screen bg-[#111111] text-white font-sans">
@@ -81,7 +83,7 @@ export default function AboutPage() {
         >
           <p className="text-3xl font-bold text-white mb-10">Ready to simplify your reservations?</p>
           <a
-            href={tablewaySaasRegisterUrl('12m')}
+            href={tablewaySaasRegisterUrl('12m', locale)}
             className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
           >
             Start Your 30-Day Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

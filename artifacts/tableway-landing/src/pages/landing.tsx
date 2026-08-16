@@ -92,7 +92,7 @@ const HeroVisual = ({
 
 export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const { pricingCards, isPricingLoading } = useVisitorMarket();
 
   const featureCards = [
@@ -165,7 +165,7 @@ export default function LandingPage() {
               {t('nav.logIn')}
             </a>
             <a
-              href={tablewaySaasRegisterUrl('12m')}
+              href={tablewaySaasRegisterUrl('12m', locale)}
               className="bg-primary hover:bg-primary/90 transition-colors text-white px-5 py-2.5 rounded-full text-sm font-semibold"
             >
               {t('nav.startFreeTrial')}
@@ -197,7 +197,7 @@ export default function LandingPage() {
             <hr className="border-white/5 my-2" />
             <a href={TABLEWAY_SAAS_LOGIN_URL} className="text-gray-300 font-medium py-2">{t('nav.logIn')}</a>
             <a
-              href={tablewaySaasRegisterUrl('12m')}
+              href={tablewaySaasRegisterUrl('12m', locale)}
               onClick={() => setMobileMenuOpen(false)}
               className="bg-primary text-white px-5 py-3 rounded-full text-sm font-semibold w-full mt-2 text-center"
             >
@@ -237,7 +237,7 @@ export default function LandingPage() {
 
             <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-12">
               <a
-                href={tablewaySaasRegisterUrl('12m')}
+                href={tablewaySaasRegisterUrl('12m', locale)}
                 className="w-full sm:w-auto bg-primary hover:bg-primary/90 active:scale-95 transition-all text-white px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-2 group shadow-[0_0_40px_rgba(34,197,94,0.25)]"
               >
                 {t('hero.ctaStartTrial')}
@@ -340,7 +340,7 @@ export default function LandingPage() {
                 </ul>
 
                 <a
-                  href={tablewaySaasRegisterUrl(plan.slug)}
+                  href={tablewaySaasRegisterUrl(plan.slug, locale)}
                   className={`w-full py-3.5 rounded-full text-sm font-bold transition-all duration-200 text-center ${
                     plan.highlighted
                       ? 'bg-primary hover:bg-primary/90 text-white'
@@ -427,7 +427,7 @@ export default function LandingPage() {
           >
             <p className="text-3xl lg:text-4xl font-bold text-white mb-10">{t('howItWorks.readyToStart')}</p>
             <a
-              href={tablewaySaasRegisterUrl('12m')}
+              href={tablewaySaasRegisterUrl('12m', locale)}
               className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
             >
               {t('howItWorks.ctaStartTrial')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -482,7 +482,7 @@ export default function LandingPage() {
             </p>
             <div className="mt-10">
               <a
-                href={tablewaySaasRegisterUrl('12m')}
+                href={tablewaySaasRegisterUrl('12m', locale)}
                 className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
               >
                 {t('features.ctaStartTrial')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -529,7 +529,7 @@ export default function LandingPage() {
               <p className="text-white font-medium mb-2">{t('footer.readyForBookings')}</p>
               <p className="text-gray-400 text-sm mb-6">{t('footer.startTrialToday')}</p>
               <a
-                href={tablewaySaasRegisterUrl('12m')}
+                href={tablewaySaasRegisterUrl('12m', locale)}
                 className="bg-primary hover:bg-primary/90 transition-colors text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 max-w-max"
               >
                 {t('footer.startFreeTrial')} <ArrowRight className="w-4 h-4" />

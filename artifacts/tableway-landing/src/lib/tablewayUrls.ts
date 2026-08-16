@@ -6,8 +6,12 @@ export const TABLEWAY_SAAS_APP_ORIGIN = "https://app.tableway.app";
 
 export const TABLEWAY_SAAS_LOGIN_URL = `${TABLEWAY_SAAS_APP_ORIGIN}/auth/login`;
 
-export function tablewaySaasRegisterUrl(plan = "12m"): string {
-  return `${TABLEWAY_SAAS_APP_ORIGIN}/auth/register?plan=${plan}`;
+export function tablewaySaasRegisterUrl(plan = "12m", locale?: string): string {
+  const params = new URLSearchParams({ plan });
+  if (locale) {
+    params.set("lang", locale);
+  }
+  return `${TABLEWAY_SAAS_APP_ORIGIN}/auth/register?${params.toString()}`;
 }
 
 /** Opens the installable TableWay SaaS app (PWA lives on app.tableway.app). */
