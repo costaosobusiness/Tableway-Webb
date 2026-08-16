@@ -69,7 +69,7 @@ const HeroVisual = ({
         className="w-[48%] lg:w-[55%] max-w-[55%] min-w-0 h-auto shrink rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
       />
       <img
-        src="/dashboard-mobile.png"
+        src="/dashboard-login.png"
         alt={altMobile}
         className="w-[48%] lg:w-[42%] max-w-[42%] min-w-0 h-auto shrink rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
       />
