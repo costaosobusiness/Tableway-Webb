@@ -20,7 +20,6 @@ import type { LandingTranslationKey } from '@/i18n/types';
 import { useVisitorMarket } from '@/hooks/useVisitorMarket';
 import type { PricingBadgeKey } from '@/lib/visitorMarket.types';
 import {
-  TABLEWAY_DOWNLOAD_APP_URL,
   tablewaySaasLoginUrl,
   tablewaySaasRegisterUrl,
 } from '@/lib/tablewayUrls';
@@ -166,7 +165,7 @@ export default function LandingPage() {
             <a href="#pricing" className="hover:text-white transition-colors">{t('nav.pricing')}</a>
             <a href="#how-it-works" className="hover:text-white transition-colors">{t('nav.howItWorks')}</a>
             <a
-              href={TABLEWAY_DOWNLOAD_APP_URL}
+              href={tablewaySaasLoginUrl(locale, 'guest-install')}
               className="hover:text-white transition-colors"
             >
               {t('nav.downloadApp')}
@@ -201,7 +200,7 @@ export default function LandingPage() {
             <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">{t('nav.pricing')}</a>
             <a href="#how-it-works" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">{t('nav.howItWorks')}</a>
             <a
-              href={TABLEWAY_DOWNLOAD_APP_URL}
+              href={tablewaySaasLoginUrl(locale, 'guest-install')}
               onClick={() => setMobileMenuOpen(false)}
               className="text-gray-300 font-medium py-2"
             >

@@ -12,4 +12,16 @@ describe('tablewaySaasLoginUrl', () => {
     expect(tablewaySaasLoginUrl('de')).toBe('https://app.tableway.app/auth/login?lang=de');
     expect(tablewaySaasLoginUrl('nb')).toBe('https://app.tableway.app/auth/login?lang=nb');
   });
+
+  it('appends a guest-install hash for Download App links', () => {
+    expect(tablewaySaasLoginUrl('es', 'guest-install')).toBe(
+      'https://app.tableway.app/auth/login?lang=es#guest-install',
+    );
+    expect(tablewaySaasLoginUrl('en', 'guest-install')).toBe(
+      'https://app.tableway.app/auth/login?lang=en#guest-install',
+    );
+    expect(tablewaySaasLoginUrl('sv', '#guest-install')).toBe(
+      'https://app.tableway.app/auth/login?lang=sv#guest-install',
+    );
+  });
 });
