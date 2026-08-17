@@ -66,12 +66,12 @@ const HeroVisual = ({
       <img
         src="/dashboard.png"
         alt={altDashboard}
-        className="w-[48%] lg:w-[55%] max-w-[55%] min-w-0 h-auto shrink rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
+        className="w-[58%] lg:w-[65%] max-w-[65%] min-w-0 h-auto shrink rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
       />
       <img
         src="/dashboard-login.png"
         alt={altMobile}
-        className="w-[48%] lg:w-[42%] max-w-[42%] min-w-0 h-auto shrink rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
+        className="w-[38%] lg:w-[32%] max-w-[32%] min-w-0 h-auto shrink rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
       />
     </div>
 
