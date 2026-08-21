@@ -1,2 +1,14 @@
 User-agent: *
 Allow: /
+
+Disallow: /api/
+Disallow: /today
+Disallow: /calendar
+Disallow: /customers
+Disallow: /settings
+Disallow: /overview
+Disallow: /reports
+Disallow: /subscription
+Disallow: /admin
+
+Sitemap: https://tableway.app/sitemap.xml
