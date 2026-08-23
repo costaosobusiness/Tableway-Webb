@@ -1,3 +1,5 @@
+import { normalizeCountryCode } from '@/lib/visitorMarket';
+
 /** Canonical marketing website origin (public booking apex). */
 export const TABLEWAY_MARKETING_ORIGIN = "https://tableway.app";
 
@@ -21,11 +23,21 @@ export function tablewaySaasLoginUrl(locale?: string, hash?: string): string {
   return `${url}${hash.startsWith("#") ? hash : `#${hash}`}`;
 }
 
-export function tablewaySaasRegisterUrl(plan = "12m", locale?: string): string {
+export function tablewaySaasRegisterUrl(
+  plan = "12m",
+  locale?: string,
+  country?: string | null,
+): string {
   const params = new URLSearchParams({ plan });
   if (locale) {
     params.set("lang", locale);
   }
+
+  const normalizedCountry = normalizeCountryCode(country);
+  if (normalizedCountry) {
+    params.set("country", normalizedCountry);
+  }
+
   return `${TABLEWAY_SAAS_APP_ORIGIN}/auth/register?${params.toString()}`;
 }
 

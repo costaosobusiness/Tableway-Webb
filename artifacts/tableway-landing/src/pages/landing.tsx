@@ -54,40 +54,21 @@ const TRUST_STRIP_KEYS: LandingTranslationKey[] = [
   'hero.trustCancelAnytime',
 ];
 
-const HeroVisual = ({
-  altDashboard,
-  altMobile,
-}: {
-  altDashboard: string;
-  altMobile: string;
-}) => (
-  <>
-    <div className="hidden md:flex flex-nowrap items-end justify-center gap-3 lg:gap-6 mt-10 w-full max-w-full">
-      <img
-        src="/dashboard.png"
-        alt={altDashboard}
-        className="w-[78%] lg:w-[88%] max-w-[88%] min-w-0 h-auto shrink rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
-      />
-      <img
-        src="/dashboard-login.png"
-        alt={altMobile}
-        className="w-[30%] lg:w-[26%] max-w-[26%] min-w-0 h-auto shrink rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
-      />
-    </div>
-
-    <div className="md:hidden flex justify-center mt-10 w-full max-w-full">
-      <img
-        src="/dashboard-mobile.png"
-        alt={altMobile}
-        className="w-full max-w-full min-w-0 h-auto rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
-      />
-    </div>
-  </>
+const HeroVisual = ({ alt }: { alt: string }) => (
+  <div className="flex justify-center mt-10 w-full max-w-full">
+    <img
+      src="/hero.webp"
+      alt={alt}
+      width={1536}
+      height={1024}
+      className="w-full max-w-full min-w-0 h-auto rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
+    />
+  </div>
 );
 
 export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { t, locale } = useTranslation();
+  const { t, locale, detectedCountry } = useTranslation();
   const { pricingCards, isPricingLoading } = useVisitorMarket();
 
   const featureCards = [
@@ -160,7 +141,7 @@ export default function LandingPage() {
               {t('nav.logIn')}
             </a>
             <a
-              href={tablewaySaasRegisterUrl('12m', locale)}
+              href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
               className="bg-primary hover:bg-primary/90 transition-colors text-white px-5 py-2.5 rounded-full text-sm font-semibold"
             >
               {t('nav.startFreeTrial')}
@@ -192,7 +173,7 @@ export default function LandingPage() {
             <hr className="border-white/5 my-2" />
             <a href={tablewaySaasLoginUrl(locale)} className="text-gray-300 font-medium py-2">{t('nav.logIn')}</a>
             <a
-              href={tablewaySaasRegisterUrl('12m', locale)}
+              href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
               onClick={() => setMobileMenuOpen(false)}
               className="bg-primary text-white px-5 py-3 rounded-full text-sm font-semibold w-full mt-2 text-center"
             >
@@ -232,7 +213,7 @@ export default function LandingPage() {
 
             <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-12">
               <a
-                href={tablewaySaasRegisterUrl('12m', locale)}
+                href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
                 className="w-full sm:w-auto bg-primary hover:bg-primary/90 active:scale-95 transition-all text-white px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-2 group shadow-[0_0_40px_rgba(34,197,94,0.25)]"
               >
                 {t('hero.ctaStartTrial')}
@@ -267,10 +248,7 @@ export default function LandingPage() {
           >
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-primary/10 blur-[60px] -z-10 pointer-events-none rounded-full" />
 
-            <HeroVisual
-              altDashboard={t('hero.altDashboard')}
-              altMobile={t('hero.altMobile')}
-            />
+            <HeroVisual alt={t('hero.altDashboard')} />
           </motion.div>
         </div>
       </section>
@@ -335,7 +313,7 @@ export default function LandingPage() {
                 </ul>
 
                 <a
-                  href={tablewaySaasRegisterUrl(plan.slug, locale)}
+                  href={tablewaySaasRegisterUrl(plan.slug, locale, detectedCountry)}
                   className={`w-full py-3.5 rounded-full text-sm font-bold transition-all duration-200 text-center ${
                     plan.highlighted
                       ? 'bg-primary hover:bg-primary/90 text-white'
@@ -422,7 +400,7 @@ export default function LandingPage() {
           >
             <p className="text-3xl lg:text-4xl font-bold text-white mb-10">{t('howItWorks.readyToStart')}</p>
             <a
-              href={tablewaySaasRegisterUrl('12m', locale)}
+              href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
               className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
             >
               {t('howItWorks.ctaStartTrial')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -477,7 +455,7 @@ export default function LandingPage() {
             </p>
             <div className="mt-10">
               <a
-                href={tablewaySaasRegisterUrl('12m', locale)}
+                href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
                 className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
               >
                 {t('features.ctaStartTrial')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -524,7 +502,7 @@ export default function LandingPage() {
               <p className="text-white font-medium mb-2">{t('footer.readyForBookings')}</p>
               <p className="text-gray-400 text-sm mb-6">{t('footer.startTrialToday')}</p>
               <a
-                href={tablewaySaasRegisterUrl('12m', locale)}
+                href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
                 className="bg-primary hover:bg-primary/90 transition-colors text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 max-w-max"
               >
                 {t('footer.startFreeTrial')} <ArrowRight className="w-4 h-4" />

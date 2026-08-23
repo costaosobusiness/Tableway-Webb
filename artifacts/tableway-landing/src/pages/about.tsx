@@ -7,7 +7,7 @@ import { useTranslation } from '@/i18n/LocaleProvider';
 import { tablewaySaasRegisterUrl } from '@/lib/tablewayUrls';
 
 export default function AboutPage() {
-  const { t, locale } = useTranslation();
+  const { t, locale, detectedCountry } = useTranslation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -75,7 +75,7 @@ export default function AboutPage() {
         >
           <p className="text-3xl font-bold text-white mb-10">{t('about.ctaTitle')}</p>
           <a
-            href={tablewaySaasRegisterUrl('12m', locale)}
+            href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
             className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
           >
             {t('common.startFreeTrial30')}{' '}
