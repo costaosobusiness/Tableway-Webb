@@ -9,7 +9,8 @@ import {
 
 describe('official TableWay V1.0 pricing', () => {
   it.each([
-    ['en', 'GB', 'GBP', '£25', '£69', '£129', '£239'],
+    ['en-gb', 'GB', 'GBP', '£25', '£69', '£129', '£239'],
+    ['en-us', 'US', 'USD', '$34', '$94', '$174', '$329'],
     ['sv', 'SE', 'SEK', '299 kr', '799 kr', '1,499 kr', '2,799 kr'],
     ['es', 'ES', 'EUR', '€29', '€79', '€149', '€279'],
     ['de', 'DE', 'EUR', '€29', '€79', '€149', '€279'],
@@ -47,7 +48,7 @@ describe('official TableWay V1.0 pricing', () => {
   });
 
   it('preserves monthly / 3m / 6m / 12m plan slugs', () => {
-    const pricing = getOfficialMarketPricingForLocale('en');
+    const pricing = getOfficialMarketPricingForLocale('en-gb');
     expect(pricing.plans.map((plan) => plan.interval)).toEqual(['monthly', '3m', '6m', '12m']);
   });
 });

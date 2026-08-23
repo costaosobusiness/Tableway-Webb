@@ -19,7 +19,8 @@ import type { LandingTranslationKey, LocaleDictionary, SupportedLocale } from '@
 import { resolveLocaleFromCountry } from '@/lib/visitorLocale';
 
 const LOCALE_DICTIONARIES: Record<SupportedLocale, LocaleDictionary> = {
-  en,
+  'en-gb': en,
+  'en-us': en,
   es,
   de,
   fr,
@@ -28,6 +29,18 @@ const LOCALE_DICTIONARIES: Record<SupportedLocale, LocaleDictionary> = {
   da,
   ja,
 };
+
+function htmlLangFromLocale(locale: SupportedLocale): string {
+  if (locale === 'en-gb') {
+    return 'en-GB';
+  }
+
+  if (locale === 'en-us') {
+    return 'en-US';
+  }
+
+  return locale;
+}
 
 type LocaleContextValue = {
   locale: SupportedLocale;
@@ -40,7 +53,7 @@ const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 export function createTranslator(locale: SupportedLocale): (key: LandingTranslationKey) => string {
   const dictionary = LOCALE_DICTIONARIES[locale];
-  const fallback = LOCALE_DICTIONARIES.en;
+  const fallback = en;
 
   return (key: LandingTranslationKey) => {
     const value = dictionary[key]?.trim();
@@ -69,7 +82,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   const t = useMemo(() => createTranslator(locale), [locale]);
 
   useEffect(() => {
-    document.documentElement.lang = locale;
+    document.documentElement.lang = htmlLangFromLocale(locale);
   }, [locale]);
 
   const setLocale = (nextLocale: SupportedLocale) => {

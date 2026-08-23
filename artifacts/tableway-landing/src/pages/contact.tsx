@@ -4,10 +4,12 @@ import { ArrowRight } from 'lucide-react';
 
 import { MarketingSubpageShell } from '@/components/MarketingSubpageShell';
 import { useTranslation } from '@/i18n/LocaleProvider';
+import { resolvePricingCountryFromLocale } from '@/lib/officialMarketPricing';
 import { tablewaySaasRegisterUrl } from '@/lib/tablewayUrls';
 
 export default function ContactPage() {
-  const { t, locale, detectedCountry } = useTranslation();
+  const { t, locale } = useTranslation();
+  const pricingCountry = resolvePricingCountryFromLocale(locale);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -131,7 +133,7 @@ export default function ContactPage() {
         <div className="mt-24 pt-14 border-t border-white/5 text-center">
           <p className="text-2xl font-bold text-white mb-8">{t('contact.ctaTitle')}</p>
           <a
-            href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
+            href={tablewaySaasRegisterUrl('12m', locale, pricingCountry)}
             className="bg-primary hover:bg-primary-hover transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
           >
             {t('common.startFreeTrial30')}{' '}

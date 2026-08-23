@@ -6,14 +6,14 @@ const COUNTRY_TO_LOCALE: Record<string, SupportedLocale> = {
   SE: 'sv',
   DE: 'de',
   FR: 'fr',
-  GB: 'en',
-  US: 'en',
+  GB: 'en-gb',
+  US: 'en-us',
   NO: 'nb',
   DK: 'da',
   CH: 'de',
-  CA: 'en',
-  AU: 'en',
-  NZ: 'en',
+  CA: 'en-us',
+  AU: 'en-us',
+  NZ: 'en-us',
   JP: 'ja',
 };
 
@@ -29,8 +29,8 @@ export function normalizeCountryForLocale(country: string | null | undefined): s
 export function resolveLocaleFromCountry(country: string | null | undefined): SupportedLocale {
   const normalized = normalizeCountryForLocale(country);
   if (!normalized) {
-    return 'en';
+    return 'en-gb';
   }
 
-  return COUNTRY_TO_LOCALE[normalized] ?? 'en';
+  return COUNTRY_TO_LOCALE[normalized] ?? 'en-gb';
 }

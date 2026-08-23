@@ -21,12 +21,16 @@ describe('tablewaySaasLoginUrl', () => {
     expect(tablewaySaasLoginUrl('es', 'guest-install')).toBe(
       'https://app.tableway.app/auth/login?lang=es#guest-install',
     );
-    expect(tablewaySaasLoginUrl('en', 'guest-install')).toBe(
-      'https://app.tableway.app/auth/login?lang=en#guest-install',
-    );
     expect(tablewaySaasLoginUrl('sv', '#guest-install')).toBe(
       'https://app.tableway.app/auth/login?lang=sv#guest-install',
     );
+  });
+
+  it('maps English locale variants to SaaS lang=en', () => {
+    expect(tablewaySaasLoginUrl('en-gb', 'guest-install')).toBe(
+      'https://app.tableway.app/auth/login?lang=en#guest-install',
+    );
+    expect(tablewaySaasLoginUrl('en-us')).toBe('https://app.tableway.app/auth/login?lang=en');
   });
 });
 
@@ -44,8 +48,11 @@ describe('tablewaySaasRegisterUrl', () => {
     expect(tablewaySaasRegisterUrl('monthly', 'sv', 'SE')).toBe(
       'https://app.tableway.app/auth/register?plan=monthly&lang=sv&country=SE',
     );
-    expect(tablewaySaasRegisterUrl('12m', 'en', 'GB')).toBe(
+    expect(tablewaySaasRegisterUrl('12m', 'en-gb', 'GB')).toBe(
       'https://app.tableway.app/auth/register?plan=12m&lang=en&country=GB',
+    );
+    expect(tablewaySaasRegisterUrl('12m', 'en-us', 'US')).toBe(
+      'https://app.tableway.app/auth/register?plan=12m&lang=en&country=US',
     );
     expect(tablewaySaasRegisterUrl('12m', 'nb', 'NO')).toBe(
       'https://app.tableway.app/auth/register?plan=12m&lang=nb&country=NO',
@@ -59,10 +66,10 @@ describe('tablewaySaasRegisterUrl', () => {
     expect(tablewaySaasRegisterUrl('12m', 'sv', 'se')).toBe(
       'https://app.tableway.app/auth/register?plan=12m&lang=sv&country=SE',
     );
-    expect(tablewaySaasRegisterUrl('12m', 'en', null)).toBe(
+    expect(tablewaySaasRegisterUrl('12m', 'en-gb', null)).toBe(
       'https://app.tableway.app/auth/register?plan=12m&lang=en',
     );
-    expect(tablewaySaasRegisterUrl('12m', 'en', 'INVALID')).toBe(
+    expect(tablewaySaasRegisterUrl('12m', 'en-us', 'INVALID')).toBe(
       'https://app.tableway.app/auth/register?plan=12m&lang=en',
     );
   });

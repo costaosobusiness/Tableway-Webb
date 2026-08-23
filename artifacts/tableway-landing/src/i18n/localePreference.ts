@@ -1,8 +1,24 @@
 import { LOCALE_STORAGE_KEY } from '@/i18n/localeLabels';
 import { SUPPORTED_LOCALES, type SupportedLocale } from '@/i18n/types';
 
+const LEGACY_LOCALE_ALIASES: Record<string, SupportedLocale> = {
+  en: 'en-gb',
+};
+
+export function normalizeLocale(value: string | null | undefined): SupportedLocale | null {
+  if (!value) {
+    return null;
+  }
+
+  if (SUPPORTED_LOCALES.includes(value as SupportedLocale)) {
+    return value as SupportedLocale;
+  }
+
+  return LEGACY_LOCALE_ALIASES[value] ?? null;
+}
+
 export function isSupportedLocale(value: string | null | undefined): value is SupportedLocale {
-  return SUPPORTED_LOCALES.includes(value as SupportedLocale);
+  return normalizeLocale(value) !== null;
 }
 
 export function readStoredLocale(): SupportedLocale | null {
@@ -11,13 +27,13 @@ export function readStoredLocale(): SupportedLocale | null {
   }
 
   const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
-  return isSupportedLocale(stored) ? stored : null;
+  return normalizeLocale(stored);
 }
 
 export function readLocaleFromSearch(search: string): SupportedLocale | null {
   const params = new URLSearchParams(search);
   const lang = params.get('lang');
-  return isSupportedLocale(lang) ? lang : null;
+  return normalizeLocale(lang);
 }
 
 export function persistLocale(locale: SupportedLocale): void {

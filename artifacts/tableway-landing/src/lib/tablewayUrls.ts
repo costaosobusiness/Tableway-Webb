@@ -8,10 +8,23 @@ export const TABLEWAY_SAAS_APP_ORIGIN = "https://app.tableway.app";
 
 export const TABLEWAY_SAAS_LOGIN_URL = `${TABLEWAY_SAAS_APP_ORIGIN}/auth/login`;
 
+function normalizeSaasLang(locale?: string): string | undefined {
+  if (!locale) {
+    return undefined;
+  }
+
+  if (locale === 'en-gb' || locale === 'en-us') {
+    return 'en';
+  }
+
+  return locale;
+}
+
 export function tablewaySaasLoginUrl(locale?: string, hash?: string): string {
   const params = new URLSearchParams();
-  if (locale) {
-    params.set("lang", locale);
+  const lang = normalizeSaasLang(locale);
+  if (lang) {
+    params.set("lang", lang);
   }
   const query = params.toString();
   const url = `${TABLEWAY_SAAS_APP_ORIGIN}/auth/login${query ? `?${query}` : ""}`;
@@ -29,8 +42,9 @@ export function tablewaySaasRegisterUrl(
   country?: string | null,
 ): string {
   const params = new URLSearchParams({ plan });
-  if (locale) {
-    params.set("lang", locale);
+  const lang = normalizeSaasLang(locale);
+  if (lang) {
+    params.set("lang", lang);
   }
 
   const normalizedCountry = normalizeCountryCode(country);

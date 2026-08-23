@@ -42,6 +42,12 @@ const MARKET_TEMPLATES: Record<string, MarketTemplate> = {
     priceLabels: ['£25', '£69', '£129', '£239'],
     amounts: [25, 69, 129, 239],
   },
+  USD: {
+    marketId: 'usd',
+    currency: 'USD',
+    priceLabels: ['$34', '$94', '$174', '$329'],
+    amounts: [34, 94, 174, 329],
+  },
   JPY: {
     marketId: 'jpy',
     currency: 'JPY',
@@ -58,12 +64,14 @@ const COUNTRY_TO_TEMPLATE: Record<string, keyof typeof MARKET_TEMPLATES> = {
   NO: 'NOK',
   DK: 'DKK',
   GB: 'GBP',
+  US: 'USD',
   JP: 'JPY',
 };
 
 /** Marketing locale → pricing country (V1.0 market mapping). */
 export const LOCALE_TO_PRICING_COUNTRY: Record<SupportedLocale, string> = {
-  en: 'GB',
+  'en-gb': 'GB',
+  'en-us': 'US',
   sv: 'SE',
   es: 'ES',
   de: 'DE',

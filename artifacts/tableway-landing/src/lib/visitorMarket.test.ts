@@ -116,7 +116,7 @@ describe('visitor market pricing', () => {
     expect(result.pricing.plans[0]?.priceLabel).toBe('€29');
   });
 
-  it('H. uses EUR pricing for detected countries outside supported markets', async () => {
+  it('H. uses USD pricing for detected United States visitors', async () => {
     const fetchMock = createFetchMock({
       '/api/detected-country': () => jsonResponse({ country: 'US' }),
     });
@@ -124,7 +124,8 @@ describe('visitor market pricing', () => {
     const result = await loadVisitorMarket(fetchMock);
     expect(result.detectedCountry).toBe('US');
     expect(result.usedFallback).toBe(false);
-    expect(result.pricing.currency).toBe('EUR');
+    expect(result.pricing.currency).toBe('USD');
+    expect(result.pricing.plans[0]?.priceLabel).toBe('$34');
   });
 
   it('I. preserves existing plan slugs from official pricing', async () => {

@@ -8,26 +8,26 @@ describe('resolveLocaleFromCountry', () => {
     ['SE', 'sv'],
     ['DE', 'de'],
     ['FR', 'fr'],
-    ['GB', 'en'],
-    ['US', 'en'],
+    ['GB', 'en-gb'],
+    ['US', 'en-us'],
     ['NO', 'nb'],
     ['DK', 'da'],
     ['CH', 'de'],
-    ['CA', 'en'],
-    ['AU', 'en'],
-    ['NZ', 'en'],
+    ['CA', 'en-us'],
+    ['AU', 'en-us'],
+    ['NZ', 'en-us'],
     ['JP', 'ja'],
-    ['BR', 'en'],
+    ['BR', 'en-gb'],
   ] as const)('maps %s to %s', (country, locale) => {
     expect(resolveLocaleFromCountry(country)).toBe(locale);
   });
 
-  it('returns English for null country', () => {
-    expect(resolveLocaleFromCountry(null)).toBe('en');
+  it('returns English (GB) for null country', () => {
+    expect(resolveLocaleFromCountry(null)).toBe('en-gb');
   });
 
-  it('returns English for undefined country', () => {
-    expect(resolveLocaleFromCountry(undefined)).toBe('en');
+  it('returns English (GB) for undefined country', () => {
+    expect(resolveLocaleFromCountry(undefined)).toBe('en-gb');
   });
 
   it('normalizes lowercase country codes', () => {
@@ -35,9 +35,9 @@ describe('resolveLocaleFromCountry', () => {
     expect(resolveLocaleFromCountry('  se ')).toBe('sv');
   });
 
-  it('returns English for invalid country codes', () => {
-    expect(resolveLocaleFromCountry('')).toBe('en');
-    expect(resolveLocaleFromCountry('ESP')).toBe('en');
+  it('returns English (GB) for invalid country codes', () => {
+    expect(resolveLocaleFromCountry('')).toBe('en-gb');
+    expect(resolveLocaleFromCountry('ESP')).toBe('en-gb');
   });
 
   it('maps Switzerland to German', () => {
