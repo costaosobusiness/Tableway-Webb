@@ -41,11 +41,18 @@ describe('landing locale dictionaries', () => {
 describe('createTranslator', () => {
   it('returns German copy for German locale', () => {
     const t = createTranslator('de');
-    expect(t('hero.headlineLine1')).toBe('Mehr Buchungen.');
+    expect(t('hero.headlineLine1')).toBe('Mehr Reservierungen.');
   });
 
   it('returns Norwegian Bokmål copy for nb locale', () => {
     const t = createTranslator('nb');
     expect(t('nav.logIn')).toBe('Logg inn');
+  });
+
+  it('returns Japanese copy for ja locale', () => {
+    const t = createTranslator('ja');
+    expect(t('hero.headlineLine1')).toBe('予約を増やす。');
+    expect(t('hero.headlineLine2')).toBe('手間を減らす。');
+    expect(t('nav.features')).toBe('機能');
   });
 });

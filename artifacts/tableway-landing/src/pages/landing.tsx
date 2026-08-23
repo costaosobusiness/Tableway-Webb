@@ -15,6 +15,7 @@ import {
   ArrowDown,
 } from 'lucide-react';
 import { Logo } from '@/components/logo';
+import { LanguageSelector } from '@/components/LanguageSelector';
 import { useTranslation } from '@/i18n/LocaleProvider';
 import type { LandingTranslationKey } from '@/i18n/types';
 import { useVisitorMarket } from '@/hooks/useVisitorMarket';
@@ -137,6 +138,7 @@ export default function LandingPage() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-6">
+            <LanguageSelector />
             <a href={tablewaySaasLoginUrl(locale)} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
               {t('nav.logIn')}
             </a>
@@ -171,6 +173,7 @@ export default function LandingPage() {
               {t('nav.downloadApp')}
             </a>
             <hr className="border-white/5 my-2" />
+            <LanguageSelector className="py-2" />
             <a href={tablewaySaasLoginUrl(locale)} className="text-gray-300 font-medium py-2">{t('nav.logIn')}</a>
             <a
               href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}

@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Link } from 'wouter';
 
 import { Logo } from '@/components/logo';
+import { LanguageSelector } from '@/components/LanguageSelector';
 import { useTranslation } from '@/i18n/LocaleProvider';
 
 type MarketingSubpageShellProps = {
@@ -18,9 +19,12 @@ export function MarketingSubpageShell({ children }: MarketingSubpageShellProps) 
           <Link href="/">
             <Logo />
           </Link>
-          <Link href="/" className="text-sm text-gray-400 hover:text-white transition-colors">
-            {t('common.backToHome')}
-          </Link>
+          <div className="flex items-center gap-4">
+            <LanguageSelector />
+            <Link href="/" className="text-sm text-gray-400 hover:text-white transition-colors">
+              {t('common.backToHome')}
+            </Link>
+          </div>
         </div>
       </header>
 
