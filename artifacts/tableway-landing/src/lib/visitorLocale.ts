@@ -14,7 +14,7 @@ const COUNTRY_TO_LOCALE: Record<string, SupportedLocale> = {
   CA: 'en',
   AU: 'en',
   NZ: 'en',
-  JP: 'en',
+  JP: 'ja',
 };
 
 export function normalizeCountryForLocale(country: string | null | undefined): string | null {

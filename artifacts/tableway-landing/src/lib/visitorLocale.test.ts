@@ -16,7 +16,7 @@ describe('resolveLocaleFromCountry', () => {
     ['CA', 'en'],
     ['AU', 'en'],
     ['NZ', 'en'],
-    ['JP', 'en'],
+    ['JP', 'ja'],
     ['BR', 'en'],
   ] as const)('maps %s to %s', (country, locale) => {
     expect(resolveLocaleFromCountry(country)).toBe(locale);

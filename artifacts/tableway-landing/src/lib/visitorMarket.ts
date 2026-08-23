@@ -8,6 +8,8 @@ import type {
   VisitorMarketResult,
 } from '@/lib/visitorMarket.types';
 
+import { getOfficialMarketPricing } from '@/lib/officialMarketPricing';
+
 export const DETECTED_COUNTRY_URL = '/api/detected-country';
 export const PUBLIC_PRICING_URL = '/api/v1/public/billing/pricing';
 
@@ -124,27 +126,12 @@ export async function fetchPublicPricing(
 
 export async function loadVisitorMarket(fetchImpl: FetchLike = fetch): Promise<VisitorMarketResult> {
   const detectedCountry = await fetchDetectedCountry(fetchImpl);
-
-  if (detectedCountry) {
-    const marketPricing = await fetchPublicPricing(detectedCountry, fetchImpl);
-    if (marketPricing) {
-      return {
-        detectedCountry,
-        pricing: marketPricing,
-        usedFallback: false,
-      };
-    }
-  }
-
-  const fallbackPricing = await fetchPublicPricing(null, fetchImpl);
-  if (!fallbackPricing) {
-    throw new Error('Unable to load market pricing');
-  }
+  const pricing = getOfficialMarketPricing(detectedCountry);
 
   return {
     detectedCountry,
-    pricing: fallbackPricing,
-    usedFallback: true,
+    pricing,
+    usedFallback: !detectedCountry,
   };
 }
 

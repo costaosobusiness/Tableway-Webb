@@ -15,40 +15,11 @@ const EUR_PRICING: PublicMarketPricing = {
   currency: 'EUR',
   country: 'ES',
   plans: [
-    { interval: 'monthly', label: 'Monthly', priceLabel: '€29/mo', effectiveMonthlyLabel: 'Effective €29.00/mo', amount: 29 },
-    { interval: '3m', label: '3 Months', priceLabel: '€79', effectiveMonthlyLabel: 'Effective €26.33/mo', amount: 79 },
-    { interval: '6m', label: '6 Months', priceLabel: '€149', effectiveMonthlyLabel: 'Effective €24.83/mo', amount: 149 },
-    { interval: '12m', label: '12 Months', priceLabel: '€279', effectiveMonthlyLabel: 'Effective €23.25/mo', amount: 279 },
+    { interval: 'monthly', label: 'Monthly', priceLabel: '€29', effectiveMonthlyLabel: '€29', amount: 29 },
+    { interval: '3m', label: '3 Months', priceLabel: '€79', effectiveMonthlyLabel: '€79', amount: 79 },
+    { interval: '6m', label: '6 Months', priceLabel: '€149', effectiveMonthlyLabel: '€149', amount: 149 },
+    { interval: '12m', label: '12 Months', priceLabel: '€279', effectiveMonthlyLabel: '€279', amount: 279 },
   ],
-};
-
-const SEK_PRICING: PublicMarketPricing = {
-  marketId: 'sek',
-  currency: 'SEK',
-  country: 'SE',
-  plans: [
-    { interval: 'monthly', label: 'Monthly', priceLabel: '299 SEK/mo', effectiveMonthlyLabel: 'Effective SEK 299.00/mo', amount: 299 },
-    { interval: '3m', label: '3 Months', priceLabel: '799 SEK', effectiveMonthlyLabel: 'Effective SEK 266.33/mo', amount: 799 },
-    { interval: '6m', label: '6 Months', priceLabel: '1,499 SEK', effectiveMonthlyLabel: 'Effective SEK 249.83/mo', amount: 1499 },
-    { interval: '12m', label: '12 Months', priceLabel: '2,799 SEK', effectiveMonthlyLabel: 'Effective SEK 233.25/mo', amount: 2799 },
-  ],
-};
-
-const GBP_PRICING: PublicMarketPricing = {
-  marketId: 'gbp',
-  currency: 'GBP',
-  country: 'GB',
-  plans: [
-    { interval: 'monthly', label: 'Monthly', priceLabel: '£27/mo', effectiveMonthlyLabel: 'Effective £27.00/mo', amount: 27 },
-    { interval: '3m', label: '3 Months', priceLabel: '£75', effectiveMonthlyLabel: 'Effective £25.00/mo', amount: 75 },
-    { interval: '6m', label: '6 Months', priceLabel: '£139', effectiveMonthlyLabel: 'Effective £23.17/mo', amount: 139 },
-    { interval: '12m', label: '12 Months', priceLabel: '£259', effectiveMonthlyLabel: 'Effective £21.58/mo', amount: 259 },
-  ],
-};
-
-const DEFAULT_EUR_PRICING: PublicMarketPricing = {
-  ...EUR_PRICING,
-  country: null,
 };
 
 function jsonResponse(body: unknown, ok = true, status = 200): Response {
@@ -90,80 +61,75 @@ describe('visitor market pricing', () => {
     expect(normalizeCountryCode('  se ')).toBe('SE');
   });
 
-  it('C. handles country detection failure gracefully', async () => {
+  it('C. handles country detection failure gracefully with EUR fallback pricing', async () => {
     const fetchMock = createFetchMock({
       '/api/detected-country': () => jsonResponse({ error: 'fail' }, false, 500),
-      '/api/v1/public/billing/pricing': () => jsonResponse(DEFAULT_EUR_PRICING),
     });
 
     const result = await loadVisitorMarket(fetchMock);
     expect(result.detectedCountry).toBeNull();
     expect(result.usedFallback).toBe(true);
     expect(result.pricing.currency).toBe('EUR');
+    expect(result.pricing.plans[0]?.priceLabel).toBe('€29');
   });
 
-  it('D. requests pricing with detected country query param', async () => {
+  it('D. loads official EUR pricing for Spain without calling billing API', async () => {
     const fetchMock = createFetchMock({
       '/api/detected-country': () => jsonResponse({ country: 'ES' }),
-      'country=ES': () => jsonResponse(EUR_PRICING),
     });
 
     await loadVisitorMarket(fetchMock);
 
     expect(buildPublicPricingUrl('ES')).toBe('/api/v1/public/billing/pricing?country=ES');
-    expect(fetchMock).toHaveBeenCalledWith('/api/v1/public/billing/pricing?country=ES');
+    expect(fetchMock).toHaveBeenCalledWith('/api/detected-country');
+    expect(fetchMock).not.toHaveBeenCalledWith('/api/v1/public/billing/pricing?country=ES');
   });
 
   it('E. loads SEK pricing for Sweden', async () => {
     const fetchMock = createFetchMock({
       '/api/detected-country': () => jsonResponse({ country: 'SE' }),
-      'country=SE': () => jsonResponse(SEK_PRICING),
     });
 
     const result = await loadVisitorMarket(fetchMock);
     expect(result.pricing.currency).toBe('SEK');
-    expect(result.pricing.plans[0]?.priceLabel).toBe('299 SEK/mo');
+    expect(result.pricing.plans[0]?.priceLabel).toBe('299 kr');
   });
 
   it('F. loads GBP pricing for the United Kingdom', async () => {
     const fetchMock = createFetchMock({
       '/api/detected-country': () => jsonResponse({ country: 'GB' }),
-      'country=GB': () => jsonResponse(GBP_PRICING),
     });
 
     const result = await loadVisitorMarket(fetchMock);
     expect(result.pricing.currency).toBe('GBP');
-    expect(result.pricing.plans[0]?.priceLabel).toBe('£27/mo');
+    expect(result.pricing.plans[0]?.priceLabel).toBe('£25');
+    expect(result.pricing.plans[3]?.priceLabel).toBe('£239');
   });
 
   it('G. falls back to default EUR pricing for unknown countries', async () => {
     const fetchMock = createFetchMock({
       '/api/detected-country': () => jsonResponse({ country: 'BR' }),
-      'country=BR': () => jsonResponse({ ...DEFAULT_EUR_PRICING, country: 'BR' }),
     });
 
     const result = await loadVisitorMarket(fetchMock);
     expect(result.pricing.marketId).toBe('eur');
-    expect(result.pricing.plans[0]?.priceLabel).toBe('€29/mo');
+    expect(result.pricing.plans[0]?.priceLabel).toBe('€29');
   });
 
-  it('H. falls back to default EUR pricing when pricing API fails', async () => {
+  it('H. uses EUR pricing for detected countries outside supported markets', async () => {
     const fetchMock = createFetchMock({
       '/api/detected-country': () => jsonResponse({ country: 'US' }),
-      'country=US': () => jsonResponse({ error: 'fail' }, false, 500),
-      '/api/v1/public/billing/pricing': () => jsonResponse(DEFAULT_EUR_PRICING),
     });
 
     const result = await loadVisitorMarket(fetchMock);
     expect(result.detectedCountry).toBe('US');
-    expect(result.usedFallback).toBe(true);
+    expect(result.usedFallback).toBe(false);
     expect(result.pricing.currency).toBe('EUR');
   });
 
-  it('I. preserves existing plan slugs from API responses', async () => {
+  it('I. preserves existing plan slugs from official pricing', async () => {
     const fetchMock = createFetchMock({
       '/api/detected-country': () => jsonResponse({ country: 'ES' }),
-      'country=ES': () => jsonResponse(EUR_PRICING),
     });
 
     const result = await loadVisitorMarket(fetchMock);
@@ -176,5 +142,13 @@ describe('visitor market pricing', () => {
     });
 
     await expect(fetchPublicPricing('ES', fetchMock)).resolves.toBeNull();
+  });
+
+  it('still validates API pricing payloads when fetchPublicPricing is used', async () => {
+    const fetchMock = createFetchMock({
+      '/api/v1/public/billing/pricing?country=ES': () => jsonResponse(EUR_PRICING),
+    });
+
+    await expect(fetchPublicPricing('ES', fetchMock)).resolves.toEqual(EUR_PRICING);
   });
 });

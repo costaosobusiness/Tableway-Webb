@@ -71,7 +71,7 @@ const HeroVisual = ({ alt }: { alt: string }) => (
 export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t, locale, detectedCountry } = useTranslation();
-  const { pricingCards, isPricingLoading } = useVisitorMarket();
+  const { pricingCards, isPricingLoading } = useVisitorMarket(locale);
 
   const featureCards = [
     { icon: <Globe2 className="w-7 h-7" strokeWidth={1.5} />, titleKey: 'features.card1.title' as const, descKey: 'features.card1.desc' as const },

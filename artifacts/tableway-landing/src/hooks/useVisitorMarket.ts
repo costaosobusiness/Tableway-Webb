@@ -1,5 +1,8 @@
+import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
+import type { SupportedLocale } from '@/i18n/types';
+import { getOfficialMarketPricingForLocale } from '@/lib/officialMarketPricing';
 import {
   buildLoadingPricingCards,
   buildPricingCards,
@@ -19,7 +22,7 @@ export type UseVisitorMarketResult = {
   usedFallback: boolean;
 };
 
-export function useVisitorMarket(): UseVisitorMarketResult {
+export function useVisitorMarket(pricingLocale?: SupportedLocale): UseVisitorMarketResult {
   const query = useQuery<VisitorMarketResult>({
     queryKey: visitorMarketQueryKey,
     queryFn: () => loadVisitorMarket(),
@@ -27,7 +30,14 @@ export function useVisitorMarket(): UseVisitorMarketResult {
     retry: 1,
   });
 
-  const pricing = query.data?.pricing;
+  const pricing = useMemo(() => {
+    if (pricingLocale) {
+      return getOfficialMarketPricingForLocale(pricingLocale);
+    }
+
+    return query.data?.pricing;
+  }, [pricingLocale, query.data?.pricing]);
+
   const pricingCards = pricing
     ? buildPricingCards(pricing)
     : buildLoadingPricingCards();
@@ -36,7 +46,7 @@ export function useVisitorMarket(): UseVisitorMarketResult {
     detectedCountry: query.data?.detectedCountry ?? null,
     pricing,
     pricingCards,
-    isPricingLoading: query.isLoading,
+    isPricingLoading: pricingLocale ? false : query.isLoading,
     isPricingError: query.isError,
     usedFallback: query.data?.usedFallback ?? false,
   };
