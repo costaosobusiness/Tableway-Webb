@@ -56,13 +56,13 @@ const TRUST_STRIP_KEYS: LandingTranslationKey[] = [
 ];
 
 const HeroVisual = ({ alt }: { alt: string }) => (
-  <div className="flex justify-center mt-10 lg:mt-4 w-full max-w-full overflow-visible">
+  <div className="flex justify-center mt-10 lg:mt-4 w-full max-w-full min-w-0 overflow-hidden">
     <img
       src="/hero.webp"
       alt={alt}
       width={1536}
       height={1024}
-      className="w-full max-w-full min-w-0 h-auto rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8 lg:scale-[1.22] lg:origin-center"
+      className="w-full max-w-full min-w-0 h-auto rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
     />
   </div>
 );
@@ -191,12 +191,12 @@ export default function LandingPage() {
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/8 rounded-full blur-[140px] -z-10 pointer-events-none" />
         <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[42fr_58fr] gap-12 lg:gap-10 items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[42fr_58fr] gap-12 lg:gap-10 items-center min-w-0">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="text-center lg:text-left"
+            className="text-center lg:text-left min-w-0 relative z-10"
           >
             <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-gray-400 text-xs font-medium px-4 py-2 rounded-full mb-8 lg:mb-5 tracking-wide">
               <div className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -247,7 +247,7 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25, ease: 'easeOut' }}
-            className="relative overflow-visible"
+            className="relative min-w-0 overflow-hidden"
           >
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-primary/10 blur-[60px] -z-10 pointer-events-none rounded-full" />
 
