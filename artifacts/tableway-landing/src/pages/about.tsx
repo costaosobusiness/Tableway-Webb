@@ -76,7 +76,7 @@ export default function AboutPage() {
           <p className="text-3xl font-bold text-white mb-10">{t('about.ctaTitle')}</p>
           <a
             href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
-            className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
+            className="bg-primary hover:bg-primary-hover transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
           >
             {t('common.startFreeTrial30')}{' '}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

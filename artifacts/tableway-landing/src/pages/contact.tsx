@@ -22,7 +22,7 @@ export default function ContactPage() {
   };
 
   const inputClass =
-    'w-full bg-[#0f0f0f] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm placeholder:text-gray-600 focus:outline-none focus:border-primary/60 transition-colors';
+    'w-full bg-navy-card border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm placeholder:text-gray-600 focus:outline-none focus:border-primary/60 transition-colors';
 
   return (
     <MarketingSubpageShell>
@@ -120,7 +120,7 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              className="w-full bg-primary hover:bg-primary/90 transition-colors text-white py-4 rounded-full text-sm font-bold flex items-center justify-center gap-2 group mt-2"
+              className="w-full bg-primary hover:bg-primary-hover transition-colors text-white py-4 rounded-full text-sm font-bold flex items-center justify-center gap-2 group mt-2"
             >
               {t('contact.form.submit')}{' '}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -132,7 +132,7 @@ export default function ContactPage() {
           <p className="text-2xl font-bold text-white mb-8">{t('contact.ctaTitle')}</p>
           <a
             href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
-            className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
+            className="bg-primary hover:bg-primary-hover transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
           >
             {t('common.startFreeTrial30')}{' '}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

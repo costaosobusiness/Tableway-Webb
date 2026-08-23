@@ -13,8 +13,8 @@ export function MarketingSubpageShell({ children }: MarketingSubpageShellProps) 
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-[#111111] text-white font-sans">
-      <header className="border-b border-white/5 bg-[#111111]/80 backdrop-blur-md">
+    <div className="min-h-screen bg-navy text-white font-sans">
+      <header className="border-b border-white/5 bg-navy/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="/">
             <Logo />

@@ -18,11 +18,11 @@ export function LanguageSelector({ className = '' }: LanguageSelectorProps) {
       <select
         value={locale}
         onChange={(event) => setLocale(event.target.value as SupportedLocale)}
-        className="bg-transparent border border-white/15 hover:border-white/30 rounded-full px-3 py-1.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/40 cursor-pointer"
+        className="bg-transparent border border-primary/50 hover:border-primary rounded-full px-3 py-1.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/40 cursor-pointer"
         aria-label="Language"
       >
         {SUPPORTED_LOCALES.map((supportedLocale) => (
-          <option key={supportedLocale} value={supportedLocale} className="bg-[#111111] text-white">
+          <option key={supportedLocale} value={supportedLocale} className="bg-navy text-white">
             {LOCALE_LABELS[supportedLocale]}
           </option>
         ))}

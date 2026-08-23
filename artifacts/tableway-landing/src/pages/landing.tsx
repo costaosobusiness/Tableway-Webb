@@ -115,10 +115,10 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="min-h-[100dvh] bg-[#111111] text-white selection:bg-primary/30 font-sans overflow-hidden">
+    <div className="min-h-[100dvh] bg-navy text-white selection:bg-primary/30 font-sans overflow-hidden">
 
       {/* HEADER */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#111111]/80 backdrop-blur-md border-b border-white/5">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-navy/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center">
             <Logo />
@@ -144,7 +144,7 @@ export default function LandingPage() {
             </a>
             <a
               href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
-              className="bg-primary hover:bg-primary/90 transition-colors text-white px-5 py-2.5 rounded-full text-sm font-semibold"
+              className="bg-primary hover:bg-primary-hover transition-colors text-white px-5 py-2.5 rounded-full text-sm font-semibold"
             >
               {t('nav.startFreeTrial')}
             </a>
@@ -161,7 +161,7 @@ export default function LandingPage() {
 
         {/* Mobile Nav */}
         {mobileMenuOpen && (
-          <div className="lg:hidden absolute top-20 left-0 right-0 bg-[#111] border-b border-white/5 p-6 flex flex-col gap-4">
+          <div className="lg:hidden absolute top-20 left-0 right-0 bg-navy border-b border-white/5 p-6 flex flex-col gap-4">
             <a href="#features" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">{t('nav.features')}</a>
             <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">{t('nav.pricing')}</a>
             <a href="#how-it-works" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 font-medium py-2">{t('nav.howItWorks')}</a>
@@ -205,7 +205,7 @@ export default function LandingPage() {
 
             <h1 className="text-5xl sm:text-6xl lg:text-[3.25rem] font-bold leading-[1.02] tracking-tight mb-7 lg:mb-5">
               <span className="text-white block">{t('hero.headlineLine1')}</span>
-              <span className="text-primary block">{t('hero.headlineLine2')}</span>
+              <span className="block bg-gradient-to-r from-turquoise to-turquoise-end bg-clip-text text-transparent">{t('hero.headlineLine2')}</span>
             </h1>
 
             <div className="text-lg lg:text-xl text-gray-400 font-light max-w-xl mx-auto lg:mx-0 leading-relaxed mb-10 lg:mb-6 space-y-1">
@@ -217,16 +217,16 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-12 lg:mb-8">
               <a
                 href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
-                className="w-full sm:w-auto bg-primary hover:bg-primary/90 active:scale-95 transition-all text-white px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-2 group shadow-[0_0_40px_rgba(34,197,94,0.25)]"
+                className="w-full sm:w-auto bg-primary hover:bg-primary-hover active:scale-95 transition-all text-white px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-2 group shadow-[0_0_40px_rgba(22,198,163,0.25)]"
               >
                 {t('hero.ctaStartTrial')}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
                 href="#how-it-works"
-                className="w-full sm:w-auto border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all text-white px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-3"
+                className="w-full sm:w-auto border border-primary text-primary hover:border-primary hover:bg-primary/5 hover:shadow-[0_0_24px_rgba(22,198,163,0.2)] transition-all px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-3"
               >
-                <span className="w-6 h-6 rounded-full border border-white/40 flex items-center justify-center shrink-0">
+                <span className="w-6 h-6 rounded-full border border-primary/60 flex items-center justify-center shrink-0">
                   <Play className="w-2.5 h-2.5 ml-0.5" fill="currentColor" />
                 </span>
                 {t('hero.ctaSeeHowItWorks')}
@@ -282,8 +282,8 @@ export default function LandingPage() {
                 transition={{ delay: i * 0.1 }}
                 className={`relative rounded-2xl p-8 flex flex-col transition-all duration-300 ${
                   plan.highlighted
-                    ? 'bg-[#0f0f0f] border-2 border-primary shadow-[0_0_40px_rgba(34,197,94,0.12)]'
-                    : 'bg-[#0f0f0f] border border-white/10 hover:border-white/20'
+                    ? 'bg-navy-card border-2 border-primary shadow-[0_0_40px_rgba(22,198,163,0.12)]'
+                    : 'bg-navy-card border border-white/10 hover:border-white/20'
                 }`}
               >
                 {plan.badgeKey ? (
@@ -319,7 +319,7 @@ export default function LandingPage() {
                   href={tablewaySaasRegisterUrl(plan.slug, locale, detectedCountry)}
                   className={`w-full py-3.5 rounded-full text-sm font-bold transition-all duration-200 text-center ${
                     plan.highlighted
-                      ? 'bg-primary hover:bg-primary/90 text-white'
+                      ? 'bg-primary hover:bg-primary-hover text-white'
                       : 'border border-white/20 hover:bg-white/8 text-white'
                   }`}
                 >
@@ -349,7 +349,7 @@ export default function LandingPage() {
       </section>
 
       {/* HOW IT WORKS SECTION */}
-      <section id="how-it-works" className="py-28 px-6 border-t border-white/5 bg-[#0a0a0a]">
+      <section id="how-it-works" className="py-28 px-6 border-t border-white/5 bg-navy">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -374,7 +374,7 @@ export default function LandingPage() {
                   <div className="text-6xl lg:text-7xl font-bold text-primary/20 leading-none mb-6 tracking-tighter">
                     {step.num}
                   </div>
-                  <div className="w-16 h-16 rounded-2xl border border-white/10 bg-[#131313] flex items-center justify-center text-primary mb-6">
+                  <div className="w-16 h-16 rounded-2xl border border-white/10 bg-navy-elevated flex items-center justify-center text-primary mb-6">
                     {step.icon}
                   </div>
                   <h3 className="text-xl font-bold text-white mb-3">{t(step.titleKey)}</h3>
@@ -404,7 +404,7 @@ export default function LandingPage() {
             <p className="text-3xl lg:text-4xl font-bold text-white mb-10">{t('howItWorks.readyToStart')}</p>
             <a
               href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
-              className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
+              className="bg-primary hover:bg-primary-hover transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
             >
               {t('howItWorks.ctaStartTrial')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -423,7 +423,7 @@ export default function LandingPage() {
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
               {t('features.titleLine1')}<br />
-              <span className="text-primary">{t('features.titleLine2')}</span>
+              <span className="bg-gradient-to-r from-turquoise to-turquoise-end bg-clip-text text-transparent">{t('features.titleLine2')}</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
               {t('features.subtitle')}
@@ -438,7 +438,7 @@ export default function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07 }}
-                className="group bg-[#0f0f0f] border border-white/8 rounded-2xl p-8 hover:border-primary/30 hover:bg-[#131313] transition-all duration-300 cursor-default"
+                className="group bg-navy-card border border-white/8 rounded-2xl p-8 hover:border-primary/30 hover:bg-navy-elevated transition-all duration-300 cursor-default"
               >
                 <div className="text-primary mb-5">{card.icon}</div>
                 <h3 className="text-lg font-bold text-white mb-3">{t(card.titleKey)}</h3>
@@ -459,7 +459,7 @@ export default function LandingPage() {
             <div className="mt-10">
               <a
                 href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
-                className="bg-primary hover:bg-primary/90 transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
+                className="bg-primary hover:bg-primary-hover transition-colors text-white px-10 py-4 rounded-full text-base font-bold inline-flex items-center gap-2 group"
               >
                 {t('features.ctaStartTrial')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
@@ -469,7 +469,7 @@ export default function LandingPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="pt-20 pb-10 px-6 border-t border-white/5 bg-[#0a0a0a]">
+      <footer className="pt-20 pb-10 px-6 border-t border-white/5 bg-navy">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.5fr] gap-12 lg:gap-8 mb-16">
 
@@ -506,7 +506,7 @@ export default function LandingPage() {
               <p className="text-gray-400 text-sm mb-6">{t('footer.startTrialToday')}</p>
               <a
                 href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
-                className="bg-primary hover:bg-primary/90 transition-colors text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 max-w-max"
+                className="bg-primary hover:bg-primary-hover transition-colors text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 max-w-max"
               >
                 {t('footer.startFreeTrial')} <ArrowRight className="w-4 h-4" />
               </a>

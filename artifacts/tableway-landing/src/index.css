@@ -23,6 +23,14 @@
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-primary-border: var(--primary-border);
+  --color-primary-hover: var(--primary-hover);
+
+  --color-navy: #06152A;
+  --color-navy-card: #0A1C35;
+  --color-navy-elevated: #0D2342;
+  --color-turquoise: #16C6A3;
+  --color-turquoise-hover: #13B392;
+  --color-turquoise-end: #0FAE97;
 
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
@@ -51,35 +59,37 @@
 }
 
 :root {
-  --background: 0 0% 7%;
+  --background: 215 74% 9%;
   --foreground: 0 0% 98%;
 
-  --card: 0 0% 10%;
+  --card: 215 68% 12%;
   --card-foreground: 0 0% 98%;
-  --card-border: 0 0% 18%;
+  --card-border: 215 40% 18%;
 
-  --popover: 0 0% 10%;
+  --popover: 215 68% 12%;
   --popover-foreground: 0 0% 98%;
-  --popover-border: 0 0% 18%;
+  --popover-border: 215 40% 18%;
 
-  --primary: 142 71% 45%;
+  --primary: 168 80% 43%;
   --primary-foreground: 0 0% 98%;
+  --primary-hover: #13B392;
+  --primary-border: #16C6A3;
 
-  --secondary: 0 0% 15%;
+  --secondary: 215 50% 14%;
   --secondary-foreground: 0 0% 98%;
 
-  --muted: 0 0% 15%;
+  --muted: 215 50% 14%;
   --muted-foreground: 0 0% 64%;
 
-  --accent: 142 71% 45%;
+  --accent: 168 80% 43%;
   --accent-foreground: 0 0% 98%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 0 0% 18%;
-  --input: 0 0% 18%;
-  --ring: 142 71% 45%;
+  --border: 215 40% 18%;
+  --input: 215 40% 18%;
+  --ring: 168 80% 43%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: Georgia, serif;
@@ -88,35 +98,37 @@
 }
 
 .dark {
-  --background: 0 0% 7%;
+  --background: 215 74% 9%;
   --foreground: 0 0% 98%;
 
-  --card: 0 0% 10%;
+  --card: 215 68% 12%;
   --card-foreground: 0 0% 98%;
-  --card-border: 0 0% 18%;
+  --card-border: 215 40% 18%;
 
-  --popover: 0 0% 10%;
+  --popover: 215 68% 12%;
   --popover-foreground: 0 0% 98%;
-  --popover-border: 0 0% 18%;
+  --popover-border: 215 40% 18%;
 
-  --primary: 142 71% 45%;
+  --primary: 168 80% 43%;
   --primary-foreground: 0 0% 98%;
+  --primary-hover: #13B392;
+  --primary-border: #16C6A3;
 
-  --secondary: 0 0% 15%;
+  --secondary: 215 50% 14%;
   --secondary-foreground: 0 0% 98%;
 
-  --muted: 0 0% 15%;
+  --muted: 215 50% 14%;
   --muted-foreground: 0 0% 64%;
 
-  --accent: 142 71% 45%;
+  --accent: 168 80% 43%;
   --accent-foreground: 0 0% 98%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 0 0% 18%;
-  --input: 0 0% 18%;
-  --ring: 142 71% 45%;
+  --border: 215 40% 18%;
+  --input: 215 40% 18%;
+  --ring: 168 80% 43%;
 }
 
 @layer base {
@@ -128,6 +140,6 @@
   }
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    background-color: #111111;
+    background-color: #06152A;
   }
 }
