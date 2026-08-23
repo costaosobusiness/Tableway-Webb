@@ -56,13 +56,13 @@ const TRUST_STRIP_KEYS: LandingTranslationKey[] = [
 ];
 
 const HeroVisual = ({ alt }: { alt: string }) => (
-  <div className="flex justify-center mt-10 w-full max-w-full">
+  <div className="flex justify-center mt-10 lg:mt-4 w-full max-w-full overflow-visible">
     <img
       src="/hero.webp"
       alt={alt}
       width={1536}
       height={1024}
-      className="w-full max-w-full min-w-0 h-auto rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
+      className="w-full max-w-full min-w-0 h-auto rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8 lg:scale-[1.22] lg:origin-center"
     />
   </div>
 );
@@ -187,34 +187,34 @@ export default function LandingPage() {
       </header>
 
       {/* HERO SECTION */}
-      <section className="relative pt-36 pb-16 lg:pt-44 lg:pb-24 px-6 overflow-visible">
+      <section className="relative pt-36 pb-16 lg:pt-32 lg:pb-12 px-6 overflow-visible">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/8 rounded-full blur-[140px] -z-10 pointer-events-none" />
         <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[42fr_58fr] gap-12 lg:gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="text-center lg:text-left"
           >
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-gray-400 text-xs font-medium px-4 py-2 rounded-full mb-8 tracking-wide">
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-gray-400 text-xs font-medium px-4 py-2 rounded-full mb-8 lg:mb-5 tracking-wide">
               <div className="w-1.5 h-1.5 rounded-full bg-primary" />
               {t('hero.eyebrow')}
             </div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.02] tracking-tight mb-7">
+            <h1 className="text-5xl sm:text-6xl lg:text-[3.25rem] font-bold leading-[1.02] tracking-tight mb-7 lg:mb-5">
               <span className="text-white block">{t('hero.headlineLine1')}</span>
               <span className="text-primary block">{t('hero.headlineLine2')}</span>
             </h1>
 
-            <div className="text-lg lg:text-xl text-gray-400 font-light max-w-xl mx-auto lg:mx-0 leading-relaxed mb-10 space-y-1">
+            <div className="text-lg lg:text-xl text-gray-400 font-light max-w-xl mx-auto lg:mx-0 leading-relaxed mb-10 lg:mb-6 space-y-1">
               <p>{t('hero.subline1')}</p>
               <p>{t('hero.subline2')}</p>
               <p>{t('hero.subline3')}</p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-12 lg:mb-8">
               <a
                 href={tablewaySaasRegisterUrl('12m', locale, detectedCountry)}
                 className="w-full sm:w-auto bg-primary hover:bg-primary/90 active:scale-95 transition-all text-white px-8 py-4 rounded-full text-base font-semibold flex items-center justify-center gap-2 group shadow-[0_0_40px_rgba(34,197,94,0.25)]"
@@ -247,7 +247,7 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25, ease: 'easeOut' }}
-            className="relative"
+            className="relative overflow-visible"
           >
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-primary/10 blur-[60px] -z-10 pointer-events-none rounded-full" />
 
