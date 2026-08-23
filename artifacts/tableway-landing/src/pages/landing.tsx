@@ -52,6 +52,7 @@ const PRICING_BOTTOM_KEYS: LandingTranslationKey[] = [
 const TRUST_STRIP_KEYS: LandingTranslationKey[] = [
   'hero.trustTrial',
   'hero.trustNoCommission',
+  'hero.trustUnlimitedReservations',
   'hero.trustCancelAnytime',
 ];
 
@@ -198,8 +199,8 @@ export default function LandingPage() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="text-center lg:text-left min-w-0 relative z-10"
           >
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-gray-400 text-xs font-medium px-4 py-2 rounded-full mb-8 lg:mb-5 tracking-wide">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+            <div className="inline-flex items-center gap-2.5 bg-white/5 border border-white/10 text-gray-400 text-[0.9375rem] font-medium px-7 py-3 rounded-full mb-8 lg:mb-5 tracking-wide">
+              <div className="w-2 h-2 rounded-full bg-primary" />
               {t('hero.eyebrow')}
             </div>
 
@@ -208,7 +209,7 @@ export default function LandingPage() {
               <span className="block bg-gradient-to-r from-turquoise to-turquoise-end bg-clip-text text-transparent">{t('hero.headlineLine2')}</span>
             </h1>
 
-            <div className="text-lg lg:text-xl text-gray-400 font-light max-w-xl mx-auto lg:mx-0 leading-relaxed mb-10 lg:mb-6 space-y-1">
+            <div className="text-[0.95625rem] lg:text-[1.0625rem] text-gray-400 font-light max-w-xl mx-auto lg:mx-0 leading-snug mb-10 lg:mb-6 space-y-1">
               <p>{t('hero.subline1')}</p>
               <p>{t('hero.subline2')}</p>
               <p>{t('hero.subline3')}</p>
@@ -233,11 +234,11 @@ export default function LandingPage() {
               </a>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-3">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4 lg:gap-x-8 items-center justify-items-center lg:justify-items-start max-w-xl lg:max-w-none mx-auto lg:mx-0">
               {TRUST_STRIP_KEYS.map((key) => (
-                <div key={key} className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-sm text-gray-400">{t(key)}</span>
+                <div key={key} className="flex items-center gap-2.5 w-full">
+                  <Check className="w-5 h-5 text-primary shrink-0" />
+                  <span className="text-base text-gray-400 leading-snug">{t(key)}</span>
                 </div>
               ))}
             </div>

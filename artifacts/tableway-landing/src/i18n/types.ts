@@ -19,6 +19,7 @@ export type LandingTranslationKey =
   | 'hero.ctaSeeHowItWorks'
   | 'hero.trustTrial'
   | 'hero.trustNoCommission'
+  | 'hero.trustUnlimitedReservations'
   | 'hero.trustCancelAnytime'
   | 'hero.altDashboard'
   | 'hero.altMobile'
@@ -327,6 +328,7 @@ export const LANDING_TRANSLATION_KEYS: LandingTranslationKey[] = [
   'hero.ctaSeeHowItWorks',
   'hero.trustTrial',
   'hero.trustNoCommission',
+  'hero.trustUnlimitedReservations',
   'hero.trustCancelAnytime',
   'hero.altDashboard',
   'hero.altMobile',
