@@ -64,7 +64,7 @@ const HeroVisual = ({ alt }: { alt: string }) => (
       alt={alt}
       width={1536}
       height={1024}
-      className="w-full max-w-full min-w-0 h-auto lg:scale-[1.08] lg:origin-center"
+      className="w-full max-w-full min-w-0 h-auto lg:scale-[1.026] lg:origin-center"
     />
   </div>
 );
@@ -240,7 +240,7 @@ export default function LandingPage() {
               {TRUST_STRIP_KEYS.map((key) => (
                 <div key={key} className="flex items-center gap-2.5 w-full">
                   <Check className="w-5 h-5 text-primary shrink-0" />
-                  <span className="text-[0.95rem] text-gray-400 leading-snug">{t(key)}</span>
+                  <span className="text-[0.9025rem] text-gray-400 leading-snug">{t(key)}</span>
                 </div>
               ))}
             </div>
