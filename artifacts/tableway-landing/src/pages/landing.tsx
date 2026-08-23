@@ -64,7 +64,7 @@ const HeroVisual = ({ alt }: { alt: string }) => (
       alt={alt}
       width={1536}
       height={1024}
-      className="w-full max-w-full min-w-0 h-auto rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] border border-white/8"
+      className="w-full max-w-full min-w-0 h-auto"
     />
   </div>
 );
@@ -252,8 +252,6 @@ export default function LandingPage() {
             transition={{ duration: 0.8, delay: 0.25, ease: 'easeOut' }}
             className="relative min-w-0 overflow-hidden"
           >
-            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-primary/10 blur-[60px] -z-10 pointer-events-none rounded-full" />
-
             <HeroVisual alt={t('hero.altDashboard')} />
           </motion.div>
         </div>
