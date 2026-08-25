@@ -52,6 +52,10 @@
       "destination": "https://app.tableway.app/brand/:path*"
     },
     {
+      "source": "/booking-backgrounds/:path*",
+      "destination": "https://app.tableway.app/booking-backgrounds/:path*"
+    },
+    {
       "source": "/((?!sitemap\\.xml|robots\\.txt|favicon\\.png|favicon\\.svg|web-assets/).*)",
       "destination": "/index.html"
     }
