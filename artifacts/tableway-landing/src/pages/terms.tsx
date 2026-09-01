@@ -1,42 +1,20 @@
 import { useEffect } from 'react';
 import { Link } from 'wouter';
 
+import { MarketingSubpageHero } from '@/components/MarketingSubpageHero';
 import { MarketingSubpageShell } from '@/components/MarketingSubpageShell';
+import { PageSeo } from '@/components/seo/PageSeo';
 import { useTranslation } from '@/i18n/LocaleProvider';
 import type { LandingTranslationKey } from '@/i18n/types';
 
 const TABLEWAY_URL = 'https://tableway.app';
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="mb-12">
-    <h2 className="text-xl font-bold text-white mb-4">{title}</h2>
-    <div className="text-gray-400 leading-relaxed space-y-3">{children}</div>
+  <div className="subpage-section">
+    <h2 className="subpage-section__title">{title}</h2>
+    <div>{children}</div>
   </div>
 );
-
-const ContactBlock = () => {
-  const { t } = useTranslation();
-  return (
-    <p className="mt-3">
-      <strong className="text-white">{t('legal.companyName')}</strong>
-      <br />
-      {t('legal.addressLine1')}
-      <br />
-      {t('legal.addressLine2')}
-      <br />
-      {t('legal.nif')}
-      <br />
-      {t('legal.website')}{' '}
-      <a href={TABLEWAY_URL} className="text-primary hover:text-primary/80 transition-colors">
-        {TABLEWAY_URL}
-      </a>
-      <br />
-      <Link href="/contact" className="text-primary hover:text-primary/80 transition-colors">
-        {t('legal.contactUs')}
-      </Link>
-    </p>
-  );
-};
 
 export default function TermsPage() {
   const { t } = useTranslation();
@@ -64,15 +42,19 @@ export default function TermsPage() {
 
   return (
     <MarketingSubpageShell>
-      <main className="max-w-3xl mx-auto px-6 py-20">
-        <div className="mb-14">
-          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">{t('terms.title')}</h1>
-          <p className="text-gray-400">{t('terms.lastUpdated')}</p>
-        </div>
+      <PageSeo pageId="terms" breadcrumbs={[{ name: t('terms.title'), path: '/terms-of-service' }]} />
+      <MarketingSubpageHero
+        eyebrow={t('footer.terms')}
+        title={t('terms.title')}
+        subtitle={t('terms.lastUpdated')}
+      />
 
-        <p className="text-gray-400 leading-relaxed mb-12">
+      <div className="subpage-body">
+        <div className="subpage-content subpage-content--narrow">
+          <article className="subpage-card subpage-prose">
+        <p>
           {t('terms.intro.beforeUrl')}{' '}
-          <a href={TABLEWAY_URL} className="text-primary hover:text-primary/80 transition-colors">
+          <a href={TABLEWAY_URL}>
             {TABLEWAY_URL}
           </a>
           {t('terms.intro.afterUrl')}
@@ -92,7 +74,7 @@ export default function TermsPage() {
           <p>{t('terms.s3.p1')}</p>
           <p>
             {t('terms.s3.p2.beforeLink')}{' '}
-            <Link href="/contact" className="text-primary hover:text-primary/80 transition-colors">
+            <Link href="/contact">
               {t('legal.contactUs')}
             </Link>{' '}
             {t('terms.s3.p2.afterLink')}
@@ -128,7 +110,7 @@ export default function TermsPage() {
 
         <Section title={t('terms.s9.title')}>
           <p>{t('terms.s9.intro')}</p>
-          <ul className="list-disc list-inside space-y-1 mt-2 ml-2">
+          <ul>
             {responsibilityKeys.map((key) => (
               <li key={key}>{t(key)}</li>
             ))}
@@ -137,7 +119,7 @@ export default function TermsPage() {
 
         <Section title={t('terms.s10.title')}>
           <p>{t('terms.s10.intro')}</p>
-          <ul className="list-disc list-inside space-y-1 mt-2 ml-2">
+          <ul>
             {acceptableUseKeys.map((key) => (
               <li key={key}>{t(key)}</li>
             ))}
@@ -178,12 +160,9 @@ export default function TermsPage() {
           <p>{t('terms.s17.p1')}</p>
           <p>{t('terms.s17.p2')}</p>
         </Section>
-
-        <Section title={t('terms.s18.title')}>
-          <p>{t('terms.s18.intro')}</p>
-          <ContactBlock />
-        </Section>
-      </main>
+          </article>
+        </div>
+      </div>
     </MarketingSubpageShell>
   );
 }

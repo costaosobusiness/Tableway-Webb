@@ -1,8 +1,31 @@
-export const SUPPORTED_LOCALES = ['en-gb', 'en-us', 'es', 'de', 'fr', 'sv', 'nb', 'da', 'ja'] as const;
+import { MARKETING_SITE_KEYS, type MarketingSiteKey } from '@/i18n/marketingSite.en';
+
+export const SUPPORTED_LOCALES = ['en-gb', 'en-us', 'es', 'de', 'fr', 'sv', 'nb', 'da', 'ja', 'ar'] as const;
 
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 
+export const RTL_LOCALES: SupportedLocale[] = ['ar'];
+
+export function isRtlLocale(locale: SupportedLocale): boolean {
+  return RTL_LOCALES.includes(locale);
+}
+
+/** Locales shown in the navbar language selector. */
+export const NAVBAR_LOCALES = [
+  'en-gb',
+  'en-us',
+  'es',
+  'de',
+  'fr',
+  'sv',
+  'nb',
+  'da',
+  'ja',
+  'ar',
+] as const satisfies readonly SupportedLocale[];
+
 export type LandingTranslationKey =
+  | MarketingSiteKey
   | 'nav.features'
   | 'nav.pricing'
   | 'nav.howItWorks'
@@ -16,7 +39,6 @@ export type LandingTranslationKey =
   | 'hero.subline2'
   | 'hero.subline3'
   | 'hero.ctaStartTrial'
-  | 'hero.ctaSeeHowItWorks'
   | 'hero.trustTrial'
   | 'hero.trustNoCommission'
   | 'hero.trustUnlimitedReservations'
@@ -112,11 +134,13 @@ export type LandingTranslationKey =
   | 'contact.form.restaurantPlaceholder'
   | 'contact.form.email'
   | 'contact.form.emailPlaceholder'
-  | 'contact.form.subject'
-  | 'contact.form.subjectPlaceholder'
+  | 'contact.form.phone'
+  | 'contact.form.phonePlaceholder'
   | 'contact.form.message'
   | 'contact.form.messagePlaceholder'
   | 'contact.form.submit'
+  | 'contact.form.submitting'
+  | 'contact.form.error'
   | 'contact.ctaTitle'
   | 'notFound.title'
   | 'notFound.message'
@@ -307,11 +331,11 @@ export type LandingTranslationKey =
   | 'terms.s9.li3'
   | 'terms.s9.li4'
   | 'terms.s9.li5'
-  | 'terms.s9.title';
+  |   'terms.s9.title';
 
 export type LandingTranslations = Record<LandingTranslationKey, string>;
 
-export const LANDING_TRANSLATION_KEYS: LandingTranslationKey[] = [
+const LEGACY_TRANSLATION_KEYS = [
   'nav.features',
   'nav.pricing',
   'nav.howItWorks',
@@ -325,7 +349,6 @@ export const LANDING_TRANSLATION_KEYS: LandingTranslationKey[] = [
   'hero.subline2',
   'hero.subline3',
   'hero.ctaStartTrial',
-  'hero.ctaSeeHowItWorks',
   'hero.trustTrial',
   'hero.trustNoCommission',
   'hero.trustUnlimitedReservations',
@@ -421,11 +444,13 @@ export const LANDING_TRANSLATION_KEYS: LandingTranslationKey[] = [
   'contact.form.restaurantPlaceholder',
   'contact.form.email',
   'contact.form.emailPlaceholder',
-  'contact.form.subject',
-  'contact.form.subjectPlaceholder',
+  'contact.form.phone',
+  'contact.form.phonePlaceholder',
   'contact.form.message',
   'contact.form.messagePlaceholder',
   'contact.form.submit',
+  'contact.form.submitting',
+  'contact.form.error',
   'contact.ctaTitle',
   'notFound.title',
   'notFound.message',
@@ -433,6 +458,11 @@ export const LANDING_TRANSLATION_KEYS: LandingTranslationKey[] = [
   'privacy.lastUpdated',
   'terms.title',
   'terms.lastUpdated',
+] as const satisfies readonly LandingTranslationKey[];
+
+export const LANDING_TRANSLATION_KEYS: LandingTranslationKey[] = [
+  ...LEGACY_TRANSLATION_KEYS,
+  ...MARKETING_SITE_KEYS,
 ];
 
 export type LocaleDictionary = LandingTranslations;

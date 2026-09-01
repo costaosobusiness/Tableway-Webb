@@ -3,8 +3,10 @@ import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
 
 import { MarketingSubpageShell } from '@/components/MarketingSubpageShell';
+import { PageSeo } from '@/components/seo/PageSeo';
 import { useTranslation } from '@/i18n/LocaleProvider';
 import { resolvePricingCountryFromLocale } from '@/lib/officialMarketPricing';
+import { submitContactForm } from '@/lib/submitContactForm';
 import { tablewaySaasRegisterUrl } from '@/lib/tablewayUrls';
 
 export default function ContactPage() {
@@ -16,11 +18,35 @@ export default function ContactPage() {
   }, []);
 
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: '', restaurant: '', email: '', subject: '', message: '' });
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [form, setForm] = useState({
+    name: '',
+    restaurant: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      await submitContactForm({
+        name: form.name,
+        restaurant: form.restaurant,
+        email: form.email,
+        phone: form.phone,
+        message: form.message,
+      });
+      setSubmitted(true);
+    } catch {
+      setError(t('contact.form.error'));
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputClass =
@@ -28,6 +54,7 @@ export default function ContactPage() {
 
   return (
     <MarketingSubpageShell>
+      <PageSeo pageId="contact" breadcrumbs={[{ name: t('contact.title'), path: '/contact' }]} />
       <main className="max-w-2xl mx-auto px-6 py-20">
         <div className="mb-14 text-center">
           <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">{t('contact.title')}</h1>
@@ -94,14 +121,13 @@ export default function ContactPage() {
 
             <div>
               <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">
-                {t('contact.form.subject')}
+                {t('contact.form.phone')}
               </label>
               <input
-                type="text"
-                required
-                placeholder={t('contact.form.subjectPlaceholder')}
-                value={form.subject}
-                onChange={(event) => setForm({ ...form, subject: event.target.value })}
+                type="tel"
+                placeholder={t('contact.form.phonePlaceholder')}
+                value={form.phone}
+                onChange={(event) => setForm({ ...form, phone: event.target.value })}
                 className={inputClass}
               />
             </div>
@@ -120,11 +146,14 @@ export default function ContactPage() {
               />
             </div>
 
+            {error ? <p className="text-sm text-red-400">{error}</p> : null}
+
             <button
               type="submit"
-              className="w-full bg-primary hover:bg-primary-hover transition-colors text-white py-4 rounded-full text-sm font-bold flex items-center justify-center gap-2 group mt-2"
+              disabled={submitting}
+              className="w-full bg-primary hover:bg-primary-hover transition-colors text-white py-4 rounded-full text-sm font-bold flex items-center justify-center gap-2 group mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {t('contact.form.submit')}{' '}
+              {submitting ? t('contact.form.submitting') : t('contact.form.submit')}{' '}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </form>

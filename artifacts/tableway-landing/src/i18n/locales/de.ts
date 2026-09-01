@@ -1,4 +1,5 @@
 import type { LandingTranslations } from '@/i18n/types';
+import { MARKETING_SITE_DE } from '@/i18n/marketingSite.de';
 
 export const de: LandingTranslations = {
   'nav.features': 'Funktionen',
@@ -13,8 +14,7 @@ export const de: LandingTranslations = {
   'hero.subline1': 'Das einfache Reservierungssystem für Restaurants, Cafés und Bars.',
   'hero.subline2': 'Mehr Buchungen, weniger No-Shows und Zeitersparnis —',
   'hero.subline3': 'alles für einen festen Monatspreis.',
-  'hero.ctaStartTrial': '30 Tage kostenlos testen',
-  'hero.ctaSeeHowItWorks': 'So funktioniert es',
+  'hero.ctaStartTrial': 'Kostenlos testen',
   'hero.trustTrial': '30 Tage kostenlos testen',
   'hero.trustNoCommission': '0% PROVISION. 100% IHR.',
   'hero.trustUnlimitedReservations': 'Unbegrenzte Reservierungen',
@@ -117,11 +117,13 @@ export const de: LandingTranslations = {
   'contact.form.restaurantPlaceholder': 'Ihr Restaurant',
   'contact.form.email': 'E-Mail',
   'contact.form.emailPlaceholder': 'sie@beispiel.de',
-  'contact.form.subject': 'Betreff',
-  'contact.form.subjectPlaceholder': 'Wie können wir helfen?',
+  'contact.form.phone': 'Telefon',
+  'contact.form.phonePlaceholder': 'Optional',
   'contact.form.message': 'Nachricht',
   'contact.form.messagePlaceholder': 'Erzählen Sie uns mehr...',
   'contact.form.submit': 'Nachricht senden',
+  'contact.form.submitting': 'Wird gesendet...',
+  'contact.form.error': 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.',
   'contact.ctaTitle': 'Brauchen Sie Hilfe beim Einstieg?',
   'notFound.title': '404 Seite nicht gefunden',
   'notFound.message': 'Haben Sie vergessen, die Seite zum Router hinzuzufügen?',
@@ -313,4 +315,5 @@ export const de: LandingTranslations = {
   'terms.s9.li4': "Einholung erforderlicher Einwilligungen oder Rechtsgrundlagen vor der Kontaktaufnahme mit Gästen oder dem Versand von Mitteilungen",
   'terms.s9.li5': "Mitarbeiter-Zugangskontrollen, Service-Modus-PIN-Verwaltung und Aktivitäten von von Ihnen autorisierten Nutzern",
   'terms.s9.title': "9. Kundenpflichten",
+  ...MARKETING_SITE_DE,
 };

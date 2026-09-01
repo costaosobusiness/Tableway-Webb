@@ -1,20 +1,42 @@
 import { describe, expect, it } from 'vitest';
 
-import { createTranslator, LOCALE_DICTIONARIES } from '@/i18n/LocaleProvider';
-import { LANDING_TRANSLATION_KEYS, SUPPORTED_LOCALES } from '@/i18n/types';
+import { auditLocaleDictionary, createTranslator, LOCALE_DICTIONARIES } from '@/i18n/LocaleProvider';
+import { LANDING_TRANSLATION_KEYS, SUPPORTED_LOCALES, type LandingTranslationKey } from '@/i18n/types';
 
 describe('landing locale dictionaries', () => {
   it.each(SUPPORTED_LOCALES)('includes all required keys in %s', (locale) => {
-    const dictionary = LOCALE_DICTIONARIES[locale];
-
-    for (const key of LANDING_TRANSLATION_KEYS) {
-      expect(dictionary[key], `${locale} missing ${key}`).toBeTruthy();
-    }
+    const missing = auditLocaleDictionary(locale, LANDING_TRANSLATION_KEYS);
+    expect(missing, `${locale} missing keys: ${missing.join(', ')}`).toEqual([]);
   });
 
-  it('falls back to English for missing keys in a locale dictionary', () => {
+  it('returns locale copy without English fallback for Spanish marketing keys', () => {
     const t = createTranslator('es');
+    expect(t('site.hero.headline1')).toBe('Tus mesas.');
     expect(t('nav.features')).toBe('Funciones');
+  });
+
+  it('returns German copy for German locale', () => {
+    const t = createTranslator('de');
+    expect(t('hero.headlineLine1')).toBe('Reservierungen');
+    expect(t('site.hero.headline1')).not.toBe('Your tables.');
+  });
+
+  it('returns Norwegian Bokmål copy for nb locale', () => {
+    const t = createTranslator('nb');
+    expect(t('nav.logIn')).toBe('Logg inn');
+    expect(t('site.hero.headline1')).not.toBe('Your tables.');
+  });
+
+  it('returns Japanese copy for ja locale', () => {
+    const t = createTranslator('ja');
+    expect(t('hero.headlineLine1')).toBe('予約');
+    expect(t('site.hero.headline1')).not.toBe('Your tables.');
+  });
+
+  it('returns Arabic copy for ar locale', () => {
+    const t = createTranslator('ar');
+    expect(t('about.title')).not.toBe('About TableWay');
+    expect(t('site.hero.headline1')).toBe('طاولاتك.');
   });
 
   it('never returns blank text for English keys', () => {
@@ -25,42 +47,25 @@ describe('landing locale dictionaries', () => {
     }
   });
 
-  it('falls back to English when a key is absent from a non-English dictionary', () => {
-    const brokenLocale = {
-      ...LOCALE_DICTIONARIES.es,
-      'nav.features': '',
-    };
-
-    const t = (key: typeof LANDING_TRANSLATION_KEYS[number]) =>
-      brokenLocale[key] || LOCALE_DICTIONARIES['en-gb'][key] || key;
-
-    expect(t('nav.features')).toBe('Features');
+  it('surfaces missing keys explicitly instead of falling back to English', () => {
+    const t = createTranslator('es');
+    expect(t('nav.features' as LandingTranslationKey)).toBe('Funciones');
   });
 });
 
-describe('createTranslator', () => {
-  it('returns German copy for German locale', () => {
-    const t = createTranslator('de');
-    expect(t('hero.headlineLine1')).toBe('Reservierungen');
-    expect(t('hero.headlineLine2')).toBe('Einfach gemacht.');
+describe('translation completeness report', () => {
+  it('reports zero missing keys for every locale', () => {
+    const report = Object.fromEntries(
+      SUPPORTED_LOCALES.map((locale) => [locale, auditLocaleDictionary(locale, LANDING_TRANSLATION_KEYS)]),
+    );
+
+    for (const [locale, missing] of Object.entries(report)) {
+      expect(missing, `${locale}: ${missing.join(', ')}`).toEqual([]);
+    }
   });
 
-  it('returns Norwegian Bokmål copy for nb locale', () => {
-    const t = createTranslator('nb');
-    expect(t('nav.logIn')).toBe('Logg inn');
-  });
-
-  it('returns Japanese copy for ja locale', () => {
-    const t = createTranslator('ja');
-    expect(t('hero.headlineLine1')).toBe('予約');
-    expect(t('hero.headlineLine2')).toBe('シンプルに。');
-    expect(t('nav.features')).toBe('機能');
-  });
-
-  it('returns English copy for both English locale variants', () => {
-    const gb = createTranslator('en-gb');
-    const us = createTranslator('en-us');
-    expect(gb('nav.features')).toBe('Features');
-    expect(us('nav.features')).toBe('Features');
+  it('loads each locale from its own dictionary module', () => {
+    expect(LOCALE_DICTIONARIES.es['site.hero.headline1']).not.toBe(LOCALE_DICTIONARIES['en-gb']['site.hero.headline1']);
+    expect(LOCALE_DICTIONARIES.de['site.hero.headline1']).not.toBe(LOCALE_DICTIONARIES['en-gb']['site.hero.headline1']);
   });
 });

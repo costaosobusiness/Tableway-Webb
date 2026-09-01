@@ -1,4 +1,5 @@
 import type { LandingTranslations } from '@/i18n/types';
+import { MARKETING_SITE_FR } from '@/i18n/marketingSite.fr';
 
 export const fr: LandingTranslations = {
   'nav.features': 'Fonctionnalités',
@@ -14,7 +15,6 @@ export const fr: LandingTranslations = {
   'hero.subline2': 'Plus de réservations, moins d\'absences et du temps gagné —',
   'hero.subline3': 'le tout pour un prix mensuel fixe.',
   'hero.ctaStartTrial': 'Essai gratuit de 30 jours',
-  'hero.ctaSeeHowItWorks': 'Voir comment ça marche',
   'hero.trustTrial': 'Essai gratuit de 30 jours',
   'hero.trustNoCommission': '0% DE COMMISSION. 100% À VOUS.',
   'hero.trustUnlimitedReservations': 'Réservations illimitées',
@@ -117,11 +117,13 @@ export const fr: LandingTranslations = {
   'contact.form.restaurantPlaceholder': 'Votre restaurant',
   'contact.form.email': 'E-mail',
   'contact.form.emailPlaceholder': 'vous@exemple.com',
-  'contact.form.subject': 'Objet',
-  'contact.form.subjectPlaceholder': 'Comment pouvons-nous vous aider ?',
+  'contact.form.phone': 'Téléphone',
+  'contact.form.phonePlaceholder': 'Facultatif',
   'contact.form.message': 'Message',
   'contact.form.messagePlaceholder': 'Dites-nous en plus...',
   'contact.form.submit': 'Envoyer le message',
+  'contact.form.submitting': 'Envoi...',
+  'contact.form.error': 'Une erreur est survenue. Veuillez réessayer.',
   'contact.ctaTitle': 'Besoin d’aide pour commencer ?',
   'notFound.title': '404 Page introuvable',
   'notFound.message': 'Avez-vous oublié d’ajouter la page au routeur ?',
@@ -313,4 +315,5 @@ export const fr: LandingTranslations = {
   'terms.s9.li4': "L'obtention des consentements ou bases légales requis avant de contacter les clients ou d'envoyer des communications",
   'terms.s9.li5': "Les contrôles d'accès du personnel, la gestion du PIN Mode Service et l'activité des utilisateurs que vous autorisez",
   'terms.s9.title': "9. Responsabilités du client",
+  ...MARKETING_SITE_FR,
 };

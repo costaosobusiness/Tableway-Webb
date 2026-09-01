@@ -1,0 +1,40 @@
+.seo-landing {
+  display: grid;
+  gap: 20px;
+}
+
+.seo-landing__section h2 {
+  color: #fff;
+  font-family: var(--home-font-headline, "Playfair Display", serif);
+  font-size: clamp(1.5rem, 3vw, 1.875rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0 0 14px;
+}
+
+.seo-landing__links-title {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+
+.seo-landing__links ul {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.seo-landing__links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.seo-landing__links a:hover {
+  color: rgba(255, 255, 255, 0.82);
+}

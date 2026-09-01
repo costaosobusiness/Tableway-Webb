@@ -2,6 +2,7 @@ import { AlertCircle } from 'lucide-react';
 import { Link } from 'wouter';
 
 import { Card, CardContent } from '@/components/ui/card';
+import { PageSeo } from '@/components/seo/PageSeo';
 import { useTranslation } from '@/i18n/LocaleProvider';
 
 export default function NotFound() {
@@ -9,6 +10,7 @@ export default function NotFound() {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
+      <PageSeo pageId="notFound" noindex />
       <Card className="w-full max-w-md mx-4">
         <CardContent className="pt-6">
           <div className="flex mb-4 gap-2">

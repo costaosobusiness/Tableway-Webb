@@ -1,14 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 
 import { useVisitorMarket } from '@/hooks/useVisitorMarket';
-import { da } from '@/i18n/locales/da';
-import { de } from '@/i18n/locales/de';
-import { en } from '@/i18n/locales/en';
-import { es } from '@/i18n/locales/es';
-import { fr } from '@/i18n/locales/fr';
-import { ja } from '@/i18n/locales/ja';
-import { nb } from '@/i18n/locales/nb';
-import { sv } from '@/i18n/locales/sv';
+import { LOCALE_LOADERS } from '@/i18n/localeLoaders';
 import {
   persistLocale,
   readLocaleFromSearch,
@@ -16,19 +9,8 @@ import {
   syncLocaleSearchParam,
 } from '@/i18n/localePreference';
 import type { LandingTranslationKey, LocaleDictionary, SupportedLocale } from '@/i18n/types';
+import { isRtlLocale } from '@/i18n/types';
 import { resolveLocaleFromCountry } from '@/lib/visitorLocale';
-
-const LOCALE_DICTIONARIES: Record<SupportedLocale, LocaleDictionary> = {
-  'en-gb': en,
-  'en-us': en,
-  es,
-  de,
-  fr,
-  sv,
-  nb,
-  da,
-  ja,
-};
 
 function htmlLangFromLocale(locale: SupportedLocale): string {
   if (locale === 'en-gb') {
@@ -37,6 +19,10 @@ function htmlLangFromLocale(locale: SupportedLocale): string {
 
   if (locale === 'en-us') {
     return 'en-US';
+  }
+
+  if (locale === 'ar') {
+    return 'ar-AE';
   }
 
   return locale;
@@ -52,8 +38,7 @@ type LocaleContextValue = {
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 export function createTranslator(locale: SupportedLocale): (key: LandingTranslationKey) => string {
-  const dictionary = LOCALE_DICTIONARIES[locale];
-  const fallback = en;
+  const dictionary = LOCALE_LOADERS[locale];
 
   return (key: LandingTranslationKey) => {
     const value = dictionary[key]?.trim();
@@ -61,7 +46,7 @@ export function createTranslator(locale: SupportedLocale): (key: LandingTranslat
       return value;
     }
 
-    return fallback[key] ?? key;
+    return `[missing:${locale}:${key}]`;
   };
 }
 
@@ -83,6 +68,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = htmlLangFromLocale(locale);
+    document.documentElement.dir = isRtlLocale(locale) ? 'rtl' : 'ltr';
   }, [locale]);
 
   const setLocale = (nextLocale: SupportedLocale) => {
@@ -113,4 +99,9 @@ export function useTranslation(): LocaleContextValue {
   return context;
 }
 
-export { LOCALE_DICTIONARIES };
+export { LOCALE_LOADERS as LOCALE_DICTIONARIES };
+
+export function auditLocaleDictionary(locale: SupportedLocale, keys: LandingTranslationKey[]): LandingTranslationKey[] {
+  const dictionary = LOCALE_LOADERS[locale] as LocaleDictionary;
+  return keys.filter((key) => !dictionary[key]?.trim());
+}

@@ -1,4 +1,5 @@
 import type { LandingTranslations } from '@/i18n/types';
+import { MARKETING_SITE_SV } from '@/i18n/marketingSite.sv';
 
 export const sv: LandingTranslations = {
   'nav.features': 'Funktioner',
@@ -14,7 +15,6 @@ export const sv: LandingTranslations = {
   'hero.subline2': 'Få fler bokningar, minska uteblivna gäster och spara tid —',
   'hero.subline3': 'allt till ett fast månadspris.',
   'hero.ctaStartTrial': 'Starta 30 dagars gratis provperiod',
-  'hero.ctaSeeHowItWorks': 'Se hur det fungerar',
   'hero.trustTrial': '30 dagars gratis provperiod',
   'hero.trustNoCommission': '0% PROVISION. 100% DITT.',
   'hero.trustUnlimitedReservations': 'Obegränsade bokningar',
@@ -117,11 +117,13 @@ export const sv: LandingTranslations = {
   'contact.form.restaurantPlaceholder': 'Din restaurang',
   'contact.form.email': 'E-post',
   'contact.form.emailPlaceholder': 'du@exempel.se',
-  'contact.form.subject': 'Ämne',
-  'contact.form.subjectPlaceholder': 'Hur kan vi hjälpa till?',
+  'contact.form.phone': 'Telefon',
+  'contact.form.phonePlaceholder': 'Valfritt',
   'contact.form.message': 'Meddelande',
   'contact.form.messagePlaceholder': 'Berätta mer...',
   'contact.form.submit': 'Skicka meddelande',
+  'contact.form.submitting': 'Skickar...',
+  'contact.form.error': 'Något gick fel. Försök igen.',
   'contact.ctaTitle': 'Behöver du hjälp att komma igång?',
   'notFound.title': '404 Sidan hittades inte',
   'notFound.message': 'Glömde du lägga till sidan i routern?',
@@ -313,4 +315,5 @@ export const sv: LandingTranslations = {
   'terms.s9.li4': "Att inhämta nödvändiga samtycken eller rättsliga grunder före kontakt med gäster eller sändning av kommunikation",
   'terms.s9.li5': "Personalåtkomstkontroller, hantering av Service Mode PIN och aktivitet som utförs av användare du auktoriserar",
   'terms.s9.title': "9. Kundansvar",
+  ...MARKETING_SITE_SV,
 };

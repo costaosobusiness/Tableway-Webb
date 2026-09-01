@@ -1,4 +1,5 @@
 import type { LandingTranslations } from '@/i18n/types';
+import { MARKETING_SITE_NB } from '@/i18n/marketingSite.nb';
 
 export const nb: LandingTranslations = {
   'nav.features': 'Funksjoner',
@@ -14,7 +15,6 @@ export const nb: LandingTranslations = {
   'hero.subline2': 'Få flere bookinger, reduser uteblivelser og spar tid —',
   'hero.subline3': 'alt til én fast månedspris.',
   'hero.ctaStartTrial': 'Start 30 dagers gratis prøveperiode',
-  'hero.ctaSeeHowItWorks': 'Se hvordan det fungerer',
   'hero.trustTrial': '30 dagers gratis prøveperiode',
   'hero.trustNoCommission': '0% PROVISJON. 100% DITT.',
   'hero.trustUnlimitedReservations': 'Ubegrensede reservasjoner',
@@ -117,11 +117,13 @@ export const nb: LandingTranslations = {
   'contact.form.restaurantPlaceholder': 'Din restaurant',
   'contact.form.email': 'E-post',
   'contact.form.emailPlaceholder': 'du@eksempel.no',
-  'contact.form.subject': 'Emne',
-  'contact.form.subjectPlaceholder': 'Hvordan kan vi hjelpe?',
+  'contact.form.phone': 'Telefon',
+  'contact.form.phonePlaceholder': 'Valgfritt',
   'contact.form.message': 'Melding',
   'contact.form.messagePlaceholder': 'Fortell oss mer...',
   'contact.form.submit': 'Send melding',
+  'contact.form.submitting': 'Sender...',
+  'contact.form.error': 'Noe gikk galt. Prøv igjen.',
   'contact.ctaTitle': 'Trenger du hjelp til å komme i gang?',
   'notFound.title': '404 Siden ble ikke funnet',
   'notFound.message': 'Glemte du å legge til siden i ruteren?',
@@ -313,4 +315,5 @@ export const nb: LandingTranslations = {
   'terms.s9.li4': "Å innhente nødvendige samtykker eller rettslige grunnlag før kontakt med gjester eller sending av kommunikasjon",
   'terms.s9.li5': "Personaltilgangskontroller, Service Mode PIN-administrasjon og aktivitet utført av brukere du autoriserer",
   'terms.s9.title': "9. Kundeansvar",
+  ...MARKETING_SITE_NB,
 };

@@ -12,4 +12,5 @@ export const LOCALE_LABELS: Record<SupportedLocale, string> = {
   nb: 'Norsk',
   da: 'Dansk',
   ja: '日本語',
+  ar: 'العربية (AE)',
 };

@@ -1,4 +1,5 @@
 import type { LandingTranslations } from '@/i18n/types';
+import { MARKETING_SITE_JA } from '@/i18n/marketingSite.ja';
 
 export const ja: LandingTranslations = {
   'nav.features': '機能',
@@ -14,7 +15,6 @@ export const ja: LandingTranslations = {
   'hero.subline2': '予約を増やし、ノーショーを減らし、時間を節約 —',
   'hero.subline3': 'すべて月額固定料金で。',
   'hero.ctaStartTrial': '30日間無料トライアルを開始',
-  'hero.ctaSeeHowItWorks': '使い方を見る',
   'hero.trustTrial': '30日間無料トライアル',
   'hero.trustNoCommission': '手数料0%。100%あなたのもの。',
   'hero.trustUnlimitedReservations': '予約数無制限',
@@ -117,11 +117,13 @@ export const ja: LandingTranslations = {
   'contact.form.restaurantPlaceholder': 'レストラン名',
   'contact.form.email': 'メールアドレス',
   'contact.form.emailPlaceholder': 'you@example.com',
-  'contact.form.subject': '件名',
-  'contact.form.subjectPlaceholder': 'どのようなご用件ですか？',
+  'contact.form.phone': '電話番号',
+  'contact.form.phonePlaceholder': '任意',
   'contact.form.message': 'メッセージ',
   'contact.form.messagePlaceholder': '詳細をお聞かせください...',
   'contact.form.submit': '送信',
+  'contact.form.submitting': '送信中...',
+  'contact.form.error': '送信に失敗しました。もう一度お試しください。',
   'contact.ctaTitle': '始める際にお困りですか？',
   'notFound.title': '404 ページが見つかりません',
   'notFound.message': 'ルーターにページを追加し忘れていませんか？',
@@ -313,4 +315,5 @@ export const ja: LandingTranslations = {
   'terms.s9.li4': "ゲストへの連絡または通信の送信前に必要な同意または法的根拠の取得",
   'terms.s9.li5': "スタッフアクセス制御、Service Mode PIN管理、およびお客様が承認したユーザーによるアクティビティ",
   'terms.s9.title': "9. お客様の責任",
+  ...MARKETING_SITE_JA,
 };

@@ -1,4 +1,5 @@
 import type { LandingTranslations } from '@/i18n/types';
+import { MARKETING_SITE_EN } from '@/i18n/marketingSite.en';
 
 export const en: LandingTranslations = {
   'nav.features': 'Features',
@@ -13,8 +14,7 @@ export const en: LandingTranslations = {
   'hero.subline1': 'The simple reservation system for restaurants, cafés and bars.',
   'hero.subline2': 'Get more bookings, reduce no-shows and save time —',
   'hero.subline3': 'all for one fixed monthly price.',
-  'hero.ctaStartTrial': 'Start 30-day free trial',
-  'hero.ctaSeeHowItWorks': 'See how it works',
+  'hero.ctaStartTrial': 'Start free trial',
   'hero.trustTrial': '30-day free trial',
   'hero.trustNoCommission': '0% COMMISSION. 100% YOURS.',
   'hero.trustUnlimitedReservations': 'Unlimited Reservations',
@@ -72,7 +72,7 @@ export const en: LandingTranslations = {
   'features.card5.desc': 'Add team members with role-based access and Service Mode sign-in.',
   'features.bottomLine': 'Everything Included. No Add-ons. No Commission Fees.',
   'features.ctaStartTrial': 'Start Your 30-Day Free Trial',
-  'footer.product': 'PRODUCT',
+  'footer.product': 'Product',
   'footer.company': 'Company',
   'footer.aboutUs': 'About us',
   'footer.privacyPolicy': 'Privacy policy',
@@ -117,11 +117,13 @@ export const en: LandingTranslations = {
   'contact.form.restaurantPlaceholder': 'Your restaurant',
   'contact.form.email': 'Email',
   'contact.form.emailPlaceholder': 'you@example.com',
-  'contact.form.subject': 'Subject',
-  'contact.form.subjectPlaceholder': 'How can we help?',
+  'contact.form.phone': 'Phone',
+  'contact.form.phonePlaceholder': 'Optional',
   'contact.form.message': 'Message',
   'contact.form.messagePlaceholder': 'Tell us more...',
   'contact.form.submit': 'Send Message',
+  'contact.form.submitting': 'Sending...',
+  'contact.form.error': 'Something went wrong. Please try again.',
   'contact.ctaTitle': 'Need help getting started?',
   'notFound.title': '404 Page Not Found',
   'notFound.message': 'Did you forget to add the page to the router?',
@@ -313,4 +315,5 @@ export const en: LandingTranslations = {
   'terms.s9.li4': "Obtaining any consents or legal bases required before contacting guests or sending communications",
   'terms.s9.li5': "Staff access controls, Service Mode PIN management, and activity performed by users you authorise",
   'terms.s9.title': "9. Customer Responsibilities",
+  ...MARKETING_SITE_EN,
 };

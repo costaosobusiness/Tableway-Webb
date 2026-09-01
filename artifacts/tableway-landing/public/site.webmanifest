@@ -1,0 +1,16 @@
+{
+  "name": "TableWay",
+  "short_name": "TableWay",
+  "description": "Commission-free restaurant reservation software.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
