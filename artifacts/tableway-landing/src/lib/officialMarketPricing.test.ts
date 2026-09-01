@@ -4,6 +4,8 @@ import type { SupportedLocale } from '@/i18n/types';
 import {
   formatLocaleZeroCommission,
   getAnnualSavingsDisplay,
+  getAnnualSavingsForCountry,
+  getCompareCountryPricing,
   getDashboardPricingDisplay,
   getOfficialMarketPricing,
   getOfficialMarketPricingForLocale,
@@ -88,6 +90,14 @@ describe('official TableWay V1.0 pricing', () => {
     );
     expect(getAnnualSavingsDisplay('sv', t, 'compare')).toBe('Save up to 31,000 kr every year.');
     expect(getAnnualSavingsDisplay('ar', t, 'compare')).toBe('Save up to د.إ 9,651 every year.');
+    expect(getAnnualSavingsForCountry('GB', 'en-gb', t, 'compare')).toBe(
+      'Save up to £2,949 every year.',
+    );
+    expect(getAnnualSavingsForCountry('SE', 'sv', t, 'compare')).toBe(
+      'Save up to 31,000 kr every year.',
+    );
+    expect(getCompareCountryPricing('GB', 'en-gb').plans[0]?.priceLabel).toBe('£25');
+    expect(getCompareCountryPricing('DE', 'en-gb').plans[0]?.priceLabel).toBe('€29');
     expect(formatLocaleZeroCommission('en-gb')).toBe('£0');
     expect(formatLocaleZeroCommission('ar')).toBe('د.إ 0');
   });

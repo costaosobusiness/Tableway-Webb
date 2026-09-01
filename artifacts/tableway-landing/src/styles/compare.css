@@ -409,6 +409,82 @@
   color: #fff;
 }
 
+.compare-country-cards {
+  display: none;
+}
+
+.compare-country-card {
+  background: linear-gradient(180deg, #0c0c0c 0%, #0a0a0a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 24px 20px;
+  width: 100%;
+}
+
+.compare-country-card__title {
+  color: #fff;
+  font-family: var(--home-font-headline);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin: 0 0 20px;
+}
+
+.compare-country-card__row {
+  align-items: baseline;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding-block: 14px;
+}
+
+.compare-country-card__row + .compare-country-card__row {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.compare-country-card__row--tableway {
+  background: rgba(62, 207, 142, 0.06);
+  border-radius: 16px;
+  margin-top: 4px;
+  padding-inline: 16px;
+}
+
+.compare-country-card__label {
+  color: rgba(255, 255, 255, 0.48);
+  flex: 1 1 auto;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.45;
+  min-width: 0;
+  text-transform: uppercase;
+}
+
+.compare-country-card__value {
+  color: var(--home-text-soft);
+  flex: 0 0 auto;
+  font-size: 15px;
+  line-height: 1.45;
+  text-align: right;
+}
+
+.compare-country-card__value--tableway strong {
+  color: #3ecf8e;
+  font-weight: 600;
+}
+
+.compare-country-card__savings {
+  color: #fff;
+  font-family: var(--home-font-headline);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  margin: 18px 0 0;
+  text-align: center;
+}
+
 @media (max-width: 900px) {
   .compare-cards {
     grid-template-columns: 1fr;
@@ -438,5 +514,21 @@
 
   .compare-final {
     padding: 40px 24px;
+  }
+
+  .compare-country-cards {
+    display: grid;
+    gap: 16px;
+  }
+
+  .compare-table-wrap--countries,
+  .compare-table-wrap--yearly {
+    border: 0;
+    overflow: visible;
+  }
+
+  .compare-table-wrap--countries .compare-table,
+  .compare-table-wrap--yearly .compare-table {
+    display: none;
   }
 }

@@ -69,22 +69,24 @@ export default function PrivacyPage() {
         </Section>
 
         <Section title={t('privacy.s2.title')}>
-          <p>
+          <p className="privacy-legal-entity-intro">
             <strong>{t('privacy.s2.p1.strong')}</strong>
             {t('privacy.s2.p1.afterStrong')}
           </p>
-          <p>
-            <strong>{t('privacy.s2.legalDetailsLabel')}</strong>
-          </p>
-          <p className="mt-2">
-            {t('legal.companyName')}
-            <br />
-            {t('legal.addressLine1')}
-            <br />
-            {t('legal.addressLine2')}
-            <br />
-            {t('legal.nif')}
-          </p>
+          <div className="privacy-legal-entity-details">
+            <p>
+              <strong>{t('privacy.s2.legalDetailsLabel')}</strong>
+            </p>
+            <p className="mt-2">
+              {t('legal.companyName')}
+              <br />
+              {t('legal.addressLine1')}
+              <br />
+              {t('legal.addressLine2')}
+              <br />
+              {t('legal.nif')}
+            </p>
+          </div>
           <p>
             {t('privacy.s2.p3.beforeRestaurant')}
             <strong>{t('privacy.s2.p3.restaurantLabel')}</strong>

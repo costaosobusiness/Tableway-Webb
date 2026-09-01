@@ -18,35 +18,86 @@ import type { LandingTranslationKey } from '@/i18n/types';
 import {
   formatLocaleZeroCommission,
   getAnnualSavingsDisplay,
+  getAnnualSavingsForCountry,
+  getCompareCountryPricing,
   getOfficialMarketPricingForLocale,
 } from '@/lib/officialMarketPricing';
+import type { SupportedLocale } from '@/i18n/types';
 
 import '@/styles/home.css';
 import '@/styles/compare.css';
 
 type CompareResearchRow = {
   countryKey: LandingTranslationKey;
+  countryCode: string;
   other: string;
 };
 
 const MONTHLY_ROW_DEFS: CompareResearchRow[] = [
-  { countryKey: 'cmp.row.uk', other: '€149–299' },
-  { countryKey: 'cmp.row.se', other: '€67' },
-  { countryKey: 'cmp.row.de', other: '€149.90' },
-  { countryKey: 'cmp.row.fr', other: '€49–129' },
-  { countryKey: 'cmp.row.es', other: '€49–89' },
-  { countryKey: 'cmp.row.no', other: '€69+' },
-  { countryKey: 'cmp.row.uae', other: 'AED 300–900/month' },
+  { countryKey: 'cmp.row.uk', countryCode: 'GB', other: '€149–299' },
+  { countryKey: 'cmp.row.se', countryCode: 'SE', other: '€67' },
+  { countryKey: 'cmp.row.de', countryCode: 'DE', other: '€149.90' },
+  { countryKey: 'cmp.row.fr', countryCode: 'FR', other: '€49–129' },
+  { countryKey: 'cmp.row.es', countryCode: 'ES', other: '€49–89' },
+  { countryKey: 'cmp.row.no', countryCode: 'NO', other: '€69+' },
+  { countryKey: 'cmp.row.uae', countryCode: 'AE', other: 'AED 300–900/month' },
 ];
 
+function formatCompareOtherMonthly(other: string, perMonth: string): string {
+  return other.includes('/month') ? other : `${other}${perMonth}`;
+}
+
+function CompareCountryMobileCards({
+  rows,
+  locale,
+  t,
+}: {
+  rows: CompareResearchRow[];
+  locale: SupportedLocale;
+  t: (key: LandingTranslationKey) => string;
+}) {
+  const perMonth = t('cmp.pricing.perMonth');
+
+  return (
+    <div className="compare-country-cards">
+      {rows.map((row) => {
+        const tablewayMonthly = getCompareCountryPricing(row.countryCode, locale).plans[0]?.priceLabel ?? '—';
+        const savings = getAnnualSavingsForCountry(row.countryCode, locale, t, 'compare');
+
+        return (
+          <article key={row.countryKey} className="compare-country-card">
+            <h3 className="compare-country-card__title">{t(row.countryKey)}</h3>
+            <div className="compare-country-card__row">
+              <span className="compare-country-card__label">{t('cmp.col.otherMonthly')}</span>
+              <span className="compare-country-card__value">
+                {formatCompareOtherMonthly(row.other, perMonth)}
+              </span>
+            </div>
+            <div className="compare-country-card__row compare-country-card__row--tableway">
+              <span className="compare-country-card__label">{t('cmp.col.tableway')}</span>
+              <span className="compare-country-card__value compare-country-card__value--tableway">
+                <strong>
+                  {tablewayMonthly}
+                  {perMonth}
+                </strong>
+              </span>
+            </div>
+            <p className="compare-country-card__savings">{savings}</p>
+          </article>
+        );
+      })}
+    </div>
+  );
+}
+
 const YEARLY_ROW_DEFS: CompareResearchRow[] = [
-  { countryKey: 'cmp.row.ukAnnual', other: '€1,788–3,588' },
-  { countryKey: 'cmp.row.se', other: '€804' },
-  { countryKey: 'cmp.row.de', other: '€1,798.80' },
-  { countryKey: 'cmp.row.fr', other: '€588–1,548' },
-  { countryKey: 'cmp.row.es', other: '€588–1,068' },
-  { countryKey: 'cmp.row.no', other: '€828+' },
-  { countryKey: 'cmp.row.uae', other: 'AED 3,600–10,800/year' },
+  { countryKey: 'cmp.row.ukAnnual', countryCode: 'GB', other: '€1,788–3,588' },
+  { countryKey: 'cmp.row.se', countryCode: 'SE', other: '€804' },
+  { countryKey: 'cmp.row.de', countryCode: 'DE', other: '€1,798.80' },
+  { countryKey: 'cmp.row.fr', countryCode: 'FR', other: '€588–1,548' },
+  { countryKey: 'cmp.row.es', countryCode: 'ES', other: '€588–1,068' },
+  { countryKey: 'cmp.row.no', countryCode: 'NO', other: '€828+' },
+  { countryKey: 'cmp.row.uae', countryCode: 'AE', other: 'AED 3,600–10,800/year' },
 ];
 
 const FEATURE_ROW_DEFS = [
@@ -151,7 +202,8 @@ export default function ComparePage() {
           <div className="compare-wrap">
             <h2 className="home-display compare-heading">{t('cmp.monthly.heading')}</h2>
             <p className="compare-subtitle">{t('cmp.monthly.subtitle')}</p>
-            <div className="compare-table-wrap">
+            <div className="compare-table-wrap compare-table-wrap--countries">
+              <CompareCountryMobileCards rows={MONTHLY_ROW_DEFS} locale={locale} t={t} />
               <table className="compare-table">
                 <thead>
                   <tr>
@@ -184,7 +236,7 @@ export default function ComparePage() {
         <section className="compare-section">
           <div className="compare-wrap">
             <h2 className="home-display compare-heading">{t('cmp.yearly.heading')}</h2>
-            <div className="compare-table-wrap">
+            <div className="compare-table-wrap compare-table-wrap--yearly">
               <table className="compare-table">
                 <thead>
                   <tr>

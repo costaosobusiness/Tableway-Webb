@@ -199,4 +199,9 @@
   .subpage-body {
     padding-bottom: 96px;
   }
+
+  .privacy-legal-entity-intro,
+  .privacy-legal-entity-details {
+    display: none;
+  }
 }

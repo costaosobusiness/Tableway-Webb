@@ -244,6 +244,15 @@ export function getAnnualSavingsDisplay(
   variant: SavingsVariant = 'compare',
 ): string {
   const templateKey = resolveTemplateKeyForLocale(locale);
+  return formatAnnualSavingsForTemplate(templateKey, locale, t, variant);
+}
+
+function formatAnnualSavingsForTemplate(
+  templateKey: keyof typeof MARKET_TEMPLATES,
+  locale: SupportedLocale,
+  t: DashboardTranslate,
+  variant: SavingsVariant,
+): string {
   const amount = COMPARE_ANNUAL_SAVINGS[templateKey];
   const formatted = formatMarketingAmount(templateKey, amount, locale);
   const prefix =
@@ -252,4 +261,28 @@ export function getAnnualSavingsDisplay(
     variant === 'dashboard' ? t('site.dashboard.saveSuffix') : t('cmp.yearly.statSuffix');
 
   return `${prefix} ${formatted}${suffix}`;
+}
+
+/** Per-country TableWay pricing for compare page country cards. */
+export function getCompareCountryPricing(
+  country: string,
+  locale: SupportedLocale,
+): PublicMarketPricing {
+  const normalized = country.trim().toUpperCase();
+  const templateKey = COUNTRY_TO_TEMPLATE[normalized] ?? 'EUR';
+
+  return buildMarketPricing(templateKey, normalized, locale);
+}
+
+/** Localized annual savings line for a compare-page country card. */
+export function getAnnualSavingsForCountry(
+  country: string,
+  locale: SupportedLocale,
+  t: DashboardTranslate,
+  variant: SavingsVariant = 'compare',
+): string {
+  const normalized = country.trim().toUpperCase();
+  const templateKey = COUNTRY_TO_TEMPLATE[normalized] ?? 'EUR';
+
+  return formatAnnualSavingsForTemplate(templateKey, locale, t, variant);
 }
