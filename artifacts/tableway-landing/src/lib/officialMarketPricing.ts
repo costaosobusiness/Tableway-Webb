@@ -260,7 +260,7 @@ function formatAnnualSavingsForTemplate(
   const suffix =
     variant === 'dashboard' ? t('site.dashboard.saveSuffix') : t('cmp.yearly.statSuffix');
 
-  return `${prefix} ${formatted}${suffix}`;
+  return `${prefix.trim()} ${formatted} ${suffix.trim()}`;
 }
 
 /** Per-country TableWay pricing for compare page country cards. */

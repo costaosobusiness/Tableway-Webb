@@ -98,6 +98,16 @@ describe('official TableWay V1.0 pricing', () => {
     );
     expect(getCompareCountryPricing('GB', 'en-gb').plans[0]?.priceLabel).toBe('£25');
     expect(getCompareCountryPricing('DE', 'en-gb').plans[0]?.priceLabel).toBe('€29');
+
+    const tSuffixWithoutLeadingSpace = (key: string) =>
+      ({
+        'cmp.yearly.statPrefix': 'Save up to',
+        'cmp.yearly.statSuffix': 'every year.',
+      })[key] ?? key;
+    expect(getAnnualSavingsDisplay('en-gb', tSuffixWithoutLeadingSpace, 'compare')).toBe(
+      'Save up to £2,949 every year.',
+    );
+
     expect(formatLocaleZeroCommission('en-gb')).toBe('£0');
     expect(formatLocaleZeroCommission('ar')).toBe('د.إ 0');
   });
