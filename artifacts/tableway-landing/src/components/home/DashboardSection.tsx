@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 
-import { HOME_IMAGES } from '@/components/home/homeImages';
+import { HOME_IMAGES, HOME_IMAGE_DIMENSIONS } from '@/components/home/homeImages';
 import { useHomeReveal } from '@/components/home/useHomeReveal';
 import { useTranslation } from '@/i18n/LocaleProvider';
 import { getAnnualSavingsDisplay, getDashboardPricingDisplay } from '@/lib/officialMarketPricing';
@@ -35,6 +35,8 @@ export function DashboardSection() {
             className="home-dashboard__image home-device-shadow"
             src={HOME_IMAGES.desktop}
             alt={t('site.dashboard.imageAlt')}
+            width={HOME_IMAGE_DIMENSIONS.desktop.width}
+            height={HOME_IMAGE_DIMENSIONS.desktop.height}
             loading="lazy"
             decoding="async"
           />

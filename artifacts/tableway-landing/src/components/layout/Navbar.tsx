@@ -6,7 +6,7 @@ import {
   SAAS_REGISTER_URL,
 } from '@/components/home/homeLinks';
 import { LanguageSelector } from '@/components/LanguageSelector';
-import { HOME_IMAGES } from '@/components/home/homeImages';
+import { HOME_IMAGES, HOME_IMAGE_DIMENSIONS } from '@/components/home/homeImages';
 import { MobileNavDrawer, MobileNavToggle } from '@/components/layout/MobileNavDrawer';
 import { useTranslation } from '@/i18n/LocaleProvider';
 import type { LandingTranslationKey } from '@/i18n/types';
@@ -78,7 +78,13 @@ export function Navbar() {
       >
         <div className="home-container home-nav-bar flex items-center justify-between gap-4">
           <Link href="/" className="home-nav-logo">
-            <img src={HOME_IMAGES.logo} alt="TableWay" className="home-logo" />
+            <img
+              src={HOME_IMAGES.logo}
+              alt="TableWay"
+              width={HOME_IMAGE_DIMENSIONS.logo.width}
+              height={HOME_IMAGE_DIMENSIONS.logo.height}
+              className="home-logo"
+            />
           </Link>
 
           <nav className="home-nav-desktop items-center gap-6">

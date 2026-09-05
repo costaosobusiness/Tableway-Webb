@@ -204,8 +204,12 @@ export const SEO_METADATA: Record<SeoHreflangLocale, Record<SeoPageId, PageSeoCo
   'en-us': EN_GB,
   es: { ...EN_GB, ...ES },
   de: { ...EN_GB, ...DE },
+  fr: EN_GB,
   sv: { ...EN_GB, ...SV },
+  nb: EN_GB,
+  da: EN_GB,
   ja: { ...EN_GB, ...JA },
+  ar: EN_GB,
 };
 
 export function getPageSeoCopy(pageId: SeoPageId, locale: SeoHreflangLocale): PageSeoCopy {

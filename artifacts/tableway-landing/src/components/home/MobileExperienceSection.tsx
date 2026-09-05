@@ -1,4 +1,4 @@
-import { HOME_IMAGES } from '@/components/home/homeImages';
+import { HOME_IMAGES, HOME_IMAGE_DIMENSIONS } from '@/components/home/homeImages';
 import { SAAS_REGISTER_URL } from '@/components/home/homeLinks';
 import { useHomeReveal } from '@/components/home/useHomeReveal';
 import { useTranslation } from '@/i18n/LocaleProvider';
@@ -24,6 +24,8 @@ export function MobileExperienceSection() {
             className="home-mobile__image home-device-shadow section-image mobile-app-image"
             src={HOME_IMAGES.mobile}
             alt={t('site.mobile.imageAlt')}
+            width={HOME_IMAGE_DIMENSIONS.mobile.width}
+            height={HOME_IMAGE_DIMENSIONS.mobile.height}
             loading="lazy"
             decoding="async"
           />

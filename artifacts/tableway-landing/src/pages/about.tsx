@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { MarketingSubpageHero } from '@/components/MarketingSubpageHero';
 import { MarketingSubpageShell } from '@/components/MarketingSubpageShell';
 import { PageSeo } from '@/components/seo/PageSeo';
+import { HOME_IMAGE_DIMENSIONS } from '@/components/home/homeImages';
 import { useTranslation } from '@/i18n/LocaleProvider';
 import { resolvePricingCountryFromLocale } from '@/lib/officialMarketPricing';
 import { tablewaySaasRegisterUrl } from '@/lib/tablewayUrls';
@@ -46,6 +47,8 @@ export default function AboutPage() {
           <img
             src="/about-us.png"
             alt={t('about.imageAlt')}
+            width={HOME_IMAGE_DIMENSIONS.about.width}
+            height={HOME_IMAGE_DIMENSIONS.about.height}
             className="subpage-about-image"
             loading="lazy"
             decoding="async"

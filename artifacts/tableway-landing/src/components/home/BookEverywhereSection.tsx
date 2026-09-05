@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 
 import { useHomeReveal } from '@/components/home/useHomeReveal';
+import { HOME_IMAGE_DIMENSIONS } from '@/components/home/homeImages';
 import { useTranslation } from '@/i18n/LocaleProvider';
 
 const BOOK_EVERYWHERE_IMAGE = '/images/new6.png';
@@ -24,6 +25,8 @@ export function BookEverywhereSection() {
         <img
           src={BOOK_EVERYWHERE_IMAGE}
           alt={t('site.book.imageAlt')}
+          width={HOME_IMAGE_DIMENSIONS.channels.width}
+          height={HOME_IMAGE_DIMENSIONS.channels.height}
           loading="lazy"
           decoding="async"
           className="home-book__image"

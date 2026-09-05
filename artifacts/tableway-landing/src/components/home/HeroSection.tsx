@@ -1,15 +1,18 @@
 import { SAAS_REGISTER_URL } from '@/components/home/homeLinks';
-import { HOME_IMAGES } from '@/components/home/homeImages';
+import { HOME_IMAGES, HOME_IMAGE_DIMENSIONS } from '@/components/home/homeImages';
 import { useTranslation } from '@/i18n/LocaleProvider';
 
 export function HeroSection() {
   const { t } = useTranslation();
+  const heroDimensions = HOME_IMAGE_DIMENSIONS.hero;
 
   return (
     <section className="home-hero" aria-label="TableWay restaurant booking system">
       <img
         src={HOME_IMAGES.hero}
         alt="TableWay restaurant reservation and booking system on laptop and mobile"
+        width={heroDimensions.width}
+        height={heroDimensions.height}
         fetchPriority="high"
         decoding="async"
         className="home-hero__image home-hero__image--desktop"
@@ -45,6 +48,8 @@ export function HeroSection() {
         <img
           src={HOME_IMAGES.hero}
           alt="TableWay restaurant reservation and booking system on laptop and mobile"
+          width={heroDimensions.width}
+          height={heroDimensions.height}
           loading="eager"
           decoding="async"
           className="home-hero__image-mobile"

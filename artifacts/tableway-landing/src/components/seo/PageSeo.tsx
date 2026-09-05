@@ -9,6 +9,10 @@ import {
   SEO_DEFAULT_LOCALE,
   SEO_HREFLANG_LOCALES,
   SEO_OG_IMAGE,
+  SEO_OG_IMAGE_ALT,
+  SEO_OG_IMAGE_HEIGHT,
+  SEO_OG_IMAGE_WIDTH,
+  SEO_OG_LOCALE_MAP,
   SEO_SITE_URL,
   resolveSeoLocale,
 } from '@/lib/seo/siteConfig';
@@ -21,34 +25,21 @@ type PageSeoProps = {
 };
 
 function upsertMeta(attribute: 'name' | 'property', key: string, content: string) {
-  let element = document.head.querySelector(`meta[${attribute}="${key}"]`);
+  let element = document.head.querySelector(`meta[${attribute}="${key}"][data-seo-managed="true"]`);
 
   if (!element) {
-    element = document.createElement('meta');
-    element.setAttribute(attribute, key);
-    document.head.appendChild(element);
+    element = document.head.querySelector(`meta[${attribute}="${key}"]`);
+
+    if (!element) {
+      element = document.createElement('meta');
+      element.setAttribute(attribute, key);
+      document.head.appendChild(element);
+    }
+
+    element.setAttribute('data-seo-managed', 'true');
   }
 
   element.setAttribute('content', content);
-}
-
-function upsertLink(rel: string, href: string, extra?: Record<string, string>) {
-  const selectorParts = [`link[rel="${rel}"]`, extra?.hreflang ? `[hreflang="${extra.hreflang}"]` : ''];
-  let element = document.head.querySelector(selectorParts.join(''));
-
-  if (!element) {
-    element = document.createElement('link');
-    element.setAttribute('rel', rel);
-    document.head.appendChild(element);
-  }
-
-  element.setAttribute('href', href);
-
-  if (extra?.hreflang) {
-    element.setAttribute('hreflang', extra.hreflang);
-  } else {
-    element.removeAttribute('hreflang');
-  }
 }
 
 function removeManagedLinks(rel: string) {
@@ -57,10 +48,28 @@ function removeManagedLinks(rel: string) {
   });
 }
 
+function upsertManagedCanonical(href: string) {
+  removeManagedLinks('canonical');
+
+  const link = document.createElement('link');
+  link.setAttribute('rel', 'canonical');
+  link.setAttribute('href', href);
+  link.setAttribute('data-seo-managed', 'true');
+  document.head.appendChild(link);
+}
+
 function removeManagedJsonLd() {
   document.head.querySelectorAll('script[data-seo-jsonld="true"]').forEach((node) => {
     node.remove();
   });
+}
+
+function removeManagedOgLocaleAlternates() {
+  document.head
+    .querySelectorAll('meta[property="og:locale:alternate"][data-seo-managed="true"]')
+    .forEach((node) => {
+      node.remove();
+    });
 }
 
 function buildLocalizedUrl(path: string, locale: string) {
@@ -99,14 +108,31 @@ export function PageSeo({ pageId, noindex = false, jsonLd = [], breadcrumbs = []
     upsertMeta('property', 'og:description', copy.description);
     upsertMeta('property', 'og:url', canonicalUrl);
     upsertMeta('property', 'og:image', SEO_OG_IMAGE);
+    upsertMeta('property', 'og:image:width', String(SEO_OG_IMAGE_WIDTH));
+    upsertMeta('property', 'og:image:height', String(SEO_OG_IMAGE_HEIGHT));
+    upsertMeta('property', 'og:image:alt', SEO_OG_IMAGE_ALT);
     upsertMeta('property', 'og:site_name', 'TableWay');
+    upsertMeta('property', 'og:locale', SEO_OG_LOCALE_MAP[seoLocale]);
+
+    removeManagedOgLocaleAlternates();
+    for (const hreflangLocale of SEO_HREFLANG_LOCALES) {
+      if (hreflangLocale === seoLocale) {
+        continue;
+      }
+
+      const alternate = document.createElement('meta');
+      alternate.setAttribute('property', 'og:locale:alternate');
+      alternate.setAttribute('content', SEO_OG_LOCALE_MAP[hreflangLocale]);
+      alternate.setAttribute('data-seo-managed', 'true');
+      document.head.appendChild(alternate);
+    }
 
     upsertMeta('name', 'twitter:card', 'summary_large_image');
     upsertMeta('name', 'twitter:title', copy.title);
     upsertMeta('name', 'twitter:description', copy.description);
     upsertMeta('name', 'twitter:image', SEO_OG_IMAGE);
 
-    upsertLink('canonical', canonicalUrl);
+    upsertManagedCanonical(canonicalUrl);
 
     removeManagedLinks('alternate');
     for (const hreflangLocale of SEO_HREFLANG_LOCALES) {
@@ -151,6 +177,8 @@ export function PageSeo({ pageId, noindex = false, jsonLd = [], breadcrumbs = []
 
     return () => {
       removeManagedLinks('alternate');
+      removeManagedLinks('canonical');
+      removeManagedOgLocaleAlternates();
       removeManagedJsonLd();
     };
   }, [breadcrumbsSignature, canonicalUrl, copy.description, copy.title, jsonLdSignature, noindex, pageId, pathname, seoLocale, path]);
