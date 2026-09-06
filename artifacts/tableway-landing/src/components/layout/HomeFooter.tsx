@@ -1,9 +1,7 @@
 import { Link } from 'wouter';
 
-import { HOME_IMAGES, HOME_IMAGE_DIMENSIONS } from '@/components/home/homeImages';
+import { HOME_IMAGES } from '@/components/home/homeImages';
 import { SAAS_DOWNLOAD_URL } from '@/components/home/homeLinks';
-import { SEO_LANDING_CONTENT } from '@/content/seoLandingPages';
-import { SEO_LANDING_SLUGS } from '@/lib/seo/pageIds';
 import { useTranslation } from '@/i18n/LocaleProvider';
 import type { LandingTranslationKey } from '@/i18n/types';
 
@@ -14,17 +12,12 @@ type FooterLinkConfig = {
 };
 
 const PRODUCT_LINKS: FooterLinkConfig[] = [
-  { labelKey: 'footer.features', href: '/#features' },
-  { labelKey: 'footer.pricing', href: '/#pricing' },
+  { labelKey: 'footer.features', href: '#features' },
+  { labelKey: 'footer.pricing', href: '#pricing' },
   { labelKey: 'footer.compare', href: '/compare' },
   { labelKey: 'footer.downloadApp', href: SAAS_DOWNLOAD_URL, external: true },
   { labelKey: 'footer.howLinksWork', href: '/how-links-work' },
 ];
-
-const SOLUTIONS_LINKS = SEO_LANDING_SLUGS.map((slug) => ({
-  href: `/${slug}`,
-  label: SEO_LANDING_CONTENT[slug].title,
-}));
 
 const COMPANY_LINKS: FooterLinkConfig[] = [
   { labelKey: 'footer.about', href: '/about' },
@@ -74,13 +67,7 @@ export function HomeFooter() {
       <div className="home-container home-footer__grid">
         <div className="home-footer__brand">
           <a href="/" className="home-footer__logo-link">
-            <img
-              src={HOME_IMAGES.logo}
-              alt="TableWay"
-              width={HOME_IMAGE_DIMENSIONS.logo.width}
-              height={HOME_IMAGE_DIMENSIONS.logo.height}
-              className="home-footer__logo"
-            />
+            <img src={HOME_IMAGES.logo} alt="TableWay" className="home-footer__logo" />
           </a>
           <p className="home-footer__tagline">{t('footer.tagline')}</p>
         </div>
@@ -102,13 +89,6 @@ export function HomeFooter() {
             {COMPANY_LINKS.map((link) => (
               <li key={link.labelKey}>
                 <FooterLink href={link.href} label={t(link.labelKey)} />
-              </li>
-            ))}
-            {SOLUTIONS_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="home-footer__link">
-                  {link.label}
-                </Link>
               </li>
             ))}
           </ul>
