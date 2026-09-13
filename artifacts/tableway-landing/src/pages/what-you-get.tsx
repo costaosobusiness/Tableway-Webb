@@ -1,9 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
-import { SAAS_REGISTER_URL } from '@/components/home/homeLinks';
 import { MarketingSubpageShell } from '@/components/MarketingSubpageShell';
 import { PageSeo } from '@/components/seo/PageSeo';
 import { useTranslation } from '@/i18n/LocaleProvider';
+import {
+  getOfficialMarketPricingForLocale,
+  resolvePricingCountryFromLocale,
+} from '@/lib/officialMarketPricing';
+import { tablewaySaasRegisterUrl } from '@/lib/tablewayUrls';
 
 import '@/styles/what-you-get.css';
 
@@ -76,7 +80,15 @@ const PRICING_POINTS = [
 ] as const;
 
 export default function WhatYouGetPage() {
-  const { t } = useTranslation();
+  const { locale, t } = useTranslation();
+  const pricing = useMemo(() => getOfficialMarketPricingForLocale(locale), [locale]);
+  const country = resolvePricingCountryFromLocale(locale);
+  const monthlyPlan = useMemo(
+    () => pricing.plans.find((plan) => plan.interval === 'monthly'),
+    [pricing],
+  );
+  const registerUrl = tablewaySaasRegisterUrl('monthly', locale, country);
+  const billingPeriod = t('site.pricing.period.monthly');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -97,7 +109,7 @@ export default function WhatYouGetPage() {
             TableWay gives your restaurant the tools you need to manage reservations simply, while
             letting you configure the app around the way your restaurant actually works.
           </p>
-          <a href={SAAS_REGISTER_URL} className="tableway-btn-primary wyg-hero__cta">
+          <a href={registerUrl} className="tableway-btn-primary wyg-hero__cta">
             {t('common.startFreeTrial30')}
           </a>
         </div>
@@ -106,10 +118,16 @@ export default function WhatYouGetPage() {
       <div className="subpage-body">
         <div className="subpage-content">
           <section className="wyg-section">
+            <p className="wyg-intro">
+              TableWay is a complete restaurant reservation system and booking software for
+              independent restaurants. Every feature below comes included in your subscription — from
+              online restaurant reservations and restaurant table management to your guest database
+              and reservation calendar.
+            </p>
             <div className="wyg-features">
               {FEATURES.map((feature) => (
                 <article key={feature.title} className="wyg-feature-card">
-                  <h3 className="wyg-feature-card__title">{feature.title}</h3>
+                  <h2 className="wyg-feature-card__title">{feature.title}</h2>
                   <p className="wyg-feature-card__text">{feature.description}</p>
                 </article>
               ))}
@@ -133,14 +151,15 @@ export default function WhatYouGetPage() {
             </h2>
             <div className="wyg-pricing__wrap">
               <article className="home-rate wyg-pricing__card">
-                <p className="home-rate__price">€29</p>
-                <p className="home-rate__period">/ month</p>
+                <p className="home-rate__price">{monthlyPlan?.priceLabel ?? '—'}</p>
+                <p className="home-rate__period">{billingPeriod}</p>
+                {pricing.currency ? <p className="home-rate__currency">{pricing.currency}</p> : null}
                 <ul className="home-rate__list">
                   {PRICING_POINTS.map((point) => (
                     <li key={point}>{point}</li>
                   ))}
                 </ul>
-                <a href={SAAS_REGISTER_URL} className="tableway-btn home-rate__cta">
+                <a href={registerUrl} className="tableway-btn home-rate__cta">
                   {t('common.startFreeTrial30')}
                 </a>
               </article>

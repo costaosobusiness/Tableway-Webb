@@ -43,9 +43,9 @@ const EN_GB: Record<SeoPageId, PageSeoCopy> = {
       'Compare TableWay with traditional restaurant booking systems. See transparent pricing, included features, and annual savings with zero commission.',
   },
   whatYouGet: {
-    title: 'What You Get | TableWay Restaurant Reservation Software',
+    title: 'What You Get | TableWay Restaurant Reservation System',
     description:
-      'See everything included with TableWay restaurant reservation software, including online reservations, booking pages, guest management, calendars, table settings and more.',
+      'See everything included with TableWay: online reservations, table settings, guest history, calendar views, staff modes, 7 languages, AI help and more.',
   },
   howLinksWork: {
     title: 'How TableWay Booking Links Work',
