@@ -1,9 +1,44 @@
 import { Link } from 'wouter';
+import {
+  FaFacebook,
+  FaInstagram,
+  FaThreads,
+  FaTiktok,
+  FaYoutube,
+} from 'react-icons/fa6';
 
 import { HOME_IMAGES } from '@/components/home/homeImages';
 import { SAAS_DOWNLOAD_URL } from '@/components/home/homeLinks';
 import { useTranslation } from '@/i18n/LocaleProvider';
 import type { LandingTranslationKey } from '@/i18n/types';
+
+import './HomeFooter.css';
+
+type SocialLink = {
+  href: string;
+  label: string;
+  Icon: typeof FaTiktok;
+};
+
+const SOCIAL_LINKS: SocialLink[] = [
+  { href: 'https://www.tiktok.com/@tableway.app', label: 'TableWay on TikTok', Icon: FaTiktok },
+  {
+    href: 'https://www.instagram.com/tableway.app',
+    label: 'TableWay on Instagram',
+    Icon: FaInstagram,
+  },
+  { href: 'https://www.threads.com/@tableway.app', label: 'TableWay on Threads', Icon: FaThreads },
+  {
+    href: 'https://www.facebook.com/share/19ZFRxovft/',
+    label: 'TableWay on Facebook',
+    Icon: FaFacebook,
+  },
+  {
+    href: 'https://youtube.com/@tableway-app',
+    label: 'TableWay on YouTube',
+    Icon: FaYoutube,
+  },
+];
 
 type FooterLinkConfig = {
   labelKey: LandingTranslationKey;
@@ -70,6 +105,24 @@ export function HomeFooter() {
             <img src={HOME_IMAGES.logo} alt="TableWay" className="home-footer__logo" />
           </a>
           <p className="home-footer__tagline">{t('footer.tagline')}</p>
+          <div className="home-footer__social">
+            <p className="home-footer__heading">Follow TableWay</p>
+            <ul className="home-footer__social-icons">
+              {SOCIAL_LINKS.map(({ href, label, Icon }) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    className="home-footer__social-link"
+                    aria-label={label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon aria-hidden />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <nav className="home-footer__col" aria-label={t('footer.product')}>
