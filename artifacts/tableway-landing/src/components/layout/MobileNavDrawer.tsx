@@ -17,7 +17,6 @@ type DrawerLink = {
 };
 
 const PRIMARY_DRAWER_LINKS: DrawerLink[] = [
-  { labelKey: 'nav.features', href: '/#features' },
   { labelKey: 'nav.whatYouGet', href: '/what-you-get' },
   { labelKey: 'nav.pricing', href: '/#pricing' },
   { labelKey: 'nav.compare', href: '/compare' },
@@ -203,7 +202,7 @@ export function MobileNavDrawer({ open, onClose }: MobileNavDrawerProps) {
 
           <hr className="mobile-nav-drawer__divider" aria-hidden="true" />
 
-          <nav className="mobile-nav-drawer__links" aria-label={t('nav.features')}>
+          <nav className="mobile-nav-drawer__links" aria-label="Main navigation">
             {PRIMARY_DRAWER_LINKS.map(renderDrawerLink)}
           </nav>
 
