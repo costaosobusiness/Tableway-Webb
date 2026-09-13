@@ -3,6 +3,7 @@ import { MARKETING_SITE_SV } from '@/i18n/marketingSite.sv';
 
 export const sv: LandingTranslations = {
   'nav.features': 'Funktioner',
+  'nav.whatYouGet': 'Det du får',
   'nav.pricing': 'Priser',
   'nav.howItWorks': 'Så fungerar det',
   'nav.downloadApp': 'Ladda ner appen',

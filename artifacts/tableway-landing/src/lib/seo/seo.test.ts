@@ -90,6 +90,8 @@ describe('technical SEO configuration', () => {
     for (const slug of SEO_LANDING_SLUGS) {
       expect(locations).toContain(`${SEO_SITE_URL}/${slug}`);
     }
+
+    expect(locations).toContain(`${SEO_SITE_URL}${SEO_PAGE_PATHS.whatYouGet}`);
   });
 
   it('uses the production OG image URL', () => {

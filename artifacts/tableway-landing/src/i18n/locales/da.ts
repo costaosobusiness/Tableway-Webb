@@ -3,6 +3,7 @@ import { MARKETING_SITE_DA } from '@/i18n/marketingSite.da';
 
 export const da: LandingTranslations = {
   'nav.features': 'Funktioner',
+  'nav.whatYouGet': 'Det du får',
   'nav.pricing': 'Priser',
   'nav.howItWorks': 'Sådan fungerer det',
   'nav.downloadApp': 'Download appen',

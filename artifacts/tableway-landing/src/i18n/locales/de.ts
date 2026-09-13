@@ -3,6 +3,7 @@ import { MARKETING_SITE_DE } from '@/i18n/marketingSite.de';
 
 export const de: LandingTranslations = {
   'nav.features': 'Funktionen',
+  'nav.whatYouGet': 'Was Sie bekommen',
   'nav.pricing': 'Preise',
   'nav.howItWorks': 'So funktioniert es',
   'nav.downloadApp': 'App herunterladen',

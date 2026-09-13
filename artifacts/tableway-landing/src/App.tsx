@@ -10,6 +10,7 @@ import AboutPage from '@/pages/about';
 import FaqPage from '@/pages/faq';
 import HowLinksWorkPage from '@/pages/how-links-work';
 import ComparePage from '@/pages/compare';
+import WhatYouGetPage from '@/pages/what-you-get';
 import DownloadRedirectPage from '@/pages/download';
 import SeoLandingPage from '@/pages/seo-landing';
 import { Route, Switch, Router as WouterRouter } from 'wouter';
@@ -39,6 +40,7 @@ function Router() {
       <Route path="/faq" component={FaqPage} />
       <Route path="/how-links-work" component={HowLinksWorkPage} />
       <Route path="/compare" component={ComparePage} />
+      <Route path="/what-you-get" component={WhatYouGetPage} />
       <Route path="/download" component={DownloadRedirectPage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/restaurant-booking-system" component={SEO_LANDING_ROUTES['restaurant-booking-system']} />

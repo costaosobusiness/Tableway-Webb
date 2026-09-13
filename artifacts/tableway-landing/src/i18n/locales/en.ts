@@ -3,6 +3,7 @@ import { MARKETING_SITE_EN } from '@/i18n/marketingSite.en';
 
 export const en: LandingTranslations = {
   'nav.features': 'Features',
+  'nav.whatYouGet': 'What You Get',
   'nav.pricing': 'Pricing',
   'nav.howItWorks': 'How it works',
   'nav.downloadApp': 'Download App',

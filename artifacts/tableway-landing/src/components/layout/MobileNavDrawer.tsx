@@ -18,6 +18,7 @@ type DrawerLink = {
 
 const PRIMARY_DRAWER_LINKS: DrawerLink[] = [
   { labelKey: 'nav.features', href: '/#features' },
+  { labelKey: 'nav.whatYouGet', href: '/what-you-get' },
   { labelKey: 'nav.pricing', href: '/#pricing' },
   { labelKey: 'nav.compare', href: '/compare' },
   { labelKey: 'nav.howItWorks', href: '/#how-it-works' },

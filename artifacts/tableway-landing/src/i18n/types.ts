@@ -27,6 +27,7 @@ export const NAVBAR_LOCALES = [
 export type LandingTranslationKey =
   | MarketingSiteKey
   | 'nav.features'
+  | 'nav.whatYouGet'
   | 'nav.pricing'
   | 'nav.howItWorks'
   | 'nav.downloadApp'
@@ -337,6 +338,7 @@ export type LandingTranslations = Record<LandingTranslationKey, string>;
 
 const LEGACY_TRANSLATION_KEYS = [
   'nav.features',
+  'nav.whatYouGet',
   'nav.pricing',
   'nav.howItWorks',
   'nav.downloadApp',

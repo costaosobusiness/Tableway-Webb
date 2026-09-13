@@ -3,6 +3,7 @@ import { MARKETING_SITE_NB } from '@/i18n/marketingSite.nb';
 
 export const nb: LandingTranslations = {
   'nav.features': 'Funksjoner',
+  'nav.whatYouGet': 'Det du får',
   'nav.pricing': 'Priser',
   'nav.howItWorks': 'Slik fungerer det',
   'nav.downloadApp': 'Last ned appen',

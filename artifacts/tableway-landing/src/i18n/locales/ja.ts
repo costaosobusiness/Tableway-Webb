@@ -3,6 +3,7 @@ import { MARKETING_SITE_JA } from '@/i18n/marketingSite.ja';
 
 export const ja: LandingTranslations = {
   'nav.features': '機能',
+  'nav.whatYouGet': '含まれる機能',
   'nav.pricing': '料金',
   'nav.howItWorks': '使い方',
   'nav.downloadApp': 'アプリをダウンロード',

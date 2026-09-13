@@ -3,6 +3,7 @@ import type { LandingTranslations } from '@/i18n/types';
 
 export const ar: LandingTranslations = {
   'nav.features': 'الميزات',
+  'nav.whatYouGet': 'ما الذي تحصل عليه',
   'nav.pricing': 'الأسعار',
   'nav.howItWorks': 'كيف يعمل',
   'nav.downloadApp': 'تحميل التطبيق',
