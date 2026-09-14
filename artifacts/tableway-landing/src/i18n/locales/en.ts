@@ -1,5 +1,6 @@
 import type { LandingTranslations } from '@/i18n/types';
 import { MARKETING_SITE_EN } from '@/i18n/marketingSite.en';
+import { WHAT_YOU_GET_EN } from '@/i18n/whatYouGet.en';
 
 export const en: LandingTranslations = {
   'nav.features': 'Features',
@@ -316,5 +317,6 @@ export const en: LandingTranslations = {
   'terms.s9.li4': "Obtaining any consents or legal bases required before contacting guests or sending communications",
   'terms.s9.li5': "Staff access controls, Service Mode PIN management, and activity performed by users you authorise",
   'terms.s9.title': "9. Customer Responsibilities",
+  ...WHAT_YOU_GET_EN,
   ...MARKETING_SITE_EN,
 };

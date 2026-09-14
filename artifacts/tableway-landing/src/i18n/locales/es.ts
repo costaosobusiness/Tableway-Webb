@@ -1,5 +1,6 @@
 import type { LandingTranslations } from '@/i18n/types';
 import { MARKETING_SITE_ES } from '@/i18n/marketingSite.es';
+import { WHAT_YOU_GET_ES } from '@/i18n/whatYouGet.es';
 
 export const es: LandingTranslations = {
   'nav.features': 'Funciones',
@@ -316,5 +317,6 @@ export const es: LandingTranslations = {
   'terms.s9.li4': "Obtener los consentimientos o bases legales necesarios antes de contactar a huéspedes o enviar comunicaciones",
   'terms.s9.li5': "Controles de acceso del personal, gestión del PIN del Modo Servicio y actividad realizada por usuarios que usted autorice",
   'terms.s9.title': "9. Responsabilidades del cliente",
+  ...WHAT_YOU_GET_ES,
   ...MARKETING_SITE_ES,
 };

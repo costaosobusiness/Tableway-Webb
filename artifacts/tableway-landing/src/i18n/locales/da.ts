@@ -1,5 +1,6 @@
 import type { LandingTranslations } from '@/i18n/types';
 import { MARKETING_SITE_DA } from '@/i18n/marketingSite.da';
+import { WHAT_YOU_GET_DA } from '@/i18n/whatYouGet.da';
 
 export const da: LandingTranslations = {
   'nav.features': 'Funktioner',
@@ -316,5 +317,6 @@ export const da: LandingTranslations = {
   'terms.s9.li4': "At indhente nødvendige samtykker eller retsgrundlag, før du kontakter gæster eller sender kommunikation",
   'terms.s9.li5': "Personaleadgangskontroller, Service Mode PIN-administration og aktivitet udført af brugere, du autoriserer",
   'terms.s9.title': "9. Kundeansvar",
+  ...WHAT_YOU_GET_DA,
   ...MARKETING_SITE_DA,
 };

@@ -1,5 +1,6 @@
 import { MARKETING_SITE_AR } from '@/i18n/marketingSite.ar';
 import type { LandingTranslations } from '@/i18n/types';
+import { WHAT_YOU_GET_AR } from '@/i18n/whatYouGet.ar';
 
 export const ar: LandingTranslations = {
   'nav.features': 'الميزات',
@@ -397,5 +398,6 @@ export const ar: LandingTranslations = {
   'terms.s9.li5':
     'ضوابط وصول الموظفين، وإدارة PIN لوضع الخدمة، والنشاط الذي ينفذه المستخدمون الذين تفوّضهم',
   'terms.s9.title': '9. مسؤوليات العميل',
+  ...WHAT_YOU_GET_AR,
   ...MARKETING_SITE_AR,
 };

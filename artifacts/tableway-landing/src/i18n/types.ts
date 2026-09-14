@@ -332,7 +332,48 @@ export type LandingTranslationKey =
   | 'terms.s9.li3'
   | 'terms.s9.li4'
   | 'terms.s9.li5'
-  |   'terms.s9.title';
+  | 'terms.s9.title'
+  | 'whatYouGet.hero.eyebrow'
+  | 'whatYouGet.hero.title'
+  | 'whatYouGet.hero.subtitle'
+  | 'whatYouGet.intro'
+  | 'whatYouGet.feature.1.title'
+  | 'whatYouGet.feature.1.desc'
+  | 'whatYouGet.feature.2.title'
+  | 'whatYouGet.feature.2.desc'
+  | 'whatYouGet.feature.3.title'
+  | 'whatYouGet.feature.3.desc'
+  | 'whatYouGet.feature.4.title'
+  | 'whatYouGet.feature.4.desc'
+  | 'whatYouGet.feature.5.title'
+  | 'whatYouGet.feature.5.desc'
+  | 'whatYouGet.feature.6.title'
+  | 'whatYouGet.feature.6.desc'
+  | 'whatYouGet.feature.7.title'
+  | 'whatYouGet.feature.7.desc'
+  | 'whatYouGet.feature.8.title'
+  | 'whatYouGet.feature.8.desc'
+  | 'whatYouGet.feature.9.title'
+  | 'whatYouGet.feature.9.desc'
+  | 'whatYouGet.feature.10.title'
+  | 'whatYouGet.feature.10.desc'
+  | 'whatYouGet.feature.11.title'
+  | 'whatYouGet.feature.11.desc'
+  | 'whatYouGet.feature.12.title'
+  | 'whatYouGet.feature.12.desc'
+  | 'whatYouGet.feature.13.title'
+  | 'whatYouGet.feature.13.desc'
+  | 'whatYouGet.feature.14.title'
+  | 'whatYouGet.feature.14.desc'
+  | 'whatYouGet.featured.title'
+  | 'whatYouGet.featured.lede'
+  | 'whatYouGet.featured.text'
+  | 'whatYouGet.pricing.title'
+  | 'whatYouGet.pricing.point.1'
+  | 'whatYouGet.pricing.point.2'
+  | 'whatYouGet.pricing.point.3'
+  | 'whatYouGet.pricing.point.4'
+  | 'whatYouGet.pricing.point.5';
 
 export type LandingTranslations = Record<LandingTranslationKey, string>;
 
@@ -460,6 +501,47 @@ const LEGACY_TRANSLATION_KEYS = [
   'privacy.lastUpdated',
   'terms.title',
   'terms.lastUpdated',
+  'whatYouGet.hero.eyebrow',
+  'whatYouGet.hero.title',
+  'whatYouGet.hero.subtitle',
+  'whatYouGet.intro',
+  'whatYouGet.feature.1.title',
+  'whatYouGet.feature.1.desc',
+  'whatYouGet.feature.2.title',
+  'whatYouGet.feature.2.desc',
+  'whatYouGet.feature.3.title',
+  'whatYouGet.feature.3.desc',
+  'whatYouGet.feature.4.title',
+  'whatYouGet.feature.4.desc',
+  'whatYouGet.feature.5.title',
+  'whatYouGet.feature.5.desc',
+  'whatYouGet.feature.6.title',
+  'whatYouGet.feature.6.desc',
+  'whatYouGet.feature.7.title',
+  'whatYouGet.feature.7.desc',
+  'whatYouGet.feature.8.title',
+  'whatYouGet.feature.8.desc',
+  'whatYouGet.feature.9.title',
+  'whatYouGet.feature.9.desc',
+  'whatYouGet.feature.10.title',
+  'whatYouGet.feature.10.desc',
+  'whatYouGet.feature.11.title',
+  'whatYouGet.feature.11.desc',
+  'whatYouGet.feature.12.title',
+  'whatYouGet.feature.12.desc',
+  'whatYouGet.feature.13.title',
+  'whatYouGet.feature.13.desc',
+  'whatYouGet.feature.14.title',
+  'whatYouGet.feature.14.desc',
+  'whatYouGet.featured.title',
+  'whatYouGet.featured.lede',
+  'whatYouGet.featured.text',
+  'whatYouGet.pricing.title',
+  'whatYouGet.pricing.point.1',
+  'whatYouGet.pricing.point.2',
+  'whatYouGet.pricing.point.3',
+  'whatYouGet.pricing.point.4',
+  'whatYouGet.pricing.point.5',
 ] as const satisfies readonly LandingTranslationKey[];
 
 export const LANDING_TRANSLATION_KEYS: LandingTranslationKey[] = [

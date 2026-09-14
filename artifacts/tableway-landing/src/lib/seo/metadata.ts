@@ -118,6 +118,11 @@ const ES: Partial<Record<SeoPageId, PageSeoCopy>> = {
     description:
       'Compara TableWay con otros sistemas de reservas. Precios transparentes, funciones incluidas y ahorro anual sin comisión.',
   },
+  whatYouGet: {
+    title: 'Lo que obtienes | Sistema de reservas TableWay',
+    description:
+      'Descubre todo lo incluido con TableWay: reservas online, configuración de mesas, historial de clientes, vistas de calendario, modos de personal, 7 idiomas, ayuda con IA y más.',
+  },
 };
 
 const DE: Partial<Record<SeoPageId, PageSeoCopy>> = {
@@ -145,6 +150,11 @@ const DE: Partial<Record<SeoPageId, PageSeoCopy>> = {
     title: 'TableWay vergleichen — Reservierungspreise',
     description:
       'Vergleichen Sie TableWay mit traditionellen Reservierungssystemen. Transparente Preise, enthaltene Funktionen und jährliche Ersparnis.',
+  },
+  whatYouGet: {
+    title: 'Was Sie bekommen | TableWay Reservierungssystem',
+    description:
+      'Sehen Sie alles, was in TableWay enthalten ist: Online-Reservierungen, Tischeinstellungen, Gästeverlauf, Kalenderansichten, Personalmodi, 7 Sprachen, KI-Hilfe und mehr.',
   },
 };
 
@@ -174,6 +184,11 @@ const SV: Partial<Record<SeoPageId, PageSeoCopy>> = {
     description:
       'Jämför TableWay med traditionella bokningssystem. Transparenta priser, inkluderade funktioner och årlig besparing utan provision.',
   },
+  whatYouGet: {
+    title: 'Det du får | TableWay bokningssystem',
+    description:
+      'Se allt som ingår i TableWay: onlinebokningar, bordsinställningar, gästhistorik, kalendervyer, personallägen, 7 språk, AI-hjälp och mer.',
+  },
 };
 
 const JA: Partial<Record<SeoPageId, PageSeoCopy>> = {
@@ -202,6 +217,43 @@ const JA: Partial<Record<SeoPageId, PageSeoCopy>> = {
     description:
       'TableWayを従来の予約システムと比較。透明な料金、含まれる機能、手数料なしでの年間コスト削減。',
   },
+  whatYouGet: {
+    title: '含まれる機能 | TableWay レストラン予約システム',
+    description:
+      'TableWayに含まれるすべての機能：オンライン予約、テーブル設定、ゲスト履歴、カレンダー表示、スタッフモード、7言語、AIヘルプなど。',
+  },
+};
+
+const FR: Partial<Record<SeoPageId, PageSeoCopy>> = {
+  whatYouGet: {
+    title: 'Ce que vous obtenez | Système de réservation TableWay',
+    description:
+      'Découvrez tout ce qui est inclus avec TableWay : réservations en ligne, paramètres de tables, historique des clients, vues calendrier, modes personnel, 7 langues, aide IA et plus encore.',
+  },
+};
+
+const NB: Partial<Record<SeoPageId, PageSeoCopy>> = {
+  whatYouGet: {
+    title: 'Det du får | TableWay reservasjonssystem',
+    description:
+      'Se alt som er inkludert i TableWay: online reservasjoner, bordinnstillinger, gjestehistorikk, kalenderoversikter, personalmodus, 7 språk, AI-hjelp og mer.',
+  },
+};
+
+const DA: Partial<Record<SeoPageId, PageSeoCopy>> = {
+  whatYouGet: {
+    title: 'Det du får | TableWay reservationssystem',
+    description:
+      'Se alt, der er inkluderet i TableWay: online reservationer, bordindstillinger, gæstehistorik, kalenderoversigter, personaletilstande, 7 sprog, AI-hjælp og mere.',
+  },
+};
+
+const AR: Partial<Record<SeoPageId, PageSeoCopy>> = {
+  whatYouGet: {
+    title: 'ما الذي تحصل عليه | نظام حجوزات TableWay للمطاعم',
+    description:
+      'اطلع على كل ما يتضمنه TableWay: الحجوزات عبر الإنترنت، إعدادات الطاولات، سجل الضيوف، عروض التقويم، أوضاع الموظفين، 7 لغات، مساعدة الذكاء الاصطناعي والمزيد.',
+  },
 };
 
 export const SEO_METADATA: Record<SeoHreflangLocale, Record<SeoPageId, PageSeoCopy>> = {
@@ -209,12 +261,12 @@ export const SEO_METADATA: Record<SeoHreflangLocale, Record<SeoPageId, PageSeoCo
   'en-us': EN_GB,
   es: { ...EN_GB, ...ES },
   de: { ...EN_GB, ...DE },
-  fr: EN_GB,
+  fr: { ...EN_GB, ...FR },
   sv: { ...EN_GB, ...SV },
-  nb: EN_GB,
-  da: EN_GB,
+  nb: { ...EN_GB, ...NB },
+  da: { ...EN_GB, ...DA },
   ja: { ...EN_GB, ...JA },
-  ar: EN_GB,
+  ar: { ...EN_GB, ...AR },
 };
 
 export function getPageSeoCopy(pageId: SeoPageId, locale: SeoHreflangLocale): PageSeoCopy {

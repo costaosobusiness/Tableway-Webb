@@ -1,5 +1,6 @@
 import type { LandingTranslations } from '@/i18n/types';
 import { MARKETING_SITE_FR } from '@/i18n/marketingSite.fr';
+import { WHAT_YOU_GET_FR } from '@/i18n/whatYouGet.fr';
 
 export const fr: LandingTranslations = {
   'nav.features': 'Fonctionnalités',
@@ -316,5 +317,6 @@ export const fr: LandingTranslations = {
   'terms.s9.li4': "L'obtention des consentements ou bases légales requis avant de contacter les clients ou d'envoyer des communications",
   'terms.s9.li5': "Les contrôles d'accès du personnel, la gestion du PIN Mode Service et l'activité des utilisateurs que vous autorisez",
   'terms.s9.title': "9. Responsabilités du client",
+  ...WHAT_YOU_GET_FR,
   ...MARKETING_SITE_FR,
 };

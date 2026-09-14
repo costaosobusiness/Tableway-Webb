@@ -3,6 +3,7 @@ import { useEffect, useMemo } from 'react';
 import { MarketingSubpageShell } from '@/components/MarketingSubpageShell';
 import { PageSeo } from '@/components/seo/PageSeo';
 import { useTranslation } from '@/i18n/LocaleProvider';
+import type { LandingTranslationKey } from '@/i18n/types';
 import {
   getOfficialMarketPricingForLocale,
   resolvePricingCountryFromLocale,
@@ -11,73 +12,20 @@ import { tablewaySaasRegisterUrl } from '@/lib/tablewayUrls';
 
 import '@/styles/what-you-get.css';
 
-const FEATURES = [
-  {
-    title: 'ONLINE RESERVATIONS',
-    description: 'Accept reservations 24/7 through your own TableWay booking page.',
-  },
-  {
-    title: 'CUSTOM BOOKING PAGE',
-    description: 'Customize your booking page to fit your restaurant.',
-  },
-  {
-    title: 'TABLE SETTINGS',
-    description: 'Set up your tables and seating capacity to match the way your restaurant works.',
-  },
-  {
-    title: 'OPENING HOURS & SERVICES',
-    description:
-      'Set different service hours and configure your reservation settings around your daily operation.',
-  },
-  {
-    title: 'HOLIDAYS & CLOSED DAYS',
-    description: "Set holidays and closed days so guests can't book when you're not open.",
-  },
-  {
-    title: 'DAY, WEEK & MONTH VIEW',
-    description: 'View and manage your reservations with Day, Week or Month calendar views.',
-  },
-  {
-    title: 'GUEST DATABASE',
-    description: 'Keep your guest information organized and easy to access.',
-  },
-  {
-    title: 'GUEST HISTORY & SEARCH',
-    description: 'Quickly search for guests and see their previous reservation history.',
-  },
-  {
-    title: '7 LANGUAGES',
-    description: 'Servers can choose between 7 languages for an easier work environment.',
-  },
-  {
-    title: 'OWNER / MANAGER & SERVER MODE',
-    description: 'Use the app according to your role, with separate Owner/Manager and Server modes.',
-  },
-  {
-    title: 'TABLE NUMBERS',
-    description: 'Enable table numbers and assign a specific table to a reservation.',
-  },
-  {
-    title: 'SERVER ASSIGNMENT',
-    description: 'Enable server assignment and assign a server to a specific reservation or party.',
-  },
-  {
-    title: '24/7 AI HELP',
-    description: 'Get help inside the app whenever you need it, with 24/7 AI assistance.',
-  },
-  {
-    title: 'INVOICE DOWNLOADS',
-    description: 'Download your invoices whenever you need them for easy bookkeeping.',
-  },
-] as const;
+const FEATURE_IDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] as const;
+const PRICING_POINT_IDS = [1, 2, 3, 4, 5] as const;
 
-const PRICING_POINTS = [
-  '0% Commission',
-  'Unlimited Reservations',
-  'No Fees Per Reservation',
-  'No Add-ons',
-  '30 Days Free Trial',
-] as const;
+function featureTitleKey(id: (typeof FEATURE_IDS)[number]): LandingTranslationKey {
+  return `whatYouGet.feature.${id}.title`;
+}
+
+function featureDescKey(id: (typeof FEATURE_IDS)[number]): LandingTranslationKey {
+  return `whatYouGet.feature.${id}.desc`;
+}
+
+function pricingPointKey(id: (typeof PRICING_POINT_IDS)[number]): LandingTranslationKey {
+  return `whatYouGet.pricing.point.${id}`;
+}
 
 export default function WhatYouGetPage() {
   const { locale, t } = useTranslation();
@@ -98,17 +46,14 @@ export default function WhatYouGetPage() {
     <MarketingSubpageShell>
       <PageSeo
         pageId="whatYouGet"
-        breadcrumbs={[{ name: 'What You Get', path: '/what-you-get' }]}
+        breadcrumbs={[{ name: t('nav.whatYouGet'), path: '/what-you-get' }]}
       />
 
       <section className="subpage-hero wyg-hero">
         <div className="home-container subpage-hero__inner">
-          <p className="subpage-hero__eyebrow">What You Get</p>
-          <h1 className="subpage-hero__title">EVERYTHING YOU NEED. NOTHING EXTRA.</h1>
-          <p className="subpage-hero__subtitle">
-            TableWay gives your restaurant the tools you need to manage reservations simply, while
-            letting you configure the app around the way your restaurant actually works.
-          </p>
+          <p className="subpage-hero__eyebrow">{t('whatYouGet.hero.eyebrow')}</p>
+          <h1 className="subpage-hero__title">{t('whatYouGet.hero.title')}</h1>
+          <p className="subpage-hero__subtitle">{t('whatYouGet.hero.subtitle')}</p>
           <a href={registerUrl} className="tableway-btn-primary wyg-hero__cta">
             {t('common.startFreeTrial30')}
           </a>
@@ -118,17 +63,12 @@ export default function WhatYouGetPage() {
       <div className="subpage-body">
         <div className="subpage-content">
           <section className="wyg-section">
-            <p className="wyg-intro">
-              TableWay is a complete restaurant reservation system and booking software for
-              independent restaurants. Every feature below comes included in your subscription — from
-              online restaurant reservations and restaurant table management to your guest database
-              and reservation calendar.
-            </p>
+            <p className="wyg-intro">{t('whatYouGet.intro')}</p>
             <div className="wyg-features">
-              {FEATURES.map((feature) => (
-                <article key={feature.title} className="wyg-feature-card">
-                  <h2 className="wyg-feature-card__title">{feature.title}</h2>
-                  <p className="wyg-feature-card__text">{feature.description}</p>
+              {FEATURE_IDS.map((id) => (
+                <article key={id} className="wyg-feature-card">
+                  <h2 className="wyg-feature-card__title">{t(featureTitleKey(id))}</h2>
+                  <p className="wyg-feature-card__text">{t(featureDescKey(id))}</p>
                 </article>
               ))}
             </div>
@@ -136,18 +76,15 @@ export default function WhatYouGetPage() {
 
           <section className="wyg-featured subpage-card" aria-labelledby="wyg-featured-heading">
             <h2 id="wyg-featured-heading" className="wyg-featured__title">
-              YOUR RESTAURANT. YOUR SETTINGS.
+              {t('whatYouGet.featured.title')}
             </h2>
-            <p className="wyg-featured__lede">TableWay adapts to the way your restaurant works.</p>
-            <p className="wyg-featured__text">
-              Set your tables, services, opening hours, holidays and more — and make the app work for
-              you.
-            </p>
+            <p className="wyg-featured__lede">{t('whatYouGet.featured.lede')}</p>
+            <p className="wyg-featured__text">{t('whatYouGet.featured.text')}</p>
           </section>
 
           <section className="wyg-section wyg-pricing" aria-labelledby="wyg-pricing-heading">
             <h2 id="wyg-pricing-heading" className="home-display wyg-section__heading">
-              EVERYTHING INCLUDED. NO ADD-ONS.
+              {t('whatYouGet.pricing.title')}
             </h2>
             <div className="wyg-pricing__wrap">
               <article className="home-rate wyg-pricing__card">
@@ -155,8 +92,8 @@ export default function WhatYouGetPage() {
                 <p className="home-rate__period">{billingPeriod}</p>
                 {pricing.currency ? <p className="home-rate__currency">{pricing.currency}</p> : null}
                 <ul className="home-rate__list">
-                  {PRICING_POINTS.map((point) => (
-                    <li key={point}>{point}</li>
+                  {PRICING_POINT_IDS.map((id) => (
+                    <li key={id}>{t(pricingPointKey(id))}</li>
                   ))}
                 </ul>
                 <a href={registerUrl} className="tableway-btn home-rate__cta">

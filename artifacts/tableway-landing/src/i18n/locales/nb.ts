@@ -1,5 +1,6 @@
 import type { LandingTranslations } from '@/i18n/types';
 import { MARKETING_SITE_NB } from '@/i18n/marketingSite.nb';
+import { WHAT_YOU_GET_NB } from '@/i18n/whatYouGet.nb';
 
 export const nb: LandingTranslations = {
   'nav.features': 'Funksjoner',
@@ -316,5 +317,6 @@ export const nb: LandingTranslations = {
   'terms.s9.li4': "Å innhente nødvendige samtykker eller rettslige grunnlag før kontakt med gjester eller sending av kommunikasjon",
   'terms.s9.li5': "Personaltilgangskontroller, Service Mode PIN-administrasjon og aktivitet utført av brukere du autoriserer",
   'terms.s9.title': "9. Kundeansvar",
+  ...WHAT_YOU_GET_NB,
   ...MARKETING_SITE_NB,
 };

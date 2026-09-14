@@ -1,5 +1,6 @@
 import type { LandingTranslations } from '@/i18n/types';
 import { MARKETING_SITE_SV } from '@/i18n/marketingSite.sv';
+import { WHAT_YOU_GET_SV } from '@/i18n/whatYouGet.sv';
 
 export const sv: LandingTranslations = {
   'nav.features': 'Funktioner',
@@ -316,5 +317,6 @@ export const sv: LandingTranslations = {
   'terms.s9.li4': "Att inhämta nödvändiga samtycken eller rättsliga grunder före kontakt med gäster eller sändning av kommunikation",
   'terms.s9.li5': "Personalåtkomstkontroller, hantering av Service Mode PIN och aktivitet som utförs av användare du auktoriserar",
   'terms.s9.title': "9. Kundansvar",
+  ...WHAT_YOU_GET_SV,
   ...MARKETING_SITE_SV,
 };

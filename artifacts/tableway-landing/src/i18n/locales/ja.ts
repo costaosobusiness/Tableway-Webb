@@ -1,5 +1,6 @@
 import type { LandingTranslations } from '@/i18n/types';
 import { MARKETING_SITE_JA } from '@/i18n/marketingSite.ja';
+import { WHAT_YOU_GET_JA } from '@/i18n/whatYouGet.ja';
 
 export const ja: LandingTranslations = {
   'nav.features': '機能',
@@ -316,5 +317,6 @@ export const ja: LandingTranslations = {
   'terms.s9.li4': "ゲストへの連絡または通信の送信前に必要な同意または法的根拠の取得",
   'terms.s9.li5': "スタッフアクセス制御、Service Mode PIN管理、およびお客様が承認したユーザーによるアクティビティ",
   'terms.s9.title': "9. お客様の責任",
+  ...WHAT_YOU_GET_JA,
   ...MARKETING_SITE_JA,
 };

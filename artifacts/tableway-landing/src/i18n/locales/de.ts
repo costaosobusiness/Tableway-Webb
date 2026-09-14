@@ -1,5 +1,6 @@
 import type { LandingTranslations } from '@/i18n/types';
 import { MARKETING_SITE_DE } from '@/i18n/marketingSite.de';
+import { WHAT_YOU_GET_DE } from '@/i18n/whatYouGet.de';
 
 export const de: LandingTranslations = {
   'nav.features': 'Funktionen',
@@ -316,5 +317,6 @@ export const de: LandingTranslations = {
   'terms.s9.li4': "Einholung erforderlicher Einwilligungen oder Rechtsgrundlagen vor der Kontaktaufnahme mit Gästen oder dem Versand von Mitteilungen",
   'terms.s9.li5': "Mitarbeiter-Zugangskontrollen, Service-Modus-PIN-Verwaltung und Aktivitäten von von Ihnen autorisierten Nutzern",
   'terms.s9.title': "9. Kundenpflichten",
+  ...WHAT_YOU_GET_DE,
   ...MARKETING_SITE_DE,
 };
