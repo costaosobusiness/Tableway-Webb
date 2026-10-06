@@ -7,7 +7,7 @@ export type ContactFormPayload = {
 };
 
 /** Server-side inbox — never rendered in the UI. */
-const CONTACT_INBOX = "tableway@tableway.app";
+const CONTACT_INBOX = "admin@ososystem.com";
 
 export async function submitContactForm(payload: ContactFormPayload): Promise<void> {
   const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_INBOX}`, {
